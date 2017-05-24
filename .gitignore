@@ -8,3 +8,4 @@ scripts/config.sh
 public_html/sites/*.dd
 public_html/sites/all/translations
 
+/public_html/sites/default/settings.php
