@@ -7,5 +7,5 @@ scripts/.admin_password.txt
 scripts/config.sh
 public_html/sites/*.dd
 public_html/sites/all/translations
-
+implesamlphp/log/
 /public_html/sites/default/settings.php
