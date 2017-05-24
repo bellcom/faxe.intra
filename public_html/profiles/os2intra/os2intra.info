@@ -1,0 +1,117 @@
+name = OS2Intra
+project = os2intra
+distribution_name = "OS2intra"
+description = "Intranet ud af boksen."
+core = 7.x
+php_memory_limit = 128M
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Core modules.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+dependencies[] = block
+dependencies[] = comment
+dependencies[] = field
+dependencies[] = file
+dependencies[] = image
+dependencies[] = list
+dependencies[] = menu
+dependencies[] = number
+dependencies[] = options
+dependencies[] = path
+dependencies[] = search
+dependencies[] = taxonomy
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Contrib modules.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+dependencies[] = ctools
+dependencies[] = entity
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = flag
+dependencies[] = menu_attributes
+dependencies[] = message
+dependencies[] = message_notify
+dependencies[] = message_subscribe
+dependencies[] = metatag
+dependencies[] = module_filter
+dependencies[] = og
+dependencies[] = logintoboggan
+dependencies[] = wordfilter
+dependencies[] = pathauto
+dependencies[] = r4032login
+dependencies[] = libraries
+dependencies[] = radioactivity
+dependencies[] = realname
+dependencies[] = redirect
+dependencies[] = rules
+dependencies[] = strongarm
+dependencies[] = token
+dependencies[] = views
+dependencies[] = views_bulk_operations
+dependencies[] = views_content
+dependencies[] = ckeditor
+dependencies[] = contextual
+dependencies[] = transliteration
+dependencies[] = help
+dependencies[] = better_formats
+dependencies[] = date
+dependencies[] = date_views
+dependencies[] = date_popup
+dependencies[] = locale
+dependencies[] = field_group
+dependencies[] = webform
+dependencies[] = select_or_other
+dependencies[] = options_element
+dependencies[] = homebox
+dependencies[] = workbench
+dependencies[] = jquery_update
+dependencies[] = l10n_update
+dependencies[] = link
+dependencies[] = diff
+dependencies[] = page_manager
+dependencies[] = scheduler
+dependencies[] = admin_menu
+dependencies[] = adminimal_admin_menu
+dependencies[] = icon
+dependencies[] = icon_menu
+dependencies[] = fontawesome
+dependencies[] = print
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; OS2web mdules.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+dependencies[] = os2web_kle_auto_import
+dependencies[] = os2web_intra_user_menu
+dependencies[] = os2web_audit
+dependencies[] = os2web_habitat
+dependencies[] = OS2Synonym
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Custom modules.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+dependencies[] = os2intra_view_modes
+depencencies[] = os2intra_settings
+dependencies[] = bellcom_user
+dependencies[] = bellcom_apps
+dependencies[] = bellcom_elasticsearch
+dependencies[] = trash_can
+dependencies[] = node_basket
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Features.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+dependencies[] = os2intra_startcontent
+dependencies[] = os2intra_content_types
+dependencies[] = os2intra_settings
+dependencies[] = os2intra_struktur_pages
+dependencies[] = os2intra_organisationsgrupper
+dependencies[] = os2intra_panels
+
+dependencies[] = fredericia_theme_settings
+dependencies[] = fredericia_user_import_mapping

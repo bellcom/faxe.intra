@@ -1,0 +1,217 @@
+<?php
+
+require_once('os2web_intra_user_menu_block.inc');
+
+/**
+ * Implements hook_menu().
+ */
+function os2web_intra_user_menu_menu() {
+  $items = array();
+
+  $items['admin/config/os2web_intra_user_menu'] = array(
+    'title' => t('OS2web User Menu Settings'),
+    'description' => t('Administrer indstillinger OS2web brugermenu'),
+    'position' => 'right',
+    'page callback'    => 'system_admin_menu_block_page',
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+    'access arguments' => array('access administration pages'),
+  );
+
+  $items['admin/config/os2web_intra_user_menu/settings'] = array(
+    'title' => t('OS2web User Menu Settings'),
+    'description' => t('Administrer indstillinger OS2web brugermenu'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('os2web_intra_user_menu_settings_form'),
+    'access arguments' => array('access administration pages'),
+  );
+
+  $items['admin/config/os2web_intra_user_menu/settings'] = array(
+    'title' => t('OS2web User Menu Settings'),
+    'description' => t('Administrer indstillinger OS2web brugermenu'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('os2web_intra_user_menu_settings_form'),
+    'access arguments' => array('access administration pages'),
+  );
+
+  $items['user-menu/ajax'] = array(
+    'title' => 'User menu ajax functions',
+    'description' => 'Ajax',
+    'page callback' => '_os2web_intra_user_menu_groups',
+    'access callback' => 'user_is_logged_in',
+    'type' => MENU_CALLBACK,
+  );
+
+  // Determine which mode the module is being run in
+  $mode = variable_get('os2web_intra_user_menu_mode');
+
+  if ($mode == 'menu') {
+
+    $items['user-group'] = array(
+      'title' => 'Mine grupper',
+      'access callback' => 'user_is_logged_in',
+      'menu_name' => 'user-menu',
+      'page callback' => 'os2web_intra_user_menu_group',
+      'type' => MENU_NORMAL_ITEM,
+      'weight' => -9,
+      'options' => array(
+        'attributes' => array(
+          'class' => 'group-menu-item'
+        )
+      )
+    );
+  }
+
+  return $items;
+}
+
+
+/**
+ * System settings form.
+ */
+function os2web_intra_user_menu_settings_form() {
+  $form = array();
+  $form['os2web_intra_user_menu_mode'] = array(
+    '#title' => 'Vælg hvordan brugermenuen skal integreres',
+    '#description' => t("Når du trykker 'Gem indstillinger' kan det tage et øjeblik et genopbygge menustrukturen."),
+    '#type' => 'radios',
+    '#options' => array('block' => t('Block mode (default)'), 'menu' => t('Integrer i user-menu')),
+    '#required' => TRUE,
+    '#default_value' => variable_get('os2web_intra_user_menu_mode', 'block'),
+  );
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function os2web_intra_user_menu_form_alter(&$form, &$form_state, $form_id) {
+
+  if ($form_id == 'os2web_intra_user_menu_settings_form') {
+
+    // Add custom submit function to system settings form.
+    $form['#submit'][] = 'os2web_intra_user_menu_settings_submit';
+  }
+}
+
+/**
+ * Custom submit handler for system settings form.
+ */
+function os2web_intra_user_menu_settings_submit() {
+
+  $mode = variable_get('os2web_intra_user_menu_mode');
+
+  switch ($mode) {
+    case 'block':
+      drupal_set_message(t("OS2web user menu running in 'block' mode"));
+      break;
+    case 'menu':
+      drupal_set_message(t("OS2web user menu running in 'menu' mode"));
+      break;
+  }
+  menu_rebuild();
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function os2web_intra_user_menu_menu_alter(&$items) {
+  $items['user']['title callback'] = 'os2web_intra_user_menu_title_callback';
+  $items['user']['title arguments'] = array('user');
+
+  $items['user-group']['title callback'] = 'os2web_intra_user_menu_title_callback';
+  $items['user-group']['title arguments'] = array('user-group');
+}
+
+/**
+ * Callback for setting the title on the user account link.
+ */
+function os2web_intra_user_menu_title_callback($arg) {
+  global $user;
+  $user_entity = user_load($user->uid);
+
+  // Do nothing if no one is logged in.
+  if ((!$user->uid)) {
+    return;
+  }
+
+  switch ($arg) {
+    case 'user':
+
+      // Get users real name (default to username in case name fields aren't set).
+      $name = $user->name;
+
+      if(!empty($user_entity->field_name_first)){
+        $name = $user_entity->field_name_first[LANGUAGE_NONE][0]['value'];
+      }
+
+      if(!empty($user_entity->field_name_last)){
+        $name .= ' ' . $user_entity->field_name_last[LANGUAGE_NONE][0]['value'];
+      }
+
+      return $name;
+      break;
+
+    case 'user-group':
+      // Get user's default group and set as menu title
+      $department_node = os2web_intra_user_menu_user_department();
+      if ($department_node) {
+        return $department_node->title;
+      }
+      return t('No department');
+      break;
+  }
+}
+
+/**
+ * Redirect user to their group when menu items is clicked.
+ */
+function os2web_intra_user_menu_group() {
+
+  $node = os2web_intra_user_menu_user_department();
+  drupal_goto('node/' . $node->nid);
+}
+
+/* Callback for getting users group memberships for submenu */
+function _os2web_intra_user_menu_groups() {
+  global $user;
+
+  $response_data = array();
+  $groups = og_get_groups_by_user($user);
+
+  if (count($groups) > 0) {
+    $nodes = node_load_multiple(array_keys($groups['node']));
+
+    foreach ($nodes as $node) {
+      $response_data[] = array(
+        'nid' => $node->nid,
+        'title' => $node->title,
+      );
+    }
+  }
+  drupal_json_output($response_data);
+}
+
+/**
+ * Find user's department group
+ */
+function os2web_intra_user_menu_user_department() {
+
+  // Get users groups
+  $groups = og_get_groups_by_user();
+  foreach ($groups['node'] as $gid) {
+
+    // Determine which one is the direct group by membership type
+    $roles = og_get_user_roles('node', $gid);
+
+    foreach ($roles as $role) {
+      if ($role == 'medarbejder') {
+        $department_gid = $gid;
+      }
+    }
+  }
+  if (isset($department_gid)) {
+    return node_load($department_gid);
+  }
+  return FALSE;
+}

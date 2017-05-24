@@ -1,0 +1,93 @@
+<?php
+/**
+ * @file
+ * Code for the Trash Can feature.
+ */
+
+include_once 'trash_can.features.inc';
+
+define('TRASH_CAN_DEFAULT_EXPIRE', 30);
+
+/**
+ * Implements hook_form_alter().
+ */
+function trash_can_form_os2intra_settings_settings_form_alter(&$form, &$form_state, $form_id) {
+
+  $form['trash_can'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Trash Can'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['trash_can']['trash_can_days_expire'] = array(
+    '#title' => t('Number of days before the content of the trash can will be deleted permanently'),
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#maxlength' => 255,
+    '#default_value' => variable_get('trash_can_days_expire', TRASH_CAN_DEFAULT_EXPIRE),
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function trash_can_permission() {
+  return array(
+    'manage all trash can content' => array(
+      'title' => t('Add or remove all content to trash can'),
+    )
+  );
+}
+
+/**
+ * Implements hook_cron().
+ *
+ * Delete expired content in the trash can.
+ */
+function trash_can_cron() {
+
+  $days_to_keep = variable_get('trash_can_days_expire', TRASH_CAN_DEFAULT_EXPIRE);
+
+  // Find content from the trash can which is older than $days_to_keep
+  $entities = flag_get_flag_flagging_data('papirkurv');
+
+  foreach ($entities as $entity) {
+    // Check if entity is expired.
+    if ($entity->timestamp < strtotime($days_to_keep . ' days ago')) {
+
+      // Entity is expired. Delete it
+      watchdog('trash_can', 'Entity '. $entity->entity_id . ' expired. Deleting');
+      entity_delete('node', $entity->entity_id);
+    }
+  }
+}
+
+/**
+ * Implements hook_flag_access().
+ *
+ * Sets permissions for trash can flag.
+ * Permits access to roles with 'manage all trash can content' permission.
+ * Other users only get flag access to their own content.
+ */
+function trash_can_flag_access($flag, $entity_id, $action, $account) {
+
+  // Only handle access to 'papirkurv' flag
+  if ($flag->name != 'papirkurv') {
+    return;
+  }
+
+  global $user;
+  $access = FALSE;
+
+  // Only permit content owner and 'administrator' roles access to the flag
+  if (user_access('manage all trash can content')) {
+    $access = TRUE;
+  }
+
+  $node = node_load($entity_id);
+  if ($node->uid == $user->uid) {
+    $access = TRUE;
+  }
+  return $access;
+}
