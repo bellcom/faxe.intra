@@ -2,8 +2,8 @@
 ;; Theme information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-name        = 'intranet.fredericia.dk'
-description = 'Beautiful theme for intranet.fredericia.dk.'
+name        = 'intranet.faxe.dk'
+description = 'Beautiful theme for intranet.faxe.dk.'
 core        = '7.x'
 screenshot  = 'dist/img/screenshot.png'
 base theme  = 'bellcom'
