@@ -6,21 +6,22 @@ function _os2intra_user_import_process_file($file_path) {
 
   // CSV field mapping
   // rewrite for settings page?
-  $map = array(
-    variable_get('os2intra_mapping_ad_id')                => 'ad_id',
-    variable_get('os2intra_mapping_employee_id')          => 'employee_id',
-    variable_get('os2intra_mapping_first_name')           => 'first_name',
-    variable_get('os2intra_mapping_last_name')            => 'last_name',
-    variable_get('os2intra_mapping_department')           => 'department',
-    variable_get('os2intra_mapping_department_shortname') => 'department_shortname',
-    variable_get('os2intra_mapping_centre')               => 'centre',
-    variable_get('os2intra_mapping_job_description')      => 'job_description',
-    variable_get('os2intra_mapping_termination_date')     => 'termination_date',
-    variable_get('os2intra_mapping_phone')                => 'phone',
-    variable_get('os2intra_mapping_mobile')               => 'mobile',
-    variable_get('os2intra_mapping_email')                => 'email',
-    variable_get('os2intra_mapping_birthdate')            => 'birthdate',
-    variable_get('os2intra_mapping_department_name')      => 'department_name',
+  $mapping =  variable_get('os2intra_mapping');
+  $map_fallback = array(
+    'ad_id'                 => 'os2intra_mapping_ad_id',
+    'employee_id'           => 'os2intra_mapping_employee_id',
+    'first_name'            => 'os2intra_mapping_first_name',
+    'last_name'             => 'os2intra_mapping_last_name',
+    'department'            => 'os2intra_mapping_department',
+    'department_shortname'  => 'os2intra_mapping_department_shortname',
+    'centre'                => 'os2intra_mapping_centre',
+    'job_description'       =>'os2intra_mapping_job_description',
+    'termination_date'      => 'os2intra_mapping_termination_date',
+    'phone'                 => 'os2intra_mapping_phone',
+    'mobile'                => 'os2intra_mapping_mobile',
+    'email'                 => 'os2intra_mapping_email',
+    'birthdate'             => 'os2intra_mapping_birthdate',
+    'department_name'       => 'os2intra_mapping_department_name'
   );
 
   // Load data from file
@@ -33,8 +34,8 @@ function _os2intra_user_import_process_file($file_path) {
 
     // Look for where headings start and ignore everything before the headings.
     if (!$at_content
-      && (!array_key_exists(variable_get('os2intra_mapping_ad_id'), $row)
-     || $row[variable_get('os2intra_mapping_ad_id')] =! 'AD-ID')) {
+      && (!array_key_exists($mapping['os2intra_mapping_ad_id']['primary'], $row)
+     || $row[$mapping['os2intra_mapping_ad_id']['primary']] =! 'AD-ID')) {
 
       continue;
     }
@@ -43,18 +44,36 @@ function _os2intra_user_import_process_file($file_path) {
     }
 
     // SKip if row has no user name
-    if ($row[variable_get('os2intra_mapping_ad_id')] == '') {
-      continue;
-    }
+    //if ($row[variable_get('os2intra_mapping_ad_id')] == '') {
+    //  continue;
+   // }
 
     // Parse mapping
-    foreach ($row as $key => $field) {
+   /*foreach ($row as $key => $field) {
       // If there is a mapping for the key
       if ($map[$key]) {
-        $mapped_row[$map[$key]] = _os2intra_user_import_sanitize_int($field);
+        if (!empty($field)) {
+          $mapped_row[$map[$key]] = _os2intra_user_import_sanitize_int($field);
+        }
+      }
+    } */
+    foreach ($map_fallback as $field=> $variable) {
+      if (!empty($row[$mapping[$variable]['primary']])) {
+        $mapped_row[$field] = _os2intra_user_import_sanitize_int($row[$mapping[$variable]['primary']]);
+      }
+      else if ($mapping[$variable]['secondary'] == 'input') {
+        $mapped_row[$field] = $mapping[$variable]['input'];
+      }
+      else if (is_numeric($mapping[$variable]['secondary'])){
+        $mapped_row[$field] = _os2intra_user_import_sanitize_int($row[$mapping[$variable]['secondary']]);
       }
     }
-    $rows[] = $mapped_row;
+    // SKip if row has no user name
+    if ($mapped_row['ad_id'] == '') {
+      continue;
+    }
+      $rows[] = $mapped_row;
+
   }
 
   // Skip first row, headers
