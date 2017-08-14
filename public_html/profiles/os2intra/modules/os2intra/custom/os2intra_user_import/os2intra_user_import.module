@@ -72,7 +72,7 @@ function os2intra_user_import_menu() {
     'page callback' => 'os2intra_user_import_departments_without_employees',
     'access arguments' => array('administer os2intra'),
   );
-  return $itmes;
+  return $items;
 }
 /**
  * Implements hook_permission()
