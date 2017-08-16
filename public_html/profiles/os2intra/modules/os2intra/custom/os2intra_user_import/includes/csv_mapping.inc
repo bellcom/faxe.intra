@@ -2,8 +2,7 @@
 /**
  * Helper function to parse file contents to array with relevant info
  */
-function _os2intra_user_import_process_file($file_path) {
-
+function _os2intra_user_import_process_file($file_path, $lines = FALSE) {
   // CSV field mapping
   // rewrite for settings page?
   $mapping =  variable_get('os2intra_mapping');
@@ -35,14 +34,12 @@ function _os2intra_user_import_process_file($file_path) {
     // Look for where headings start and ignore everything before the headings.
     if (!$at_content
       && (!array_key_exists($mapping['os2intra_mapping_ad_id']['primary'], $row)
-     || $row[$mapping['os2intra_mapping_ad_id']['primary']] =! 'AD-ID')) {
-
+     || $row[$mapping['os2intra_mapping_ad_id']['primary']] != 'AD-ID')) {
       continue;
     }
     else {
       $at_content = TRUE;
     }
-
     // SKip if row has no user name
     //if ($row[variable_get('os2intra_mapping_ad_id')] == '') {
     //  continue;
@@ -68,11 +65,15 @@ function _os2intra_user_import_process_file($file_path) {
         $mapped_row[$field] = _os2intra_user_import_sanitize_int($row[$mapping[$variable]['secondary']]);
       }
     }
-    // SKip if row has no user name
+   // SKip if row has no user name
     if ($mapped_row['ad_id'] == '') {
       continue;
     }
       $rows[] = $mapped_row;
+
+      if($lines && $lines < count($rows)) {
+        break;
+      }
 
   }
 
