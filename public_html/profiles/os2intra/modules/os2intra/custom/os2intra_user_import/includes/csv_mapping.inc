@@ -54,7 +54,9 @@ function _os2intra_user_import_process_file($file_path, $lines = FALSE) {
         }
       }
     } */
+    $mapped_row = array();
     foreach ($map_fallback as $field=> $variable) {
+
       if (!empty($row[$mapping[$variable]['primary']])) {
         $mapped_row[$field] = _os2intra_user_import_sanitize_int($row[$mapping[$variable]['primary']]);
       }
