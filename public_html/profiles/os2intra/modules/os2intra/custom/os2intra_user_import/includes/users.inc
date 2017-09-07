@@ -172,13 +172,14 @@ function os2intra_user_import_save_user($user, $uid = '') {
   }
 
   // @todo: check that timestamp is not today
-  $termination_date_timestamp = $user['termination_date'];
-  // Check if the timestamp supplied from the import is larger than
-  // what unix timestamps can be.
-  if ($termination_date_timestamp > 2147483647) {
-    $termination_date_timestamp = 1;
+  if (array_key_exists('termination_date', $user)) {
+    $termination_date_timestamp = $user['termination_date'];
+    // Check if the timestamp supplied from the import is larger than
+    // what unix timestamps can be.
+    if ($termination_date_timestamp > 2147483647) {
+      $termination_date_timestamp = 1;
+    }
   }
-
   // User title tid
   $title_tid = os2intra_user_import_user_title($user['job_description']);
 
@@ -198,13 +199,13 @@ function os2intra_user_import_save_user($user, $uid = '') {
     'field_name_last'                 => array(LANGUAGE_NONE => array(0 => array('value' => $user['last_name']))),
 
     // Phone
-    'field_os2intra_phone'            => array(LANGUAGE_NONE => array(0 => array('value' => $user['phone']))),
+    'field_os2intra_phone'            => array(LANGUAGE_NONE => array(0 => array('value' => (array_key_exists('phone', $user)) ? $user['phone'] : ''))),
 
     // Mobile
-    'field_os2intra_mobile'            => array(LANGUAGE_NONE => array(0 => array('value' => $user['mobile']))),
+    'field_os2intra_mobile'            => array(LANGUAGE_NONE => array(0 => array('value' => (array_key_exists('mobile', $user)) ? $user['mobile'] : ''))),
 
     // Set birthdate
-    'field_os2intra_birthdate'        => array(LANGUAGE_NONE => array(0 => array('value' => $user['birthdate']))),
+    'field_os2intra_birthdate'        => array(LANGUAGE_NONE => array(0 => array('value' => (array_key_exists('birthdate', $user)) ? $user['birthdate'] : NULL))),
 
     // Set department membership
     'og_user_node2'                   => array(LANGUAGE_NONE => array(0 => array('target_id' => array($department_nid)))),
@@ -221,7 +222,7 @@ function os2intra_user_import_save_user($user, $uid = '') {
   );
 
   // For some reason, the first zero is chopped somewhere. Let's add it.
-  if (strlen($user['birthdate']) < 6) {
+  if (array_key_exists('birthdate', $user) && strlen($user['birthdate']) < 6) {
     $fields['field_os2intra_birthdate'] = array(LANGUAGE_NONE => array(0 => array('value' => '0' . $user['birthdate'])));
   }
 
@@ -231,7 +232,7 @@ function os2intra_user_import_save_user($user, $uid = '') {
   }
 
   // Termination date
-  if ($termination_date_timestamp) {
+  if (isset($termination_date_timestamp)) {
     $fields['field_os2intra_termination_date'] = array(LANGUAGE_NONE => array(0 => array('value' => $termination_date_timestamp)));
   }
 
@@ -250,9 +251,11 @@ function os2intra_user_import_save_user($user, $uid = '') {
 
   // Remove all department memberships
   $gid_types = og_get_groups_by_user($account);
-  foreach ($gid_types as $gid_type) {
-    foreach ($gid_type as $gid) {
-      og_role_revoke('node', $gid, $account->uid, variable_get('os2intra_user_import_og_role_id_primary', 16));
+  if (is_array($gid_types)) {
+    foreach ($gid_types as $gid_type) {
+      foreach ($gid_type as $gid) {
+        og_role_revoke('node', $gid, $account->uid, variable_get('os2intra_user_import_og_role_id_primary', 16));
+      }
     }
   }
 
@@ -278,9 +281,9 @@ function os2intra_user_import_save_user($user, $uid = '') {
 
   // Write log entry
   if ($uid) {
-    os2intra_user_import_save_log($user['employee_id'], 'update user: ' . $user['employee_id'] . ' ' . $user['first_name'] . ' ' . $user['last_name'] . 'status: ' . $user['status']);
+    os2intra_user_import_save_log($user['employee_id'], 'update user: ' . $user['employee_id'] . ' ' . $user['first_name'] . ' ' . $user['last_name'] . 'status: ' . $account->uid);
   }
   else {
-    os2intra_user_import_save_log($user['employee_id'], 'create user: ' . $user['first_name'] . 'status: ' . $user['status']);
+    os2intra_user_import_save_log($user['employee_id'], 'create user: ' . $user['first_name'] . 'status: ' . $account->uid);
   }
 }

@@ -72,10 +72,8 @@ function os2intra_user_import_menu() {
     'page callback' => 'os2intra_user_import_departments_without_employees',
     'access arguments' => array('administer os2intra'),
   );
-
   return $items;
 }
-
 /**
  * Implements hook_permission()
  */
@@ -194,7 +192,7 @@ function os2intra_user_import_run_with_drush() {
     if (file_exists($realpath)) {
 
       // Uncomment this to get extensive debugging in the Drupal user import log in admin
-      // http://[mydrupalsite]/admin/config/os2intra/user_import/log 
+      // http://[mydrupalsite]/admin/config/os2intra/user_import/log
       variable_set('os2intra_user_import_save_extended_log', FALSE);
 
       $last_import_temp = variable_get('os2intra_user_import_epoch', $last_import_epoch);
@@ -224,7 +222,7 @@ function os2intra_user_import_run_with_drush() {
       // Check for users that already exist
       if($last_import_temp != $last_import_temp_users) {
         os2intra_user_import_save_log('', 'Starting User Loop');
-        #$update_users = os2intra_user_import_check_users($users);
+        $update_users = os2intra_user_import_check_users($users);
         // Loop over users and create
         os2intra_user_import_save_log('', 'Start Creating Users');
         foreach ($users as $user) {
