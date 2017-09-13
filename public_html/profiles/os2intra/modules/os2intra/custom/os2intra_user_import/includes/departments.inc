@@ -47,6 +47,16 @@ function os2intra_user_import_groups($users) {
         $parent_tid = $parent_term->tid;
         $term->parent = $parent_tid;
       }
+      else {
+        $parent_term = new stdClass();
+        $parent_term->name = $user['centre_name'];
+        $parent_term->parent = array($parent_tid);
+        $parent_term->field_os2intra_department_id[LANGUAGE_NONE][0]['value'] = $user['centre'];
+        $parent_term->vid = $vocab->vid;
+        taxonomy_term_save($parent_term);
+        $parent_term = $parent_term->tid;
+        os2intra_user_import_create_department($parent_term->tid, $user['centre']);
+      }
       taxonomy_term_save($term);
     }
     else {
@@ -59,6 +69,16 @@ function os2intra_user_import_groups($users) {
       if (!empty($result)) {
         $parent_term = taxonomy_term_load(key($result['taxonomy_term']));
         $parent_tid = $parent_term->tid;
+      }
+      else {
+        $parent_term = new stdClass();
+        $parent_term->name = $user['centre_name'];
+        $parent_term->parent = array($parent_tid);
+        $parent_term->field_os2intra_department_id[LANGUAGE_NONE][0]['value'] = $user['centre'];
+        $parent_term->vid = $vocab->vid;
+        taxonomy_term_save($parent_term);
+        $parent_term = $parent_term->tid;
+        os2intra_user_import_create_department($parent_term->tid, $user['centre']);
       }
 
       $term = new stdClass();
