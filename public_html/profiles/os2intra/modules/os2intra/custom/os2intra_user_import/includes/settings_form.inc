@@ -155,7 +155,7 @@ $csv_cols_fallback_1 = array(
     '#tree'          => TRUE,
   );
  $mapping = variable_get('os2intra_mapping');
-  $form['os2intra_mapping']['os2intra_mapping_ad_id']['primary'] = array(
+ $form['os2intra_mapping']['os2intra_mapping_ad_id']['primary'] = array(
     '#type'          => 'select',
     '#title'         => t('AD id'),
     '#required'      => TRUE,
@@ -173,13 +173,45 @@ $csv_cols_fallback_1 = array(
       'class'=> array('os2intra-mapping-fallback-field')
     )
   );
-   $form['os2intra_mapping']['os2intra_mapping_ad_id']['input'] = array(
+  $form['os2intra_mapping']['os2intra_mapping_ad_id']['input'] = array(
     '#type'          => 'textfield',
     '#default_value' => $mapping['os2intra_mapping_ad_id']['input'],
   );
    $form['os2intra_mapping']['os2intra_mapping_ad_id']['markup'] = array(
     '#type'   => 'item',
     '#markup' => (isset($users['ad_id'])) ? $users['ad_id'] : '',
+    '#prefix' => '<div class="os2intra-mapping-markup-field">',
+    '#suffix' => '</div>',
+  );
+  $form['os2intra_mapping']['os2intra_mapping_dn'] = array(
+    '#type'          => 'fieldset',
+    '#tree'          => TRUE,
+  );
+  $form['os2intra_mapping']['os2intra_mapping_dn']['primary'] = array(
+    '#type'          => 'select',
+    '#title'         => t('DN string'),
+    '#required'      => TRUE,
+    '#options'       => $csv_cols,
+    '#default_value' => $mapping['os2intra_mapping_dn']['primary'],
+    '#attributes'    => array(
+      'class'=> array('os2intra-mapping-primary-field')
+    )
+  );
+  $form['os2intra_mapping']['os2intra_mapping_dn']['secondary'] = array(
+    '#type'          => 'select',
+    '#options'       => $csv_cols_fallback_1,
+    '#default_value' => $mapping['os2intra_mapping_dn']['secondary'],
+    '#attributes'    => array(
+      'class'=> array('os2intra-mapping-fallback-field')
+    )
+  );
+   $form['os2intra_mapping']['os2intra_mapping_dn']['input'] = array(
+    '#type'          => 'textfield',
+    '#default_value' => $mapping['os2intra_mapping_dn']['input'],
+  );
+   $form['os2intra_mapping']['os2intra_mapping_dn']['markup'] = array(
+    '#type'   => 'item',
+    '#markup' => (isset($users['dn'])) ? $users['dn'] : '',
     '#prefix' => '<div class="os2intra-mapping-markup-field">',
     '#suffix' => '</div>',
   );
@@ -339,6 +371,37 @@ $csv_cols_fallback_1 = array(
   $form['os2intra_mapping']['os2intra_mapping_centre']['markup'] = array(
     '#type'   => 'item',
     '#markup' => (isset($users['centre'])) ? $users['centre'] : '',
+    '#prefix' => '<div class="os2intra-mapping-markup-field">',
+    '#suffix' => '</div>',
+  );
+  $form['os2intra_mapping']['os2intra_mapping_centre_name'] = array(
+    '#type'          => 'fieldset',
+    '#tree'          => TRUE
+  );
+  $form['os2intra_mapping']['os2intra_mapping_centre_name']['primary'] = array(
+    '#type'          => 'select',
+    '#title'         => t('Parent department name'),
+    '#options'       => $csv_cols,
+    '#default_value' => $mapping['os2intra_mapping_centre_name']['primary'],
+    '#attributes'    => array(
+      'class'=> array('os2intra-mapping-primary-field')
+    )
+  );
+   $form['os2intra_mapping']['os2intra_mapping_centre_name']['secondary'] = array(
+    '#type'          => 'select',
+    '#options'       => $csv_cols_fallback_1,
+    '#default_value' => $mapping['os2intra_mapping_centre_name']['secondary'],
+     '#attributes'    => array(
+      'class'=> array('os2intra-mapping-fallback-field')
+    )
+  );
+  $form['os2intra_mapping']['os2intra_mapping_centre_name']['input'] = array(
+    '#type'          => 'textfield',
+    '#default_value' => $mapping['os2intra_mapping_centre_name']['input'],
+  );
+  $form['os2intra_mapping']['os2intra_mapping_centre_name']['markup'] = array(
+    '#type'   => 'item',
+    '#markup' => (isset($users['centre_name'])) ? $users['centre_name'] : '',
     '#prefix' => '<div class="os2intra-mapping-markup-field">',
     '#suffix' => '</div>',
   );

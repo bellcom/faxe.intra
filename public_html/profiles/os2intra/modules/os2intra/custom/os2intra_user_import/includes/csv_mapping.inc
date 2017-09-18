@@ -7,6 +7,7 @@ function _os2intra_user_import_process_file($file_path, $lines = FALSE) {
   // rewrite for settings page?
   $mapping =  variable_get('os2intra_mapping');
   $map_fallback = array(
+    'dn'                    => 'os2intra_mapping_dn',
     'ad_id'                 => 'os2intra_mapping_ad_id',
     'employee_id'           => 'os2intra_mapping_employee_id',
     'first_name'            => 'os2intra_mapping_first_name',
@@ -14,6 +15,7 @@ function _os2intra_user_import_process_file($file_path, $lines = FALSE) {
     'department'            => 'os2intra_mapping_department',
     'department_shortname'  => 'os2intra_mapping_department_shortname',
     'centre'                => 'os2intra_mapping_centre',
+    'centre_name'           => 'os2intra_mapping_centre_name',
     'job_description'       =>'os2intra_mapping_job_description',
     'termination_date'      => 'os2intra_mapping_termination_date',
     'phone'                 => 'os2intra_mapping_phone',
