@@ -954,6 +954,12 @@ function os2intra_users_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '25';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'entity';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['og_user_node2_target_id']['id'] = 'og_user_node2_target_id';
+  $handler->display->display_options['relationships']['og_user_node2_target_id']['table'] = 'og_membership';
+  $handler->display->display_options['relationships']['og_user_node2_target_id']['field'] = 'og_user_node2_target_id';
+  $handler->display->display_options['relationships']['og_user_node2_target_id']['relationship'] = 'og_group_ref_target_id';
+  $handler->display->display_options['relationships']['og_user_node2_target_id']['label'] = 'Bro til afdeling';
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
@@ -1193,6 +1199,25 @@ function os2intra_users_views_default_views() {
     5 => 0,
     7 => 0,
   );
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['relationship'] = 'og_user_node2_target_id';
+  $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Afdeling';
+  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+    7 => 0,
+    8 => 0,
+  );
   $handler->display->display_options['path'] = 'telefonbogen';
 
   /* Display: Block */
@@ -1223,6 +1248,7 @@ function os2intra_users_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
+    t('Bro til afdeling'),
     t('Navn'),
     t('Telefon nummer'),
     t('E-mail'),
