@@ -266,7 +266,12 @@ function os2intra_user_import_save_user($user, $uid = '') {
   );
   og_group('node', $department_nid, $values);
   og_role_grant('node', $department_nid, $account->uid, variable_get('os2intra_user_import_og_role_id_primary', 16));
-
+  
+  //create subscription to user's department
+  $user_subscriptions = flag_get_user_flags('node', $department_nid, $account->uid);
+  if (!isset($user_subscriptions['subscribe_og'])) {
+    flag('flag', 'subscribe_og', $department_nid, $account, true);
+  }
   // Create authmap for user
   $authmap = array(
     'authname_simplesamlphp_auth' => $user['ad_id'] . variable_get('os2intra_user_import_authmap_name_suffix'),
