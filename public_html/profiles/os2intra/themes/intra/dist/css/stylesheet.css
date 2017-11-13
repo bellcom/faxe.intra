@@ -17454,6 +17454,21 @@ a.group.unsubscribe .icon {
     color: #fff;
     background-color: #008DAA;
   }
+  .popover-button-systemgenveje-block {
+    top: 280px;
+    z-index: 2005;
+  }
+  .popover-button-systemgenveje-block.popover-button .popover-button-toggle {
+    color: #fff;
+    background-color: #008DAA;
+  }
+  .popover-button-systemgenveje-block .views-row {
+    margin-right: 10px;
+    display: inline-block;
+  }
+  .popover-button-systemgenveje-block .views-row img {
+    margin: auto;
+  }
   .popover-button-dish-of-the-day {
     top: 280px;
     z-index: 2000;
