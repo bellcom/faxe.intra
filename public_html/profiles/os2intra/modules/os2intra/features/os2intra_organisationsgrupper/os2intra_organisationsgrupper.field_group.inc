@@ -467,7 +467,8 @@ function os2intra_organisationsgrupper_field_group_info() {
       2 => 'field_os2intra_referat_type',
       3 => 'field_os2web_base_field_edi_tags',
       4 => 'field_os2web_base_field_kle_ref',
-      5 => 'title',
+      5 => 'field_os2intra_send_notification',
+      6 => 'title',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

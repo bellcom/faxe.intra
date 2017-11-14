@@ -311,7 +311,7 @@ function os2intra_organisationsgrupper_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '1',
+          'weight' => '18',
         ),
         'path' => array(
           'weight' => '5',
@@ -371,7 +371,7 @@ function os2intra_organisationsgrupper_strongarm() {
           'weight' => '8',
         ),
         'title' => array(
-          'weight' => '1',
+          'weight' => '31',
         ),
         'path' => array(
           'weight' => '5',

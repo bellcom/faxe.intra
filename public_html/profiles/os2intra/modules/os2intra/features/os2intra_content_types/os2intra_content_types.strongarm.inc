@@ -499,7 +499,7 @@ function os2intra_content_types_strongarm() {
           'weight' => '6',
         ),
         'title' => array(
-          'weight' => '1',
+          'weight' => '4',
         ),
         'path' => array(
           'weight' => '3',
@@ -850,7 +850,7 @@ function os2intra_content_types_strongarm() {
           'weight' => '3',
         ),
         'title' => array(
-          'weight' => '1',
+          'weight' => '44',
         ),
         'path' => array(
           'weight' => '2',

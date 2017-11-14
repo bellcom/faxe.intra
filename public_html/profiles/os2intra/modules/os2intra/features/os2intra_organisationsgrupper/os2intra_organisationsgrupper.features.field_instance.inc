@@ -1397,7 +1397,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 20,
     ),
   );
 
@@ -1560,7 +1560,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 9,
+      'weight' => 21,
     ),
   );
 
@@ -1715,7 +1715,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 18,
     ),
   );
 
@@ -1857,7 +1857,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 20,
     ),
   );
 
@@ -1928,7 +1928,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 7,
+      'weight' => 19,
     ),
   );
 
@@ -2063,7 +2063,74 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 2,
+      'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-os2intra_referat-field_os2intra_send_notification'.
+  $field_instances['node-os2intra_referat-field_os2intra_send_notification'] = array(
+    'bundle' => 'os2intra_referat',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 15,
+      ),
+      'drupalgap' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'includeable' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'list' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2intra_send_notification',
+    'label' => 'Notification',
+    'readmore_behaviour' => 'default',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 17,
     ),
   );
 
@@ -2126,7 +2193,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 5,
+      'weight' => 22,
     ),
   );
 
@@ -2189,7 +2256,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_hs',
-      'weight' => 6,
+      'weight' => 23,
     ),
   );
 
@@ -2419,7 +2486,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 4,
+      'weight' => 21,
     ),
   );
 
@@ -2486,7 +2553,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 2,
+      'weight' => 32,
     ),
   );
 
@@ -2585,6 +2652,72 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
       ),
       'type' => 'media_generic',
       'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance: 'node-post-field_os2intra_send_notification'.
+  $field_instances['node-post-field_os2intra_send_notification'] = array(
+    'bundle' => 'post',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 14,
+      ),
+      'drupalgap' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'includeable' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'list' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2intra_send_notification',
+    'label' => 'Notification',
+    'readmore_behaviour' => 'default',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 30,
     ),
   );
 
@@ -2749,6 +2882,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
   t('Mødeleder');
   t('Mødested');
   t('Mødetype');
+  t('Notification');
   t('Organisation');
   t('Referent');
   t('Spotbokse');
