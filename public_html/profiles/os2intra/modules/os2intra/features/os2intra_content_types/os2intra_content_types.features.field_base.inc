@@ -600,7 +600,7 @@ function os2intra_content_types_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => '',
-        1 => 'Do not send notifications to subscribers',
+        1 => 'Send ikke notificationer til abonnenter om dette indhold',
       ),
       'allowed_values_function' => '',
     ),
