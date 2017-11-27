@@ -110,9 +110,30 @@ function os2intra_systemgenveje_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'systemgenveje' => 'systemgenveje',
   );
+  /* Filter criterion: Flags: Flagged */
+  $handler->display->display_options['filters']['flagged']['id'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['table'] = 'flagging';
+  $handler->display->display_options['filters']['flagged']['field'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['relationship'] = 'flag_content_rel';
 
   /* Display: Systemgenveje Tab */
   $handler = $view->new_display('block', 'Systemgenveje Tab', 'systemgenveje_tab');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'systemgenveje' => 'systemgenveje',
+  );
 
   /* Display: Systemgenveje Block */
   $handler = $view->new_display('block', 'Systemgenveje Block', 'systemgenveje_block');
@@ -127,6 +148,7 @@ function os2intra_systemgenveje_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['required'] = 0;
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'viste_systemgenveje';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Icon */
@@ -159,6 +181,28 @@ function os2intra_systemgenveje_views_default_views() {
   $handler->display->display_options['fields']['field_systemgenveje_link']['alter']['text'] = '<a href="[field_systemgenveje_link-url]" target="_blank">[field_systemgenveje_icon] [title]</a>';
   $handler->display->display_options['fields']['field_systemgenveje_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_systemgenveje_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'systemgenveje' => 'systemgenveje',
+  );
+  /* Filter criterion: Flags: Flagged */
+  $handler->display->display_options['filters']['flagged']['id'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['table'] = 'flagging';
+  $handler->display->display_options['filters']['flagged']['field'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['relationship'] = 'flag_content_rel';
+  $handler->display->display_options['filters']['flagged']['value'] = '0';
   $translatables['os2intra_systemgenveje'] = array(
     t('Master'),
     t('more'),
