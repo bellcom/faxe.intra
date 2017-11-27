@@ -14857,6 +14857,16 @@ img {
 .node-type-os2intra-group .os2-box-group-logo .pane-content img {
   min-width: 100%;
 }
+.subscribeflag .flag {
+  font-size: 0;
+}
+.subscribeflag .flag:before {
+  display: inline-block;
+  font-family: FontAwesome;
+  content: "\f097";
+  color: inherit;
+  font-size: 14px;
+}
 @media screen {
 }
 @media screen and (max-width: 767px) {
