@@ -14863,9 +14863,14 @@ img {
 .subscribeflag .flag:before {
   display: inline-block;
   font-family: FontAwesome;
-  content: "\f097";
   color: inherit;
-  font-size: 14px;
+  font-size: 26px;
+}
+.subscribeflag .flag.unflag-action:before {
+  content: "\f02e";
+}
+.subscribeflag .flag.flag-action:before {
+  content: "\f097";
 }
 @media screen {
 }

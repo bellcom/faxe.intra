@@ -37,10 +37,15 @@
       display: inline-block;
       
       font-family: FontAwesome;
-      content: "\f097";
 
       color: inherit;
-      font-size: @font-size-base;
+      font-size: 26px;
+    }
+    &.unflag-action:before {
+       content: @fa-var-bookmark;
+    }
+    &.flag-action:before {
+       content: @fa-var-bookmark-o;
     }
   }
 }
