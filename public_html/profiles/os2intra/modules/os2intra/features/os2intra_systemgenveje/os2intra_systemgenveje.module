@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ * Code for the systemgenveje feature.
+ */
+
+include_once 'os2intra_systemgenveje.features.inc';
+
+function os2intra_systemgenveje_menu() {
+  $items = array();
+  $items['user/%user/os2intra_systemgenveje'] = array(
+    'title' => 'Systemgenveje',
+    'type' => MENU_LOCAL_TASK,
+    'page callback' => 'os2intra_systemgenveje_tab',
+    'page arguments' => array(1),
+    'access callback' => 'user_is_logged_in',
+  );
+  
+  return $items;
+} 
+function os2intra_systemgenveje_tab($account){
+  $view = views_get_view('os2intra_systemgenveje');
+  $view->set_display('systemgenveje_tab');
+  $view->set_arguments(array($account->uid));
+  return $view->preview();
+}

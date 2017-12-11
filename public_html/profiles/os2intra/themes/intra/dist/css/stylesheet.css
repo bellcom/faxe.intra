@@ -14863,9 +14863,14 @@ img {
 .subscribeflag .flag:before {
   display: inline-block;
   font-family: FontAwesome;
-  content: "\f097";
   color: inherit;
-  font-size: 14px;
+  font-size: 26px;
+}
+.subscribeflag .flag.unflag-action:before {
+  content: "\f02e";
+}
+.subscribeflag .flag.flag-action:before {
+  content: "\f097";
 }
 @media screen {
 }
@@ -17464,6 +17469,21 @@ a.group.unsubscribe .icon {
     color: #fff;
     background-color: #008DAA;
   }
+  .popover-button-systemgenveje-block {
+    top: 280px;
+    z-index: 2005;
+  }
+  .popover-button-systemgenveje-block.popover-button .popover-button-toggle {
+    color: #fff;
+    background-color: #008DAA;
+  }
+  .popover-button-systemgenveje-block .views-row {
+    margin-right: 10px;
+    display: inline-block;
+  }
+  .popover-button-systemgenveje-block .views-row img {
+    margin: auto;
+  }
   .popover-button-dish-of-the-day {
     top: 280px;
     z-index: 2000;
@@ -17965,4 +17985,3 @@ fieldset[disabled] .view-os2intra-brugervisning span.interests a.active {
 }
 @media print {
 }
-/*# sourceMappingURL=./dist/css/stylesheet.css.map */

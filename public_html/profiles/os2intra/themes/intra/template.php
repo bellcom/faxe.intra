@@ -53,7 +53,10 @@ function intra_preprocess_page(&$variables) {
 
   // Find colleague
   $variables['find_colleague_block'] = module_invoke('views', 'block_view', '-exp-telefonbogen-page');
-
+  $view = views_get_view('os2intra_systemgenveje');
+  $view->set_display('systemgenveje_block');
+  $variables['systemgenveje_block'] = $view->preview();
+  
   // Tabs
   $variables['tabs_primary'] = $variables['tabs'];
   $variables['tabs_secondary'] = $variables['tabs'];

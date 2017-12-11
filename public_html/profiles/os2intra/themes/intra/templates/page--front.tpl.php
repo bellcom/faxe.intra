@@ -83,6 +83,17 @@
             </div>
             <!-- End - find colleague -->
           <?php endif ?>
+          <?php if (isset($systemgenveje_block)): ?>
+            <!-- Begin - systemgenveje_block -->
+            <div class="popover-button popover-button-systemgenveje-block">
+              <a href="#" class="popover-button-toggle"><?php print t('Systemgenveje'); ?></a>
+
+              <div class="popover-button-content">
+                <?php print $systemgenveje_block; ?>
+              </div>
+            </div>
+            <!-- End - systemgenveje_block -->
+          <?php endif ?>
         <?php endif ?>
 
         <?php print $messages; ?>

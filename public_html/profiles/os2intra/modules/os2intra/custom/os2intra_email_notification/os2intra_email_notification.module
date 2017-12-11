@@ -3,42 +3,83 @@
 /**
  * Implements hook_node_insert() */
 
-function os2intra_email_notification_node_insert($node) { 
+function os2intra_email_notification_node_insert($node) {
 
     list(,, $bundle) = entity_extract_ids('node', $node);
  if (!og_is_group_content_type('node', $bundle)) {
     return;
   }
-
+  // not send notification if checkbox was checked
+  if ($node->field_os2intra_send_notification['und'][0]['value'] == 1) {
+    return;
+  }
   entity_get_controller('node')->resetCache(array($node->nid));
 
-  
+
   $message_type = 'os2intra_msgtp_afdelingsindhold';
   $hook = 'node_insert';
-  
-  
+
+
   drupal_alter('os2intra_email_notification_message_selection', $message_type, $hook, $node);
   $account = user_load($node->uid);
-  
-  
+
+  $users = flag_get_entity_flags('node', $node->og_group_ref['und'][0]['target_id'], 'email_og');
+  $uids = array();
+  foreach ($users as $uid => $user) {
+    $uids[$uid] = array(
+      'notifiers' =>
+      array (
+        'email' => 'email',
+      )
+    );
+  }
+
   $message = message_create($message_type, array('uid' => $account->uid, 'timestamp' => $node->created));
-  
-  
-  $wrapper = entity_metadata_wrapper('message', $message); 
+  $wrapper = entity_metadata_wrapper('message', $message);
   $wrapper->field_target_nodes->set($node);
-  $wrapper->field_os2intra_afdindh_afdeling->set($node->og_group_ref['und'][0]['target_id']); 
-    
-  $options = array( 
-    'rendered fields' => array( 
-      'message_notify_email_subject' => 'field_os2intra_afdindh_subject', 
-      'message_notify_email_body' => 'field_os2intra_afdindh_body', 
-    ), 
-  ); 
-  $subscribe_options = array( 
-    'subscribe message' => TRUE, 
-    'email message' => TRUE, 
-  ); 
-  if (module_exists('message_subscribe')) { 
-    message_subscribe_send_message('node', $node, $message, array('email' => $options), $subscribe_options); 
-  } 
+  $wrapper->field_os2intra_afdindh_afdeling->set($node->og_group_ref['und'][0]['target_id']);
+
+  $options = array(
+    'rendered fields' => array(
+      'message_notify_email_subject' => 'field_os2intra_afdindh_subject',
+      'message_notify_email_body' => 'field_os2intra_afdindh_body',
+    ),
+  );
+  $subscribe_options = array(
+    'subscribe message' => TRUE,
+    'email message' => TRUE,
+    'uids' => $uids
+  );
+  if (module_exists('message_subscribe')) {
+    message_subscribe_send_message('node', $node, $message, array('email' => $options), $subscribe_options);
+  }
+}
+
+
+function os2intra_email_notification_flag_access($flag, $entity_id, $action, $account) {
+ if ($flag->name =='email_og'){
+   $node=node_load($entity_id);
+
+   $term = taxonomy_term_load($node->field_os2intra_organisation['und'][0]['target_id']);
+   if (isset($term->field_os2intra_manager_id['und']) && is_array($term->field_os2intra_manager_id['und'])){
+     foreach($term->field_os2intra_manager_id['und'] as $key => $value) {
+       if ($value['target_id'] == $account->uid) {
+         return TRUE;
+       }
+     }
+   }
+   return FALSE;
+ }
+}
+
+function os2intra_email_notification_flag_flag($flag, $entity_id, $account, $flagging) {
+if ($flag->name =='subscribe_og'){
+  flag('flag', 'email_og', $entity_id, $account, true);
+}
+}
+
+function os2intra_email_notification_flag_unflag($flag, $entity_id, $account, $flagging) {
+if ($flag->name =='subscribe_og'){
+  flag('unflag', 'email_og', $entity_id, $account, true);
+}
 }

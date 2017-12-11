@@ -146,7 +146,7 @@ function os2intra_panels_default_page_manager_handlers() {
     );
     $pane->css = array(
       'css_id' => '',
-      'css_class' => 'pull-right subscribeflag',
+      'css_class' => 'pull-left subscribeflag',
       'template_suggestion' => 'plain',
     );
     $pane->extras = array();

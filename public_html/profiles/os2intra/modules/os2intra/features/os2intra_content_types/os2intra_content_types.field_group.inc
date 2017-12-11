@@ -237,7 +237,8 @@ function os2intra_content_types_field_group_info() {
       0 => 'body',
       1 => 'field_os2web_base_field_kle_ref',
       2 => 'field_os2web_base_field_edi_tags',
-      3 => 'title',
+      3 => 'field_os2intra_send_notification',
+      4 => 'title',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -1247,7 +1248,8 @@ function os2intra_content_types_field_group_info() {
       3 => 'field_os2web_base_field_edi_tags',
       4 => 'field_os2web_base_field_kle_ref',
       5 => 'field_os2intra_event_type',
-      6 => 'title',
+      6 => 'field_os2intra_send_notification',
+      7 => 'title',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -1344,7 +1346,8 @@ function os2intra_content_types_field_group_info() {
       0 => 'body',
       1 => 'field_os2web_base_field_kle_ref',
       2 => 'field_os2web_base_field_edi_tags',
-      3 => 'title',
+      3 => 'field_os2intra_send_notification',
+      4 => 'title',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -1490,12 +1493,12 @@ function os2intra_content_types_field_group_info() {
     'label' => 'wiki',
     'weight' => '0',
     'children' => array(
-      0 => 'group_indstillinger',
-      1 => 'group_media',
-      2 => 'group_relationer',
-      3 => 'group_spotsnforms',
-      4 => 'group_tekst',
-      5 => 'group_afsnit',
+      0 => 'group_afsnit',
+      1 => 'group_indstillinger',
+      2 => 'group_media',
+      3 => 'group_relationer',
+      4 => 'group_spotsnforms',
+      5 => 'group_tekst',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(

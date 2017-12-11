@@ -1,0 +1,105 @@
+<?php
+/**
+ * SAML 2.0 remote IdP metadata for simpleSAMLphp.
+ *
+ * Remember to remove the IdPs you don't use from this file.
+ *
+ * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-idp-remote 
+ */
+
+$metadata['http://adfs1.fredericia.dk/adfs/services/trust'] = array (
+  'entityid' => 'http://adfs1.fredericia.dk/adfs/services/trust',
+  'description' => 
+  array (
+    'da-DK' => 'Fredericia Kommune',
+  ),
+  'OrganizationName' => 
+  array (
+    'da-DK' => 'Fredericia Kommune',
+  ),
+  'name' => 
+  array (
+    'da-DK' => 'Fredericia Kommune',
+  ),
+  'OrganizationDisplayName' => 
+  array (
+    'da-DK' => 'Fredericia Kommune',
+  ),
+  'url' => 
+  array (
+    'da-DK' => 'http://www.fredericia.dk/',
+  ),
+  'OrganizationURL' => 
+  array (
+    'da-DK' => 'http://www.fredericia.dk/',
+  ),
+  'contacts' => 
+  array (
+    0 => 
+    array (
+      'contactType' => 'support',
+      'emailAddress' => 
+      array (
+        0 => 'ithot@fredericia.dk',
+      ),
+      'telephoneNumber' => 
+      array (
+        0 => '',
+      ),
+    ),
+  ),
+  'metadata-set' => 'saml20-idp-remote',
+  'SingleSignOnService' => 
+  array (
+    0 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://adfs1.fredericia.dk/adfs/ls/',
+    ),
+    1 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+      'Location' => 'https://adfs1.fredericia.dk/adfs/ls/',
+    ),
+  ),
+  'SingleLogoutService' => 
+  array (
+    0 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://adfs1.fredericia.dk/adfs/ls/',
+    ),
+    1 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+      'Location' => 'https://adfs1.fredericia.dk/adfs/ls/',
+    ),
+  ),
+  'ArtifactResolutionService' => 
+  array (
+    0 => 
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:SOAP',
+      'Location' => 'https://adfs1.fredericia.dk/adfs/services/trust/artifactresolution',
+      'index' => 0,
+    ),
+  ),
+  'keys' => 
+  array (
+    0 => 
+    array (
+      'encryption' => true,
+      'signing' => false,
+      'type' => 'X509Certificate',
+      'X509Certificate' =>'MIIFOjCCAyKgAwIBAgIQRuOfpdP9FKJKTL/wcGDPsjANBgkqhkiG9w0BAQsFADAiMSAwHgYDVQQDExdzaWduaW5nLXN0cy5zeWRkanVycy5kazAeFw0xNDEyMTUwOTMwNTRaFw0zOTEyMzEyMzU5NTlaMCIxIDAeBgNVBAMTF3NpZ25pbmctc3RzLnN5ZGRqdXJzLmRrMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAkclNyD4wLgY+qHj4ZoECzpaiDUK3CnomcSYb2RzZGuhxB+e8ZIZoCdD9rXowdmbGIg7g3dT6ojqsTCvDGw8IjoPP7EYGdttsUC1yLt6jLyjfsS9ePVkEN8eppNfEV0fSkeImgCcK6fB5Xevp8xetrrpkoT+aBB5sVHc4Q2GDZrqVs9wGOEUp5VZw850FdedwsNvsDh8g4FlvOsEIfToiiAjWsfCfmYnEOl8U4Rgmd+KU3SmU4wxlL7NxMuPGyG0/tCx4RRxB21E0+gFUQn9xfGmQmFYwQgoneIsZpsyuAdwQ3f/T1GL7aOlgmvzUpGsxRZ4+WGw/SV7SeoZRqHq5Sd1cCBjKSSE+XFgltP8LzWZabSw9IBFUVAYPeGFJhj4ADzv8gsRiFwO2qZsxM6pl4mzgbBkIyJOLQlUeMy8mJkN1V4Z4wmcqH6RYjopSFYsjjv667B4MzisiA7PY7WYXfwcu4jHi0xC3lSi4kO+NPMWOfp+cQJY5D4RuRHkOvwypwsbCJk1XvLBZqbWsbQQKWvfqsPU9Lzfr0LhjV3pQ4kuA+ivdrI3t6HRkWKCyLemmH6xSCXMAIjDEFjMjp2z5tpf85UUQ+wImUvndVt6hFCXL4FITvTs/rfWhvHLQ8VsLrRIIkMS7PQssU+A4K0MZr5omNmGx9AyPoWn4YQo1RTMCAwEAAaNsMGowEwYDVR0lBAwwCgYIKwYBBQUHAwEwUwYDVR0BBEwwSoAQYuhusZi93+in4CXRorKYSKEkMCIxIDAeBgNVBAMTF3NpZ25pbmctc3RzLnN5ZGRqdXJzLmRrghBG45+l0/0UokpMv/BwYM+yMA0GCSqGSIb3DQEBCwUAA4ICAQB93HVHAU9HFmL2t1CJtNGn0DeAaFfAtdfYAe4bW5dbx5JyRT5tjEm22u9OuTf6eVaIXSuvi2DJakmOo1Cm6DKOqYChWwst4meJh1PlEbmkIBdp5lIt2siDplF+6n8GVTsp8TUTpZvZx1q1XRCwG8Bbwdxi9yZTT74gKqFKIuD4ZPhgMhDt4aJjk6sZupERNjpoqxuDiRI6LXS9SSvh/3ofUgmrRMy3SDJa9eLygAKPLQK3SK8h9QC3aV2hXZJAr3XxF4TpWVDPtZRQEViNIiJUQ5ImfrCf4Qypmwai+zTivcZ1OYqGr5iU12PbGCsnXIS1GJaO66hqjZfhHLRxXq1ZvZGe5dNesstNfiSpMrS6LGWv8QUGDTBkwebhD+EZa7EtfFRv9BfDPZKOwGeYpv5opw2Dy2PbNsK1mDj8oYnFRvQT3R78KFWoUhR1Q6ihvkTyiNRVoaH9itjI5pjWyqKhVNRyMTaJklRuwXhZMRmQ5CbUnnDX91NA0IqLKxNq9Kxe2Jl5YKXNCUKFm7RJG2sjRofqprgap53XFxjvy9k4OshSVFhCn1o9zAZOTxt3ektg4zS5/XdwJifkd5c38geLd5Mn/9Q7EiR9liPw+kTZddfksfkgi7IxiGQv16hd1M6/lCqZW2soKSknaLJ1rMRpSsZmcSh6htOWmlO7CX1skw=='
+    ),
+    1 => 
+    array (
+      'encryption' => false,
+      'signing' => true,
+      'type' => 'X509Certificate',
+      'X509Certificate' =>'MIIFOjCCAyKgAwIBAgIQRuOfpdP9FKJKTL/wcGDPsjANBgkqhkiG9w0BAQsFADAiMSAwHgYDVQQDExdzaWduaW5nLXN0cy5zeWRkanVycy5kazAeFw0xNDEyMTUwOTMwNTRaFw0zOTEyMzEyMzU5NTlaMCIxIDAeBgNVBAMTF3NpZ25pbmctc3RzLnN5ZGRqdXJzLmRrMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAkclNyD4wLgY+qHj4ZoECzpaiDUK3CnomcSYb2RzZGuhxB+e8ZIZoCdD9rXowdmbGIg7g3dT6ojqsTCvDGw8IjoPP7EYGdttsUC1yLt6jLyjfsS9ePVkEN8eppNfEV0fSkeImgCcK6fB5Xevp8xetrrpkoT+aBB5sVHc4Q2GDZrqVs9wGOEUp5VZw850FdedwsNvsDh8g4FlvOsEIfToiiAjWsfCfmYnEOl8U4Rgmd+KU3SmU4wxlL7NxMuPGyG0/tCx4RRxB21E0+gFUQn9xfGmQmFYwQgoneIsZpsyuAdwQ3f/T1GL7aOlgmvzUpGsxRZ4+WGw/SV7SeoZRqHq5Sd1cCBjKSSE+XFgltP8LzWZabSw9IBFUVAYPeGFJhj4ADzv8gsRiFwO2qZsxM6pl4mzgbBkIyJOLQlUeMy8mJkN1V4Z4wmcqH6RYjopSFYsjjv667B4MzisiA7PY7WYXfwcu4jHi0xC3lSi4kO+NPMWOfp+cQJY5D4RuRHkOvwypwsbCJk1XvLBZqbWsbQQKWvfqsPU9Lzfr0LhjV3pQ4kuA+ivdrI3t6HRkWKCyLemmH6xSCXMAIjDEFjMjp2z5tpf85UUQ+wImUvndVt6hFCXL4FITvTs/rfWhvHLQ8VsLrRIIkMS7PQssU+A4K0MZr5omNmGx9AyPoWn4YQo1RTMCAwEAAaNsMGowEwYDVR0lBAwwCgYIKwYBBQUHAwEwUwYDVR0BBEwwSoAQYuhusZi93+in4CXRorKYSKEkMCIxIDAeBgNVBAMTF3NpZ25pbmctc3RzLnN5ZGRqdXJzLmRrghBG45+l0/0UokpMv/BwYM+yMA0GCSqGSIb3DQEBCwUAA4ICAQB93HVHAU9HFmL2t1CJtNGn0DeAaFfAtdfYAe4bW5dbx5JyRT5tjEm22u9OuTf6eVaIXSuvi2DJakmOo1Cm6DKOqYChWwst4meJh1PlEbmkIBdp5lIt2siDplF+6n8GVTsp8TUTpZvZx1q1XRCwG8Bbwdxi9yZTT74gKqFKIuD4ZPhgMhDt4aJjk6sZupERNjpoqxuDiRI6LXS9SSvh/3ofUgmrRMy3SDJa9eLygAKPLQK3SK8h9QC3aV2hXZJAr3XxF4TpWVDPtZRQEViNIiJUQ5ImfrCf4Qypmwai+zTivcZ1OYqGr5iU12PbGCsnXIS1GJaO66hqjZfhHLRxXq1ZvZGe5dNesstNfiSpMrS6LGWv8QUGDTBkwebhD+EZa7EtfFRv9BfDPZKOwGeYpv5opw2Dy2PbNsK1mDj8oYnFRvQT3R78KFWoUhR1Q6ihvkTyiNRVoaH9itjI5pjWyqKhVNRyMTaJklRuwXhZMRmQ5CbUnnDX91NA0IqLKxNq9Kxe2Jl5YKXNCUKFm7RJG2sjRofqprgap53XFxjvy9k4OshSVFhCn1o9zAZOTxt3ektg4zS5/XdwJifkd5c38geLd5Mn/9Q7EiR9liPw+kTZddfksfkgi7IxiGQv16hd1M6/lCqZW2soKSknaLJ1rMRpSsZmcSh6htOWmlO7CX1skw=='
+    ),
+  ),
+);
+
