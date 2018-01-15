@@ -304,9 +304,9 @@ function os2intra_organisationsgrupper_views_default_views() {
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
   /* Display: Afdelingsværktøjer */
-  $handler = $view->new_display('page', 'Afdelingsværktøjer', 'page_1');
+  $handler = $view->new_display('page', 'Afdelingsgenveje', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Afdelingsværktøjer for %1';
+  $handler->display->display_options['title'] = 'Afdelingsgenveje for %1';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -319,7 +319,7 @@ function os2intra_organisationsgrupper_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'Der er ikke valgt nogen værktøjer';
+  $handler->display->display_options['empty']['area']['content'] = 'Der er ikke valgt nogen genveje';
   $handler->display->display_options['empty']['area']['format'] = 'indhold';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -364,7 +364,7 @@ function os2intra_organisationsgrupper_views_default_views() {
   );
   $handler->display->display_options['path'] = 'node/%/tools';
   $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Værktøjer';
+  $handler->display->display_options['menu']['title'] = 'Genveje';
   $handler->display->display_options['menu']['weight'] = '2';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
@@ -593,9 +593,9 @@ function os2intra_organisationsgrupper_views_default_views() {
     t('Opdateret'),
     t('Forfatter'),
     t('Type'),
-    t('Afdelingsværktøjer'),
-    t('Afdelingsværktøjer for %1'),
-    t('Der er ikke valgt nogen værktøjer'),
+    t('Afdelingsgenveje'),
+    t('Afdelingsgenveje for %1'),
+    t('Der er ikke valgt nogen genveje'),
     t('Nid'),
     t('Titel'),
     t('Afdelingstools - ref'),

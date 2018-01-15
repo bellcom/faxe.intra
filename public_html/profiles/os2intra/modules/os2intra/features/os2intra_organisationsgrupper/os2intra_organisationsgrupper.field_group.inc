@@ -525,7 +525,7 @@ function os2intra_organisationsgrupper_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_afdeling';
   $field_group->data = array(
-    'label' => 'Værktøjer',
+    'label' => 'Afdelingsgenveje',
     'weight' => '15',
     'children' => array(
       0 => 'field_os2intra_dept_tools',
@@ -561,7 +561,7 @@ function os2intra_organisationsgrupper_field_group_info() {
   t('Relationer');
   t('Synlighed');
   t('System');
-  t('Værktøjer');
+  t('Afdelingsgenveje');
 
   return $field_groups;
 }

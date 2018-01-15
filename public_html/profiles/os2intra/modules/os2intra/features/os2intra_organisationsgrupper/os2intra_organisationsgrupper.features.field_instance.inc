@@ -759,7 +759,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_os2intra_dept_tools',
-    'label' => 'Afdelingsværktøjer',
+    'label' => 'Afdelingsgenveje',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -2861,7 +2861,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Afbud');
   t('Afdelingens værktøjskasser vises på en fane under afdelingssiden.');
-  t('Afdelingsværktøjer');
+  t('Afdelingsgenveje');
   t('Billede');
   t('Billeder');
   t('Body');

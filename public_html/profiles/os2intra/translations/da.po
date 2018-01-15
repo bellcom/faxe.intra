@@ -1813,7 +1813,7 @@ msgid "Forfremmet indhold"
 msgstr ""
 
 #: /install.php?profile=os2intra&locale=da&op=start&id=2
-msgid "Afdelingsværktøjer"
+msgid "Afdelingsgenveje"
 msgstr ""
 
 #: /install.php?profile=os2intra&locale=da&op=start&id=2
@@ -21733,7 +21733,7 @@ msgid "Afdelingsinfo"
 msgstr ""
 
 #: /node/5/edit
-msgid "Værktøjer"
+msgid "Genveje"
 msgstr ""
 
 #: /admin/config/development/performance
@@ -26654,7 +26654,7 @@ msgid "Indhold fra %1"
 msgstr ""
 
 #: /node/5/members
-msgid "%1 værktøjer"
+msgid "%1 genveje"
 msgstr ""
 
 #: /user/register
@@ -27595,7 +27595,7 @@ msgid ""
 msgstr ""
 
 #: /admin/structure/views/view/os2intra_afdelingsindhold/edit/page_1
-msgid "Der er ikke valgt nogen værktøjer"
+msgid "Der er ikke valgt nogen genveje"
 msgstr ""
 
 #: /content/hr-fredericia-medi-test
@@ -32928,7 +32928,7 @@ msgid "Der er endnu ikke oprettet indhold i afdelingen"
 msgstr ""
 
 #: /user
-msgid "Afdelingsværktøjer for %1"
+msgid "Afdelingsgenveje for %1"
 msgstr ""
 
 #: /user
@@ -74401,7 +74401,7 @@ msgstr ""
 
 #: /intra
 msgid "Basket"
-msgstr "Værktøjer"
+msgstr "Genveje"
 
 msgid "Date modified"
 msgstr "Ændringsdato"
@@ -75740,7 +75740,7 @@ msgstr "Værktøjer"
 
 #: sites/all/modules/custom/node_basket/js/node_basket.js; profiles/os2intra/modules/custom/node_basket/js/node_basket.js
 msgid "Save to basket"
-msgstr "Gem som værktøj"
+msgstr "Gem som genvejsamling"
 
 #: sites/all/modules/custom/node_basket/js/node_basket.js; profiles/os2intra/modules/custom/node_basket/js/node_basket.js
 msgid "Remove from basket"
@@ -75748,7 +75748,7 @@ msgstr "Fjern værktøj"
 
 #: sites/all/modules/custom/node_basket/js/node_basket.js; profiles/os2intra/modules/custom/node_basket/js/node_basket.js
 msgid "Add to toolbox"
-msgstr "Tilføj til værktøjskasse"
+msgstr "Tilføj til genvejsamling"
 
 msgid "1 place"
 msgid_plural "@count places"
@@ -76125,9 +76125,9 @@ msgid ""
 "have added. You can convert this basket to a toolbox, you can save for "
 "later use."
 msgstr ""
-"Denne kurv indeholder links og værktøjer du har selv har tilføjet. "
-"Du kan konvertere denne kurv til en værktøjskasse. Dine "
-"værktøjskasser kan du senere bruge fra den venstre menu."
+"Denne kurv indeholder links og genvejsamlinger du har selv har tilføjet. "
+"Du kan konvertere denne kurv til en genvejsamling. Dine "
+"genvejsamlinger kan du senere bruge fra den venstre menu."
 
 #: /mig-som-ansat
 msgid "Dish of the day"

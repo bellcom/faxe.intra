@@ -466,7 +466,7 @@ function os2intra_panels_views_default_views() {
   $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: Afdelingsværktøjer */
-  $handler = $view->new_display('panel_pane', 'Afdelingsværktøjer', 'panel_pane_4');
+  $handler = $view->new_display('panel_pane', 'Afdelingsgenveje', 'panel_pane_4');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -521,7 +521,7 @@ function os2intra_panels_views_default_views() {
     t('View panes'),
     t('Kommende aktiviteter'),
     t('Kommende Aktiviteter'),
-    t('Afdelingsværktøjer'),
+    t('Afdelingsgenveje'),
     t('Alle'),
   );
   $export['os2intra_gruppe_indhold'] = $view;

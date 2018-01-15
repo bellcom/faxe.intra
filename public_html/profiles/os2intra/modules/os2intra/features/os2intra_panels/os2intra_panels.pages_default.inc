@@ -1624,7 +1624,7 @@ function os2intra_panels_default_page_manager_handlers() {
         0 => 'context_user_1.uid',
       ),
       'override_title' => 1,
-      'override_title_text' => ' Abonnerede værktøjer ',
+      'override_title_text' => ' Abonnerede genvejsamling ',
       'override_title_heading' => 'h2',
     );
     $pane->cache = array();

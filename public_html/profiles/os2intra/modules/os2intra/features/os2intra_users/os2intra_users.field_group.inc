@@ -243,7 +243,7 @@ function os2intra_users_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_user';
   $field_group->data = array(
-    'label' => 'Værktøjer',
+    'label' => 'Genveje',
     'weight' => '8',
     'children' => array(
       0 => 'field_node_basket_toolboxes',
@@ -302,7 +302,7 @@ function os2intra_users_field_group_info() {
   t('Profil info');
   t('Slet');
   t('System');
-  t('Værktøjer');
+  t('Genveje');
 
   return $field_groups;
 }

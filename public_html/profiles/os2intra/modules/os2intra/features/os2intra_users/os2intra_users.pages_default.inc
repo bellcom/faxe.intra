@@ -180,7 +180,7 @@ function os2intra_users_default_page_manager_handlers() {
       ),
       'context' => 'argument_entity_id:user_1',
       'override_title' => 1,
-      'override_title_text' => 'Abonnerede værktøjer',
+      'override_title_text' => 'Abonnerede genveje',
       'override_title_heading' => 'h2',
     );
     $pane->cache = array();
