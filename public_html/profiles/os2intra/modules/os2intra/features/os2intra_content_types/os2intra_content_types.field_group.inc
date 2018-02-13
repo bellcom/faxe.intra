@@ -237,8 +237,7 @@ function os2intra_content_types_field_group_info() {
       0 => 'body',
       1 => 'field_os2web_base_field_kle_ref',
       2 => 'field_os2web_base_field_edi_tags',
-      3 => 'field_os2intra_send_notification',
-      4 => 'title',
+      3 => 'title',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

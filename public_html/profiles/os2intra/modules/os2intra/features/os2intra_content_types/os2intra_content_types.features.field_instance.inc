@@ -5376,6 +5376,105 @@ function os2intra_content_types_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-spotbox-field_spotbox_factbox_text'.
+  $field_instances['node-spotbox-field_spotbox_factbox_text'] = array(
+    'bundle' => 'spotbox',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'drupalgap' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'includeable' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'list' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_spotbox_factbox_text',
+    'label' => 'Factbox text',
+    'readmore_behaviour' => 'default',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'emails' => 0,
+          'fuld_html' => 'fuld_html',
+          'indhold' => 'indhold',
+          'kommentar' => 0,
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'emails' => array(
+              'weight' => -6,
+            ),
+            'fuld_html' => array(
+              'weight' => -9,
+            ),
+            'indhold' => array(
+              'weight' => -10,
+            ),
+            'kommentar' => array(
+              'weight' => -8,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'linkit' => array(
+        'button_text' => 'Søg',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 43,
+    ),
+  );
+
   // Exported field_instance: 'node-spotbox-field_spotbox_image'.
   $field_instances['node-spotbox-field_spotbox_image'] = array(
     'bundle' => 'spotbox',
@@ -5620,6 +5719,72 @@ function os2intra_content_types_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-spotbox-field_spotbox_view_factbox'.
+  $field_instances['node-spotbox-field_spotbox_view_factbox'] = array(
+    'bundle' => 'spotbox',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'drupalgap' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'includeable' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'list' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_spotbox_view_factbox',
+    'label' => 'View as factbox',
+    'readmore_behaviour' => 'default',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 42,
     ),
   );
 
@@ -7066,6 +7231,7 @@ function os2intra_content_types_field_default_field_instances() {
   t('Dato');
   t('Ekstern URL');
   t('Ekstra tekst');
+  t('Factbox text');
   t('Filer');
   t('Fremhæv indhold');
   t('Fysisk lokation');
@@ -7096,6 +7262,7 @@ function os2intra_content_types_field_default_field_instances() {
   t('Type');
   t('Udfør');
   t('Vejledning');
+  t('View as factbox');
   t('Vis på forside');
   t('Vælg de kantiner retten serveres i');
 

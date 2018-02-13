@@ -17,8 +17,8 @@ function os2intra_content_types_ckeditor_profile_defaults() {
     [\'Bold\',\'Italic\',\'Underline\',\'Strike\'],
     [\'Styles\'],
     [\'NumberedList\',\'BulletedList\'],
-    [\'Cut\',\'Copy\',\'PasteFromWord\'],
-    [\'Link\',\'Unlink\',\'Anchor\'],
+    [\'Cut\',\'Copy\'],
+    [\'Link\',\'Unlink\',\'linkit\',\'Anchor\'],
     [\'Scayt\'],
     [\'Media\'],
     [\'Table\',\'Undo\',\'Redo\']
@@ -32,7 +32,7 @@ function os2intra_content_types_ckeditor_profile_defaults() {
         'lang' => 'da',
         'auto_lang' => 't',
         'language_direction' => 'default',
-        'allowed_content' => 't',
+        'allowed_content' => 'f',
         'extraAllowedContent' => 'div[class,id];p[class,id];img[*];',
         'enter_mode' => 'p',
         'shift_enter_mode' => 'br',
@@ -66,6 +66,17 @@ config.scayt_defLan = \'da_DK\';
 config.language = \'da_DK\';
 config.scayt_sLang = \'da_DK\';',
         'loadPlugins' => array(
+          'linkit' => array(
+            'name' => 'linkit',
+            'desc' => 'Understøttelse af Linkit-modulet',
+            'path' => '%base_path%profiles/os2intra/modules/contrib/linkit/editors/ckeditor/',
+            'buttons' => array(
+              'linkit' => array(
+                'label' => 'Linkit',
+                'icon' => 'icons/linkit.png',
+              ),
+            ),
+          ),
           'media' => array(
             'name' => 'media',
             'desc' => 'Plugin for inserting images from Drupal media module',
@@ -113,7 +124,7 @@ config.scayt_sLang = \'da_DK\';',
     [\'Bold\',\'Italic\',\'Underline\',\'Strike\',\'-\',\'Subscript\',\'Superscript\',\'-\',\'RemoveFormat\'],
     [\'NumberedList\',\'BulletedList\',\'-\',\'Outdent\',\'Indent\',\'Blockquote\',\'CreateDiv\'],
     [\'JustifyLeft\',\'JustifyCenter\',\'JustifyRight\',\'JustifyBlock\',\'-\',\'BidiLtr\',\'BidiRtl\',\'-\',\'Language\'],
-    [\'linkit\',\'Link\',\'Unlink\',\'Anchor\'],
+    [\'Link\',\'Unlink\',\'linkit\',\'Anchor\'],
     [\'DrupalBreak\'],
     \'/\',
     [\'Format\',\'Font\',\'FontSize\'],
@@ -174,6 +185,29 @@ config.scayt_sLang = \'da_DK\';',
               ),
             ),
             'default' => 't',
+          ),
+          'linkit' => array(
+            'name' => 'linkit',
+            'desc' => 'Understøttelse af Linkit-modulet',
+            'path' => '%base_path%profiles/os2intra/modules/contrib/linkit/editors/ckeditor/',
+            'buttons' => array(
+              'linkit' => array(
+                'label' => 'Linkit',
+                'icon' => 'icons/linkit.png',
+              ),
+            ),
+          ),
+          'media' => array(
+            'name' => 'media',
+            'desc' => 'Plugin for inserting images from Drupal media module',
+            'path' => '%plugin_dir%media/',
+            'buttons' => array(
+              'Media' => array(
+                'label' => 'Media',
+                'icon' => 'images/icon.gif',
+              ),
+            ),
+            'default' => 'f',
           ),
         ),
       ),

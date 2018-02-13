@@ -19,12 +19,21 @@ function os2intra_content_types_default_linkit_profiles() {
   $linkit_profile->profile_type = '1';
   $linkit_profile->data = array(
     'text_formats' => array(
-      'indhold' => 0,
+      'indhold' => 'indhold',
       'fuld_html' => 0,
       'kommentar' => 0,
+      'emails' => 0,
       'plain_text' => 0,
     ),
     'search_plugins' => array(
+      'entity:webform_workflow_state' => array(
+        'enabled' => 0,
+        'weight' => '-10',
+      ),
+      'entity:taxonomy_term' => array(
+        'enabled' => 1,
+        'weight' => '-10',
+      ),
       'entity:user' => array(
         'enabled' => 0,
         'weight' => '-10',
@@ -33,11 +42,7 @@ function os2intra_content_types_default_linkit_profiles() {
         'enabled' => 1,
         'weight' => '-10',
       ),
-      'entity:node' => array(
-        'enabled' => 1,
-        'weight' => '-10',
-      ),
-      'entity:comment' => array(
+      'entity:search_api_index' => array(
         'enabled' => 0,
         'weight' => '-10',
       ),
@@ -45,15 +50,11 @@ function os2intra_content_types_default_linkit_profiles() {
         'enabled' => 0,
         'weight' => '-10',
       ),
-      'entity:taxonomy_term' => array(
+      'entity:node' => array(
         'enabled' => 1,
         'weight' => '-10',
       ),
-      'entity:search_api_index' => array(
-        'enabled' => 0,
-        'weight' => '-10',
-      ),
-      'entity:webform_workflow_state' => array(
+      'entity:comment' => array(
         'enabled' => 0,
         'weight' => '-10',
       ),
@@ -70,11 +71,13 @@ function os2intra_content_types_default_linkit_profiles() {
         'comment_node_post' => 0,
         'comment_node_os2intra_message_notification' => 0,
         'comment_node_os2intra_base_page' => 0,
+        'comment_node_wiki' => 0,
         'comment_node_os2intra_referat' => 0,
         'comment_node_os2web_base_selfservice_link' => 0,
+        'comment_node_sytemgenveje' => 0,
         'comment_node_webform' => 0,
-        'comment_node_wiki' => 0,
         'comment_node_spotbox' => 0,
+        'comment_node_systemgenveje' => 0,
       ),
       'group_by_bundle' => 0,
     ),
@@ -87,14 +90,16 @@ function os2intra_content_types_default_linkit_profiles() {
         'it_vejledning' => 'it_vejledning',
         'post' => 'post',
         'os2intra_base_page' => 'os2intra_base_page',
-        'os2intra_referat' => 'os2intra_referat',
         'wiki' => 'wiki',
+        'os2intra_referat' => 'os2intra_referat',
         'os2intra_canteen_menu' => 0,
         'node_basket' => 0,
         'os2intra_message_notification' => 0,
         'os2web_base_selfservice_link' => 0,
+        'sytemgenveje' => 0,
         'webform' => 0,
         'spotbox' => 0,
+        'systemgenveje' => 0,
       ),
       'group_by_bundle' => 1,
       'include_unpublished' => 0,
@@ -118,8 +123,8 @@ function os2intra_content_types_default_linkit_profiles() {
       'group_by_scheme' => 0,
       'url_type' => 'download',
       'image_extra_info' => array(
-        'thumbnail' => 'thumbnail',
-        'dimensions' => 'dimensions',
+        'thumbnail' => 0,
+        'dimensions' => 0,
       ),
     ),
     'entity:taxonomy_term' => array(
@@ -144,6 +149,7 @@ function os2intra_content_types_default_linkit_profiles() {
         'indlaegstyper' => 0,
         'begivenhedstyper' => 0,
         'os2web_taxonomies_tax_org' => 0,
+        'media_folders' => 0,
       ),
       'group_by_bundle' => 1,
     ),
@@ -157,15 +163,11 @@ function os2intra_content_types_default_linkit_profiles() {
       'url_method' => '2',
     ),
     'attribute_plugins' => array(
-      'id' => array(
-        'enabled' => 0,
-        'weight' => '-10',
-      ),
       'title' => array(
         'enabled' => 0,
         'weight' => '-10',
       ),
-      'accesskey' => array(
+      'target' => array(
         'enabled' => 0,
         'weight' => '-10',
       ),
@@ -173,11 +175,15 @@ function os2intra_content_types_default_linkit_profiles() {
         'enabled' => 0,
         'weight' => '-10',
       ),
+      'id' => array(
+        'enabled' => 0,
+        'weight' => '-10',
+      ),
       'class' => array(
         'enabled' => 0,
         'weight' => '-10',
       ),
-      'target' => array(
+      'accesskey' => array(
         'enabled' => 0,
         'weight' => '-10',
       ),
