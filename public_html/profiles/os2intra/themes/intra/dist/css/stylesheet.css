@@ -13894,6 +13894,9 @@ img {
 .os2-spotbox-teaser .os2-node-teaser-body .os2-node-teaser-body-text {
   color: #fff;
 }
+.os2-spotbox-teaser .os2-node-teaser-body .os2-node-teaser-body-text a {
+  color: #fff;
+}
 .os2-spotbox-teaser .os2-node-teaser-image {
   display: none;
 }
