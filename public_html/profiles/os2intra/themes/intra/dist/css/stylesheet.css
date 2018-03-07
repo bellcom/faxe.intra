@@ -13896,6 +13896,7 @@ img {
 }
 .os2-spotbox-teaser .os2-node-teaser-body .os2-node-teaser-body-text a {
   color: #fff;
+  text-decoration: underline;
 }
 .os2-spotbox-teaser .os2-node-teaser-image {
   display: none;
