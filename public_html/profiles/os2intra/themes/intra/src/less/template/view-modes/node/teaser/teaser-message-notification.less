@@ -10,7 +10,7 @@
 // Variables
 // --------------------------------------------------
 
-@os2-message-notification-teaser-background-color: @state-secondary-bg;
+@os2-message-notification-teaser-background-color: #cc0000;
 @os2-message-notification-teaser-heading-color: @state-secondary-text;
 
 // --------------------------------------------------
@@ -39,6 +39,20 @@
 				}
 			}
 		}
+    .os2-entity-info {
+      &,
+			  a {
+					&,
+					&:hover,
+					&:focus,
+					&:active {
+						color: #fff !important;
+					}
+				}
+        span {
+          color: #fff !important;
+        }  
+    }
 	}
 }
 
