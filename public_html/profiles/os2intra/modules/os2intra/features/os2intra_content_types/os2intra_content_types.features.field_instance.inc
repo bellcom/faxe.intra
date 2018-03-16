@@ -610,12 +610,10 @@ function os2intra_content_types_field_default_field_instances() {
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_os2intra_paragraph_title',
     'label' => 'Overskrift',
-    'readmore_behaviour' => 'default',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'emails' => 0,
           'fuld_html' => 'fuld_html',
           'indhold' => 'indhold',
           'kommentar' => 'kommentar',
@@ -625,9 +623,6 @@ function os2intra_content_types_field_default_field_instances() {
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
-            'emails' => array(
-              'weight' => -6,
-            ),
             'fuld_html' => array(
               'weight' => 0,
             ),
