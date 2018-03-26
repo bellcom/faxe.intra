@@ -13980,7 +13980,7 @@ img {
 @media print {
 }
 .os2-message-notification-teaser.os2-box {
-  background-color: #3C9AB3;
+  background-color: #cc0000;
 }
 .os2-message-notification-teaser.os2-box .os2-node-teaser-heading .os2-node-teaser-heading-title,
 .os2-message-notification-teaser.os2-box .os2-node-teaser-heading .os2-node-teaser-heading-title > a,
@@ -13991,6 +13991,19 @@ img {
 .os2-message-notification-teaser.os2-box .os2-node-teaser-heading .os2-node-teaser-heading-title:active,
 .os2-message-notification-teaser.os2-box .os2-node-teaser-heading .os2-node-teaser-heading-title > a:active {
   color: #fff;
+}
+.os2-message-notification-teaser.os2-box .os2-entity-info,
+.os2-message-notification-teaser.os2-box .os2-entity-info a,
+.os2-message-notification-teaser.os2-box .os2-entity-info:hover,
+.os2-message-notification-teaser.os2-box .os2-entity-info a:hover,
+.os2-message-notification-teaser.os2-box .os2-entity-info:focus,
+.os2-message-notification-teaser.os2-box .os2-entity-info a:focus,
+.os2-message-notification-teaser.os2-box .os2-entity-info:active,
+.os2-message-notification-teaser.os2-box .os2-entity-info a:active {
+  color: #fff !important;
+}
+.os2-message-notification-teaser.os2-box .os2-entity-info span {
+  color: #fff !important;
 }
 .os2-message-notification-teaser.os2-message-notification-teaser-variant-with-image {
   background-color: #fff;
@@ -17989,3 +18002,4 @@ fieldset[disabled] .view-os2intra-brugervisning span.interests a.active {
 }
 @media print {
 }
+/*# sourceMappingURL=./dist/css/stylesheet.css.map */
