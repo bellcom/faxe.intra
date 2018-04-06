@@ -183,7 +183,7 @@
             <div class="os2-box-body">
               <?php print render($page['content']); ?>
             </div>
-          </div>w
+          </div>
 
         <?php else: ?>
           <?php print render($page['content']); ?>
