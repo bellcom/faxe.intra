@@ -10,8 +10,8 @@
       <!-- Begin - logo -->
       <div class="sidebar-logo">
         <a href="<?php print $front_page; ?>" class="sidebar-logo-link">
-          <img src="<?php print $path_img . '/logo-sidebar-wide.png'; ?>" class="sidebar-logo-image sidebar-logo-image-wide" alt="<?php print $site_name . t(' logo'); ?>" />
-          <img src="<?php print $path_img . '/logo-sidebar-narrow.png'; ?>" class="sidebar-logo-image sidebar-logo-image-narrow" alt="<?php print $site_name . t(' logo'); ?>" />
+          <img src="<?php print $path_img . '/logo-sidebar-wide.png?cacheBuster=1234'; ?>" class="sidebar-logo-image sidebar-logo-image-wide" alt="<?php print $site_name . t(' logo'); ?>" />
+          <img src="<?php print $path_img . '/logo-sidebar-narrow.png?cacheBuster=1234'; ?>" class="sidebar-logo-image sidebar-logo-image-narrow" alt="<?php print $site_name . t(' logo'); ?>" />
         </a>
       </div>
       <!-- End - logo -->
@@ -42,7 +42,7 @@
   <div class="inner-wrapper" role="document">
 
     <!-- Begin - printable logo -->
-    <img src="<?php print $path_img . '/logo-sidebar-printable.png'; ?>" class="visible-print" alt="<?php print $site_name . t(' logo'); ?>" />
+    <img src="<?php print $path_img . '/logo-sidebar-printable.png?cacheBuster=1234'; ?>" class="visible-print" alt="<?php print $site_name . t(' logo'); ?>" />
     <!-- End - printable logo -->
 
     <!-- Begin - simple navigation -->
@@ -63,7 +63,7 @@
 
       <!-- Begin - logo -->
       <a href="<?php print $front_page; ?>" class="simple-navigation-logo-link">
-        <img src="<?php print $path_img . '/logo-simple-navigation.png'; ?>" class="simple-navigation-logo-image" alt="<?php print t('intranet.fredericia.dk logo'); ?>" />
+        <img src="<?php print $path_img . '/logo-simple-navigation.png?cacheBuster=1234'; ?>" class="simple-navigation-logo-image" alt="<?php print t('intranet.fredericia.dk logo'); ?>" />
       </a>
       <!-- End - logo -->
 
@@ -183,7 +183,7 @@
             <div class="os2-box-body">
               <?php print render($page['content']); ?>
             </div>
-          </div>
+          </div>w
 
         <?php else: ?>
           <?php print render($page['content']); ?>
