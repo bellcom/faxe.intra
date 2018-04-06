@@ -9,3 +9,6 @@ public_html/sites/*.dd
 public_html/sites/all/translations
 simplesamlphp/
 /public_html/sites/default/settings.php
+.DS_store
+.idea
+.phpintel
