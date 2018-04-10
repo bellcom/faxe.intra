@@ -29,18 +29,22 @@
 
     <!-- Begin - body -->
     <div class="os2-node-teaser-body">
-
+    <?php if (isset($node->field_spotbox_view_factbox['und']) &&  $node->field_spotbox_view_factbox['und'][0]['value'] == 1) :?>
+      <?php if (isset($content['field_spotbox_factbox_text'])): ?>
+        <!-- Begin - text -->
+        <div class="os2-node-teaser-body-text">
+          <?php print render($content['field_spotbox_factbox_text']); ?>
+        </div>
+      <?php endif; ?>
+    <?php else: ?>
       <?php if (isset($content['field_spotbox_text'])): ?>
         <!-- Begin - text -->
         <div class="os2-node-teaser-body-text">
-          <?php if (isset($node->field_spotbox_view_factbox['und']) &&  $node->field_spotbox_view_factbox['und'][0]['value'] == 1) :?>
-            <?php print render($content['field_spotbox_factbox_text']); ?>
-          <?php else: ?>
-            <?php print render($content['field_spotbox_text']); ?>
-          <?php endif ?>
+          <?php print render($content['field_spotbox_text']); ?>
         </div>
         <!-- End - text -->
       <?php endif; ?>
+    <?php endif; ?>
 
         <!-- Begin - link -->
         <div class="os2-node-teaser-body-link">
