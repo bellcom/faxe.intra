@@ -341,17 +341,17 @@ function os2intra_organisationsgrupper_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_post';
   $field_group->data = array(
-    'label' => 'Billeder',
-    'weight' => '15',
+    'label' => 'Media',
+    'weight' => '16',
     'children' => array(
       0 => 'field_os2intra_images',
+      1 => 'field_os2web_base_field_media',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
-      'label' => 'Billeder',
+      'label' => 'Media',
       'instance_settings' => array(
         'required_fields' => 1,
-        'id' => '',
         'classes' => 'group-media field-group-htab',
         'description' => '',
       ),
@@ -400,7 +400,7 @@ function os2intra_organisationsgrupper_field_group_info() {
   $field_group->parent_name = 'group_post';
   $field_group->data = array(
     'label' => 'Relationer',
-    'weight' => '16',
+    'weight' => '17',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'field_os2intra_physical_location',
@@ -546,22 +546,22 @@ function os2intra_organisationsgrupper_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Afdeling');
+  t('Afdelingsgenveje');
   t('Afdelingsinfo');
   t('Billede');
-  t('Billeder');
   t('Detaljer');
   t('Forfremmet');
   t('Gruppe');
   t('Gruppe redigering');
   t('Indstillinger');
   t('Logo');
+  t('Media');
   t('Mødedeltagere');
   t('Referat');
   t('Referatform');
   t('Relationer');
   t('Synlighed');
   t('System');
-  t('Afdelingsgenveje');
 
   return $field_groups;
 }

@@ -298,12 +298,12 @@ function os2intra_organisationsgrupper_views_default_views() {
   $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
   $handler->display->display_options['path'] = 'node/%/arkiv';
   $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Arkiv';
+  $handler->display->display_options['menu']['title'] = 'Afd. indhold';
   $handler->display->display_options['menu']['weight'] = '2';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
-  /* Display: Afdelingsværktøjer */
+  /* Display: Afdelingsgenveje */
   $handler = $view->new_display('page', 'Afdelingsgenveje', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Afdelingsgenveje for %1';

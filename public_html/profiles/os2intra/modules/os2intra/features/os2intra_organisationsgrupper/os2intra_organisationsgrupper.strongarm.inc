@@ -311,7 +311,7 @@ function os2intra_organisationsgrupper_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '18',
+          'weight' => '1',
         ),
         'path' => array(
           'weight' => '5',
@@ -371,19 +371,19 @@ function os2intra_organisationsgrupper_strongarm() {
           'weight' => '8',
         ),
         'title' => array(
-          'weight' => '31',
+          'weight' => '35',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'scheduler_settings' => array(
-          'weight' => '0',
+          'weight' => '2',
         ),
         'flag' => array(
-          'weight' => '3',
+          'weight' => '5',
         ),
       ),
       'display' => array(
