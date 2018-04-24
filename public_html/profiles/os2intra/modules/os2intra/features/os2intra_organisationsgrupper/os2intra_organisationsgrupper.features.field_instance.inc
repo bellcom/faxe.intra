@@ -759,7 +759,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_os2intra_dept_tools',
-    'label' => 'Afdelingsgenveje',
+    'label' => 'Afdelingsværktøjer',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -2553,7 +2553,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 32,
+      'weight' => 36,
     ),
   );
 
@@ -2651,7 +2651,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 15,
+      'weight' => 12,
     ),
   );
 
@@ -2717,7 +2717,100 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
         'display_label' => 0,
       ),
       'type' => 'options_onoff',
-      'weight' => 30,
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'node-post-field_os2web_base_field_media'.
+  $field_instances['node-post-field_os2web_base_field_media'] = array(
+    'bundle' => 'post',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 14,
+      ),
+      'drupalgap' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'includeable' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'list' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2web_base_field_media',
+    'label' => 'Vedhæftede filer',
+    'readmore_behaviour' => 'default',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'description_field' => 1,
+      'epsacrop' => array(
+        'styles' => array(
+          '4_col_image_-_520x220' => 0,
+          'group_logo' => 0,
+          'normal' => 0,
+          'profilbillede' => 0,
+          'profile_image_default' => 0,
+          'spotboks' => 0,
+        ),
+      ),
+      'file_directory' => 'bilag',
+      'file_extensions' => 'txt pdf zip xslx xslm docm docx doc ppt pptx',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'private' => 0,
+          'public' => 'public',
+          'youtube' => 0,
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 'document',
+          'image' => 0,
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_browser_plus--media_browser_my_files' => 0,
+          'media_browser_plus--media_browser_thumbnails' => 0,
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 0,
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 13,
     ),
   );
 
@@ -2812,7 +2905,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 25,
+      'weight' => 24,
     ),
   );
 
@@ -2861,7 +2954,7 @@ function os2intra_organisationsgrupper_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Afbud');
   t('Afdelingens værktøjskasser vises på en fane under afdelingssiden.');
-  t('Afdelingsgenveje');
+  t('Afdelingsværktøjer');
   t('Billede');
   t('Billeder');
   t('Body');

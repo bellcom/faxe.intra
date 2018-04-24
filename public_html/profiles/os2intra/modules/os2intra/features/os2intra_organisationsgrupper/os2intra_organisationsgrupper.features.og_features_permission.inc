@@ -327,8 +327,6 @@ function os2intra_organisationsgrupper_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'leder' => 'leder',
-      'medarbejder' => 'medarbejder',
-      'member' => 'member',
       'organisatorisk' => 'organisatorisk',
       'superuser' => 'superuser',
     ),
