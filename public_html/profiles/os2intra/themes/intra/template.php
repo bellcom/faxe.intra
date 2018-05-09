@@ -56,7 +56,7 @@ function intra_preprocess_page(&$variables) {
   $view = views_get_view('os2intra_systemgenveje');
   $view->set_display('systemgenveje_block');
   $variables['systemgenveje_block'] = $view->preview();
-  
+
   // Tabs
   $variables['tabs_primary'] = $variables['tabs'];
   $variables['tabs_secondary'] = $variables['tabs'];
@@ -395,7 +395,7 @@ function intra_preprocess_taxonomy_term__os2web_taxonomies_tax_places(&$variable
     if ($field_os2web_taxonomies_name = field_get_items('taxonomy_term', $term, 'field_os2web_taxonomies_name')) {
       $place .= '<h4 class="os2-place-name">' . $field_os2web_taxonomies_name[0]['value'] . '</h4>';
     }
-    
+
     // Address
     if ($field_os2web_taxonomies_address = field_get_items('taxonomy_term', $term, 'field_os2web_taxonomies_address')) {
       $place .= '<span class="os2-place-address">' . $field_os2web_taxonomies_address[0]['value'] . '</span>';
@@ -475,3 +475,35 @@ function intra_main_navigation_search_form($variables) {
   $output .= '</div>';
   return $output;
 }
+
+/*
+ * Force download
+ */
+function intra_file_link($variables) {
+  $file = $variables['file'];
+  $icon_directory = $variables['icon_directory'];
+  $url = file_create_url($file->uri);
+  $icon = theme('file_icon', array('file' => $file, 'icon_directory' => $icon_directory));
+  // Set options as per anchor format described at
+  // http://microformats.org/wiki/file-format-examples
+  $options = array(
+    'attributes' => array(
+      'type' => $file->filemime . '; length=' . $file->filesize,
+    ),
+  );
+  // Use the description as the link text if available.
+  if (empty($file->description)) {
+    $link_text = $file->filename;
+  }
+  else {
+    $link_text = $file->description;
+    $options['attributes']['title'] = check_plain($file->filename);
+  }
+
+  $options['attributes']['target'] = '_blank';
+
+
+  return '<span class="file">' . $icon . ' ' . l($link_text, $url, $options) . '</span>';
+
+
+  }
