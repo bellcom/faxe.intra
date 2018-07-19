@@ -172,15 +172,17 @@ function os2intra_systemgenveje_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Link */
   $handler->display->display_options['fields']['field_systemgenveje_link']['id'] = 'field_systemgenveje_link';
   $handler->display->display_options['fields']['field_systemgenveje_link']['table'] = 'field_data_field_systemgenveje_link';
   $handler->display->display_options['fields']['field_systemgenveje_link']['field'] = 'field_systemgenveje_link';
   $handler->display->display_options['fields']['field_systemgenveje_link']['label'] = '';
   $handler->display->display_options['fields']['field_systemgenveje_link']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_systemgenveje_link']['alter']['text'] = '<a href="[field_systemgenveje_link-url]" target="_blank">[field_systemgenveje_icon] [title]</a>';
+  $handler->display->display_options['fields']['field_systemgenveje_link']['alter']['text'] = '<a href="[field_systemgenveje_link]" target="_blank">[field_systemgenveje_icon] [title]</a>';
   $handler->display->display_options['fields']['field_systemgenveje_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_systemgenveje_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_systemgenveje_link']['type'] = 'link_absolute';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -214,7 +216,7 @@ function os2intra_systemgenveje_views_default_views() {
     t('flag'),
     t('Systemgenveje Tab'),
     t('Systemgenveje Block'),
-    t('<a href="[field_systemgenveje_link-url]" target="_blank">[field_systemgenveje_icon] [title]</a>'),
+    t('<a href="[field_systemgenveje_link]" target="_blank">[field_systemgenveje_icon] [title]</a>'),
   );
   $export['os2intra_systemgenveje'] = $view;
 
