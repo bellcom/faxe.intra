@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the FAXE Administration Views feature.
+ */
+
+include_once 'faxe_administration_views.features.inc';
