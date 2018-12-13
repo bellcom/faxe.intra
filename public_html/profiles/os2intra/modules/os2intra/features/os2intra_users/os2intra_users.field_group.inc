@@ -297,12 +297,12 @@ function os2intra_users_field_group_info() {
   t('Billede');
   t('Bruger');
   t('Brugerkonto');
+  t('Genveje');
   t('Grupper');
   t('Navn og stilling');
   t('Profil info');
   t('Slet');
   t('System');
-  t('Genveje');
 
   return $field_groups;
 }

@@ -1359,6 +1359,78 @@ function os2intra_users_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'user-user-field_os2intra_user_disable_date'.
+  $field_instances['user-user-field_os2intra_user_disable_date'] = array(
+    'bundle' => 'user',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 32,
+      ),
+      'drupalgap' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'includeable' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_os2intra_user_disable_date',
+    'label' => 'Date of user disable',
+    'readmore_behaviour' => 'default',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'd.m.Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_text',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_os2intra_user_inter'.
   $field_instances['user-user-field_os2intra_user_inter'] = array(
     'bundle' => 'user',
@@ -1721,6 +1793,7 @@ function os2intra_users_field_default_field_instances() {
   t('Billede');
   t('Bio');
   t('Birthdate');
+  t('Date of user disable');
   t('Efternavn');
   t('Email option will be checked automatically when subscribing to something.');
   t('Email subscriptions');
