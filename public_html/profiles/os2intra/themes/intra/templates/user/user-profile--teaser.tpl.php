@@ -48,12 +48,20 @@
           <!-- End - mobile -->
         <?php endif; ?>
 
-        <?php if (isset($account->mail)): ?>
-          <!-- Begin - email -->
+        <?php if (isset($user_profile['field_os2intra_user_alt_email'])): ?>
+          <!-- Begin - alternative email -->
           <div class="os2-user-teaser-email">
-            <a href="mailto:<?php print $account->mail; ?>"><?php print $account->mail; ?></a>
+            <?php print render($user_profile['field_os2intra_user_alt_email']); ?>
           </div>
-          <!-- End - email -->
+          <!-- End - alternative email -->
+        <?php else: ?>
+          <?php if (isset($account->mail)): ?>
+            <!-- Begin - email -->
+            <div class="os2-user-teaser-email">
+              <a href="mailto:<?php print $account->mail; ?>"><?php print $account->mail; ?></a>
+            </div>
+            <!-- End - email -->
+          <?php endif; ?>
         <?php endif; ?>
 
       </div>
