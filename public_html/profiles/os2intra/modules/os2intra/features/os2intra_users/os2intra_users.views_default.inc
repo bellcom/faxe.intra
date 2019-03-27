@@ -1220,6 +1220,12 @@ function os2intra_users_views_default_views() {
     7 => 0,
     8 => 0,
   );
+  /* Filter criterion: User: The user ID */
+  $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
+  $handler->display->display_options['filters']['uid_raw']['value']['value'] = '1';
   $handler->display->display_options['path'] = 'telefonbogen';
 
   /* Display: Block */
