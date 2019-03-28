@@ -415,6 +415,27 @@ function os2intra_users_field_default_field_bases() {
     'type' => 'datestamp',
   );
 
+  // Exported field_base: 'field_os2intra_user_alt_email'.
+  $field_bases['field_os2intra_user_alt_email'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_os2intra_user_alt_email',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_os2intra_user_bio'.
   $field_bases['field_os2intra_user_bio'] = array(
     'active' => 1,

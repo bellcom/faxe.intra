@@ -1213,6 +1213,99 @@ function os2intra_users_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'user-user-field_os2intra_user_alt_email'.
+  $field_instances['user-user-field_os2intra_user_alt_email'] = array(
+    'bundle' => 'user',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 33,
+      ),
+      'drupalgap' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'includeable' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_os2intra_user_alt_email',
+    'label' => 'Alternativ e-mail adresse',
+    'readmore_behaviour' => 'default',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'emails' => 'emails',
+          'fuld_html' => 'fuld_html',
+          'indhold' => 'indhold',
+          'kommentar' => 'kommentar',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'emails' => array(
+              'weight' => -6,
+            ),
+            'fuld_html' => array(
+              'weight' => -9,
+            ),
+            'indhold' => array(
+              'weight' => -10,
+            ),
+            'kommentar' => array(
+              'weight' => -8,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'linkit' => array(
+        'button_text' => 'Søg',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_os2intra_user_bio'.
   $field_instances['user-user-field_os2intra_user_bio'] = array(
     'bundle' => 'user',
@@ -1790,6 +1883,7 @@ function os2intra_users_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Afdeling');
   t('Afdelings Reference');
+  t('Alternativ e-mail adresse');
   t('Billede');
   t('Bio');
   t('Birthdate');
