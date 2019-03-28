@@ -1118,8 +1118,16 @@ function os2intra_users_views_default_views() {
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
   $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  $handler->display->display_options['fields']['mail']['exclude'] = TRUE;
   $handler->display->display_options['fields']['mail']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['mail']['empty'] = '<i>Ikke angivet</i>';
+  /* Field: User: Alternativ e-mail adresse */
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['id'] = 'field_os2intra_user_alt_email';
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['table'] = 'field_data_field_os2intra_user_alt_email';
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['field'] = 'field_os2intra_user_alt_email';
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['label'] = 'E-mail';
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['empty'] = '[mail]';
   /* Field: User: Gruppemedlemskab */
   $handler->display->display_options['fields']['og_user_node2']['id'] = 'og_user_node2';
   $handler->display->display_options['fields']['og_user_node2']['table'] = 'og_membership';
@@ -1278,6 +1286,7 @@ function os2intra_users_views_default_views() {
     t('E-mail'),
     t('Page'),
     t('<i>Ikke angivet</i>'),
+    t('[mail]'),
     t('Afdeling'),
     t('Tlf. nr.'),
     t('Mobil tlf.'),
