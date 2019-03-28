@@ -786,6 +786,21 @@ function os2intra_users_views_default_views() {
   $handler->display->display_options['fields']['mail']['alter']['link_class'] = 'btn btn-default btn-lg';
   $handler->display->display_options['fields']['mail']['element_type'] = 'div';
   $handler->display->display_options['fields']['mail']['element_label_colon'] = FALSE;
+  /* Field: User: Alternativ e-mail adresse */
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['id'] = 'field_os2intra_user_alt_email';
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['table'] = 'field_data_field_os2intra_user_alt_email';
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['field'] = 'field_os2intra_user_alt_email';
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['label'] = '';
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['alter']['text'] = '<i class="fa fa-envelope"></i> [field_os2intra_user_alt_email-value]';
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['alter']['path'] = 'mailto: [field_os2intra_user_alt_email-value]';
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['alter']['link_class'] = 'btn btn-default btn-lg';
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_os2intra_user_alt_email']['hide_empty'] = TRUE;
   /* Field: User: Telefon nummer */
   $handler->display->display_options['fields']['field_os2intra_phone']['id'] = 'field_os2intra_phone';
   $handler->display->display_options['fields']['field_os2intra_phone']['table'] = 'field_data_field_os2intra_phone';
@@ -817,7 +832,7 @@ function os2intra_users_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="btn-group btn-group-sm contact" role="group" aria-label="Kontakt via email eller telefon">
-[mail] [field_os2intra_phone] [field_os2intra_mobile]
+[mail] [field_os2intra_user_alt_email] [field_os2intra_phone] [field_os2intra_mobile]
 </div>';
   $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -920,10 +935,11 @@ function os2intra_users_views_default_views() {
     t(' - [name_1], [field_os2intra_physical_location]'),
     t('- [field_os2intra_physical_location]'),
     t('<i class="fa fa-envelope"></i> [mail]'),
+    t('<i class="fa fa-envelope"></i> [field_os2intra_user_alt_email-value]'),
     t('<i class="fa fa-phone"></i> [field_os2intra_phone]'),
     t('<i class="fa fa-mobile"></i> [field_os2intra_mobile]'),
     t('<div class="btn-group btn-group-sm contact" role="group" aria-label="Kontakt via email eller telefon">
-[mail] [field_os2intra_phone] [field_os2intra_mobile]
+[mail] [field_os2intra_user_alt_email] [field_os2intra_phone] [field_os2intra_mobile]
 </div>'),
     t('Alle'),
     t('Content pane'),

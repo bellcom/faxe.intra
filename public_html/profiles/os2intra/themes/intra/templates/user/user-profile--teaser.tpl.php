@@ -21,8 +21,8 @@
           <div class="os2-user-teaser-full-name">
             <?php print l($user_full_name, 'user/' . $account->uid); ?>
           </div>
+          <!-- End - full name -->
         <?php endif ?>
-        <!-- End - full name -->
 
         <?php if (isset($user_profile['field_os2intra_user_titles'])): ?>
           <!-- Begin - job title -->
