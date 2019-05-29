@@ -75,39 +75,50 @@ function os2intra_simplesaml_user_login(&$edit, $account) {
 }
 
 /**
- * Implements hook_boot().
+ * Implements hook_init().
  */
-function os2intra_simplesaml_boot() {
+function os2intra_simplesaml_init() {
   // Do not run this from CLI.
+  // Only proceed if user is NOT logged in and is NOT using drush uli for admin.
   if (php_sapi_name() != 'cli' && $GLOBALS['user']->uid == 0 && strpos($_GET['q'], 'user/reset/1') !== 0) {
-    $simplesaml_redirect = FALSE;
-    $redirected_ips = variable_get('os2intra_simplesaml_redirected_ips');
-    $remote_ip = $_SERVER['REMOTE_ADDR'];
-    if (empty($redirected_ips)) {
-      // No redirect IPs set, then redirect for all IPs.
-      $simplesaml_redirect = TRUE;
-    }
-    else {
-      $custom_ips = explode(',', $redirected_ips);
+    $custom_ips = array();
+    $remote_ip = ip_address();
+    if (variable_get('os2intra_simplesaml_simplesaml_enable')) {
+      $simplesaml_redirect = FALSE;
+      $redirected_ips = variable_get('os2intra_simplesaml_redirected_ips');
 
-      // Check performed on parts of the ip address.
-      // This makes it possible to add only the beginning of the IP range.
-      // F.ex. 192.168 will allow all ip addresses including 192.168 as part
-      // of the it.
-      foreach ($custom_ips as $custom_ip) {
-        if (strpos($remote_ip, $custom_ip) !== FALSE) {
-          $simplesaml_redirect = TRUE;
-          break;
+      if (empty($redirected_ips)) {
+        // No redirect IPs set, then redirect for all IPs.
+        $simplesaml_redirect = TRUE;
+      }
+      else {
+        $custom_ips = explode(',', $redirected_ips);
+
+        // If the client request is from one of the IP's, login using
+        // SimpleSAMLphp; otherwise use nemid login.
+        //
+        // Check performed on parts of the ip address.
+        // This makes it possible to add only the beginning of the IP range.
+        // F.ex. 192.168 will allow all ip addresses including 192.168 as part
+        // of the it.
+        foreach ($custom_ips as $custom_ip) {
+          if (strpos($remote_ip, $custom_ip) !== FALSE) {
+            $simplesaml_redirect = TRUE;
+            break;
+          }
         }
       }
-    }
 
-    // If we the client request is from one of the IP's, login using SimpleSAMLphp; otherwise use normal login
-    if ($simplesaml_redirect) {
-      if (!in_array($_GET['q'], array('saml_login', 'user/logout'))) {
-        require_once (DRUPAL_ROOT . '/includes/common.inc');
-        require_once (DRUPAL_ROOT . '/includes/path.inc');
-        drupal_goto('saml_login', array('query' => drupal_get_destination()));
+      if ($simplesaml_redirect && module_exists('simplesamlphp_auth')) {
+        $non_redirect_paths = array(
+          'saml_login',
+          'user/logout',
+          'user/login',
+          'logout',
+        );
+        if (!in_array($_GET['q'], $non_redirect_paths)) {
+          drupal_goto('saml_login', array('query' => drupal_get_destination()));
+        }
       }
     }
   }
