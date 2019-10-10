@@ -174,8 +174,9 @@ function realname_user_view($account, $view_mode, $langcode) {
   }
 
   $account->content['realname'] = array(
-    '#entity_type' => 'custom',
-    '#bundle' => 'custom',
+    '#entity_type' => 'user',
+    '#bundle' => 'user',
+//    '#view_mode' => $view_mode,
     '#field_type' => 'text',
     '#theme' => 'field',
     '#field_name' => 'realname',
