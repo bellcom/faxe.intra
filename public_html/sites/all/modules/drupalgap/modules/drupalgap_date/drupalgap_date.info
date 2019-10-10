@@ -1,9 +1,9 @@
-name = DrupalGap Entity Reference
-description = Provides support for the Entity Reference module within DrupalGap.
+name = DrupalGap Date
+description = Provides support for the Date module within DrupalGap.
 package = Mobile
 core = 7.x
 dependencies[] = drupalgap
-dependencies[] = entityreference
+dependencies[] = date
 
 ; Information added by Drupal.org packaging script on 2017-06-20
 version = "7.x-1.17"

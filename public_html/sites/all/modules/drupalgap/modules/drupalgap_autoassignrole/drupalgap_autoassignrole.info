@@ -1,9 +1,9 @@
-name = DrupalGap Entity Reference
-description = Provides support for the Entity Reference module within DrupalGap.
+name = DrupalGap Auto Assign Role
+description = Provides support for the Auto Assign Role module within DrupalGap.
 package = Mobile
 core = 7.x
 dependencies[] = drupalgap
-dependencies[] = entityreference
+dependencies[] = autoassignrole
 
 ; Information added by Drupal.org packaging script on 2017-06-20
 version = "7.x-1.17"
