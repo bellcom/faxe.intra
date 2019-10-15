@@ -14943,6 +14943,13 @@ img {
 .page-node-edit .node-form .os2-box .horizontal-tabs-panes fieldset.panel.form-wrapper {
   margin-bottom: 0;
 }
+.horizontal-tabs-pane .panel-body {
+  display: block;
+}  
+.horizontal-tabs-pane .panel-body.fade{
+  opacity: 1;
+}
+
 @media screen {
 }
 @media screen and (max-width: 767px) {
