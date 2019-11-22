@@ -1,0 +1,7 @@
+name = Faxe Basic Cart
+description = A basic shopping cart implementation.
+package = FAXE webshop
+core = 7.x
+stylesheets[all][] = css/faxe_basic_cart.css
+dependencies[] = faxe_furniture_webshop
+

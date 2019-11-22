@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * @file
+ * Code for the FAXE furniture stock feature.
+ */
+
+include_once 'faxe_furniture_stock.features.inc';
