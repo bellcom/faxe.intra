@@ -109,8 +109,7 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<ul class="action-links"><li><a href="/node/add/faxe-furniture-product">Add new product </a></li>
-</ul>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<ul class="action-links"><li><a href="/node/add/faxe-furniture-product">Tilføj nyt produkt </a></li> </ul>';
   /* Felt: Indhold: Billeder */
   $handler->display->display_options['fields']['field_os2intra_images']['id'] = 'field_os2intra_images';
   $handler->display->display_options['fields']['field_os2intra_images']['table'] = 'field_data_field_os2intra_images';
@@ -136,7 +135,7 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['fields']['field_furniture_category']['field'] = 'field_furniture_category';
   $handler->display->display_options['fields']['field_furniture_category']['label'] = 'Kategori';
   $handler->display->display_options['fields']['field_furniture_category']['type'] = 'taxonomy_term_reference_plain';
-  /* Felt: Indhold: Stock amount */
+  /* Felt: Indhold: Tilgængelig mængde */
   $handler->display->display_options['fields']['field_furniture_stock_amount']['id'] = 'field_furniture_stock_amount';
   $handler->display->display_options['fields']['field_furniture_stock_amount']['table'] = 'field_data_field_furniture_stock_amount';
   $handler->display->display_options['fields']['field_furniture_stock_amount']['field'] = 'field_furniture_stock_amount';
@@ -144,7 +143,7 @@ function faxe_furniture_stock_views_default_views() {
     'thousand_separator' => '.',
     'prefix_suffix' => 1,
   );
-  /* Felt: Indhold: Stock place */
+  /* Felt: Indhold: Placering */
   $handler->display->display_options['fields']['field_furniture_stock_place']['id'] = 'field_furniture_stock_place';
   $handler->display->display_options['fields']['field_furniture_stock_place']['table'] = 'field_data_field_furniture_stock_place';
   $handler->display->display_options['fields']['field_furniture_stock_place']['field'] = 'field_furniture_stock_place';
@@ -188,7 +187,7 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['filters']['field_furniture_category_tid']['field'] = 'field_furniture_category_tid';
   $handler->display->display_options['filters']['field_furniture_category_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_furniture_category_tid']['expose']['operator_id'] = 'field_furniture_category_tid_op';
-  $handler->display->display_options['filters']['field_furniture_category_tid']['expose']['label'] = 'Category ';
+  $handler->display->display_options['filters']['field_furniture_category_tid']['expose']['label'] = 'Kategori';
   $handler->display->display_options['filters']['field_furniture_category_tid']['expose']['operator'] = 'field_furniture_category_tid_op';
   $handler->display->display_options['filters']['field_furniture_category_tid']['expose']['identifier'] = 'field_furniture_category_tid';
   $handler->display->display_options['filters']['field_furniture_category_tid']['expose']['remember_roles'] = array(
@@ -219,7 +218,7 @@ function faxe_furniture_stock_views_default_views() {
   );
   $handler->display->display_options['path'] = 'admin/content/furniture';
   $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Furniture';
+  $handler->display->display_options['menu']['title'] = 'Møbler';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
@@ -231,7 +230,7 @@ function faxe_furniture_stock_views_default_views() {
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Furniture webshop';
+  $handler->display->display_options['title'] = 'Møbeldatabase';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -259,7 +258,7 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'faxe_furniture_product' => 'faxe_furniture_product',
   );
-  /* Filterkriterie: Indhold: Stock amount (field_furniture_stock_amount) */
+  /* Filterkriterie: Indhold: Tilgængelig mængde (field_furniture_stock_amount) */
   $handler->display->display_options['filters']['field_furniture_stock_amount_value']['id'] = 'field_furniture_stock_amount_value';
   $handler->display->display_options['filters']['field_furniture_stock_amount_value']['table'] = 'field_data_field_furniture_stock_amount';
   $handler->display->display_options['filters']['field_furniture_stock_amount_value']['field'] = 'field_furniture_stock_amount_value';
@@ -308,18 +307,16 @@ function faxe_furniture_stock_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('<ul class="action-links"><li><a href="/node/add/faxe-furniture-product">Add new product </a></li>
-</ul>'),
+    t('<ul class="action-links"><li><a href="/node/add/faxe-furniture-product">Tilføj nyt produkt </a></li> </ul>'),
     t('Titel'),
     t('Kategori'),
-    t('Stock amount'),
-    t('Stock place'),
+    t('Tilgængelig mængde'),
+    t('Placering'),
     t('Redigér'),
     t('Slet'),
-    t('Category '),
     t('Page'),
     t('Content pane'),
-    t('Furniture webshop'),
+    t('Møbeldatabase'),
     t('View panes'),
   );
   $export['faxe_intra_furniture_stock'] = $view;
@@ -436,10 +433,12 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['fields']['field_order_person_phone']['id'] = 'field_order_person_phone';
   $handler->display->display_options['fields']['field_order_person_phone']['table'] = 'field_data_field_order_person_phone';
   $handler->display->display_options['fields']['field_order_person_phone']['field'] = 'field_order_person_phone';
+  $handler->display->display_options['fields']['field_order_person_phone']['label'] = 'Fastnet tlf.';
   /* Felt: Indhold: Mobile phone */
   $handler->display->display_options['fields']['field_order_person_mobile_phone']['id'] = 'field_order_person_mobile_phone';
   $handler->display->display_options['fields']['field_order_person_mobile_phone']['table'] = 'field_data_field_order_person_mobile_phone';
   $handler->display->display_options['fields']['field_order_person_mobile_phone']['field'] = 'field_order_person_mobile_phone';
+  $handler->display->display_options['fields']['field_order_person_mobile_phone']['label'] = 'Mobil tlf.';
   /* Felt: Indhold: Fysisk lokation */
   $handler->display->display_options['fields']['field_order_person_lokation']['id'] = 'field_order_person_lokation';
   $handler->display->display_options['fields']['field_order_person_lokation']['table'] = 'field_data_field_order_person_lokation';
@@ -448,6 +447,7 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['fields']['field_order_ordered_products']['id'] = 'field_order_ordered_products';
   $handler->display->display_options['fields']['field_order_ordered_products']['table'] = 'field_data_field_order_ordered_products';
   $handler->display->display_options['fields']['field_order_ordered_products']['field'] = 'field_order_ordered_products';
+  $handler->display->display_options['fields']['field_order_ordered_products']['label'] = 'Bestilte produkter';
   $handler->display->display_options['fields']['field_order_ordered_products']['settings'] = array(
     'add' => '',
     'edit' => '',
@@ -552,10 +552,10 @@ function faxe_furniture_stock_views_default_views() {
     t('sidste »'),
     t('Ordre'),
     t('E-mail'),
-    t('Phone'),
-    t('Mobile phone'),
+    t('Fastnet tlf.'),
+    t('Mobil tlf.'),
     t('Fysisk lokation'),
-    t('Ordered products'),
+    t('Bestilte produkter'),
     t('Opdateringsdato'),
     t('Fornavn'),
     t('Efternavn'),

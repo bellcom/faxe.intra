@@ -1091,7 +1091,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_furniture_size',
-    'label' => 'Size',
+    'label' => 'Størrelse',
     'readmore_behaviour' => 'default',
     'required' => 1,
     'settings' => array(
@@ -1113,7 +1113,7 @@ function faxe_furniture_stock_field_default_field_instances() {
           'decimals' => 0,
           'descr' => '',
           'factor' => 1,
-          'label' => 'Length',
+          'label' => 'Længde',
           'prefix' => '',
           'suffix' => 'mm',
         ),
@@ -1191,7 +1191,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_furniture_stock_amount',
-    'label' => 'Stock amount',
+    'label' => 'Tilgængelig mængde',
     'readmore_behaviour' => 'default',
     'required' => 0,
     'settings' => array(
@@ -1255,7 +1255,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_furniture_stock_place',
-    'label' => 'Stock place',
+    'label' => 'Placering',
     'readmore_behaviour' => 'default',
     'required' => 0,
     'settings' => array(
@@ -1395,11 +1395,11 @@ function faxe_furniture_stock_field_default_field_instances() {
   t('Mobile phone');
   t('Ordered products');
   t('Phone');
+  t('Placering');
   t('Product');
   t('Quantity');
-  t('Size');
-  t('Stock amount');
-  t('Stock place');
+  t('Størrelse');
+  t('Tilgængelig mængde');
 
   return $field_instances;
 }
