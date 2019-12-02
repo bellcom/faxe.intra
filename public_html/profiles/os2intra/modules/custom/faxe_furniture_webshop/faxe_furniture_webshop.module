@@ -110,13 +110,13 @@ function faxe_webshop_order_notification_settings_form() {
     '#default_value' => variable_get('faxe_furniture_webshop_ser_message', $default_user_message),
   );
 
-  $form['messages']['tokens'] = array(
+/*  $form['messages']['tokens'] = array(
     '#theme' => 'token_tree',
     '#token_types' => array('node', 'products'),
     '#global_types' => FALSE,
     '#click_insert' => TRUE,
   );
-
+*/
   $form['thank_you'] = array(
     '#title' => t('Thank you page'),
     '#type' => 'fieldset',

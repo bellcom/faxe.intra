@@ -33,11 +33,11 @@ function faxe_furniture_stock_views_api($module = NULL, $api = NULL) {
 function faxe_furniture_stock_node_info() {
   $items = array(
     'faxe_furniture_order' => array(
-      'name' => t('Furniture order'),
+      'name' => t('Ordrer'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titel'),
       'help' => '',
     ),
     'faxe_furniture_product' => array(

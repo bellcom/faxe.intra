@@ -429,7 +429,7 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['fields']['field_order_person_email']['id'] = 'field_order_person_email';
   $handler->display->display_options['fields']['field_order_person_email']['table'] = 'field_data_field_order_person_email';
   $handler->display->display_options['fields']['field_order_person_email']['field'] = 'field_order_person_email';
-  /* Felt: Indhold: Phone */
+  /* Felt: Indhold: Telefon */
   $handler->display->display_options['fields']['field_order_person_phone']['id'] = 'field_order_person_phone';
   $handler->display->display_options['fields']['field_order_person_phone']['table'] = 'field_data_field_order_person_phone';
   $handler->display->display_options['fields']['field_order_person_phone']['field'] = 'field_order_person_phone';
@@ -443,7 +443,7 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['fields']['field_order_person_lokation']['id'] = 'field_order_person_lokation';
   $handler->display->display_options['fields']['field_order_person_lokation']['table'] = 'field_data_field_order_person_lokation';
   $handler->display->display_options['fields']['field_order_person_lokation']['field'] = 'field_order_person_lokation';
-  /* Felt: Indhold: Ordered products */
+  /* Felt: Indhold: Produkt */
   $handler->display->display_options['fields']['field_order_ordered_products']['id'] = 'field_order_ordered_products';
   $handler->display->display_options['fields']['field_order_ordered_products']['table'] = 'field_data_field_order_ordered_products';
   $handler->display->display_options['fields']['field_order_ordered_products']['field'] = 'field_order_ordered_products';
@@ -497,7 +497,7 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
   );
-  /* Filterkriterie: Indhold: Firstname (field_order_person_first_name) */
+  /* Filterkriterie: Indhold: Fornavn (field_order_person_first_name) */
   $handler->display->display_options['filters']['field_order_person_first_name_value']['id'] = 'field_order_person_first_name_value';
   $handler->display->display_options['filters']['field_order_person_first_name_value']['table'] = 'field_data_field_order_person_first_name';
   $handler->display->display_options['filters']['field_order_person_first_name_value']['field'] = 'field_order_person_first_name_value';
@@ -511,7 +511,7 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['filters']['field_order_person_first_name_value']['expose']['remember_roles'] = array(
     2 => '2',
   );
-  /* Filterkriterie: Indhold: Lastname (field_order_person_last_name) */
+  /* Filterkriterie: Indhold: Efternavn (field_order_person_last_name) */
   $handler->display->display_options['filters']['field_order_person_last_name_value']['id'] = 'field_order_person_last_name_value';
   $handler->display->display_options['filters']['field_order_person_last_name_value']['table'] = 'field_data_field_order_person_last_name';
   $handler->display->display_options['filters']['field_order_person_last_name_value']['field'] = 'field_order_person_last_name_value';

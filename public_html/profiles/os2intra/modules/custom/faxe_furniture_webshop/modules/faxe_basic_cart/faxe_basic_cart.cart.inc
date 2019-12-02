@@ -236,13 +236,13 @@ function faxe_basic_cart_checkout_form($form, &$form_state) {
   }
   // Getting the shopping cart.
   $form['firstname'] = array(
-    '#title' => t('Firstname'),
+    '#title' => t('Fornavn'),
     '#type' => 'textfield',
     '#default_value' => (isset($values['firstname'])) ? $values['firstname'] : $user->field_name_first['und'][0]['value'],
     '#required' => TRUE,
   );
   $form['lastname'] = array(
-    '#title' => t('Lastname'),
+    '#title' => t('Efternavn'),
     '#type' => 'textfield',
     '#default_value' => (isset($values['lastname'])) ? $values['lastname'] : $user->field_name_last['und'][0]['value'],
     '#required' => TRUE,
@@ -254,17 +254,12 @@ function faxe_basic_cart_checkout_form($form, &$form_state) {
     '#required' => TRUE,
   );
   $form['phone'] = array(
-    '#title' => t('Telefon nummer'),
+    '#title' => t('Telefon'),
     '#type' => 'textfield',
     '#default_value' => (isset($values['phone'])) ? $values['phone'] : $user->field_os2intra_phone['und'][0]['value'],
     '#required' => TRUE,
   );
-  $form['mob_phone'] = array(
-    '#title' => t('Mobil nummer'),
-    '#type' => 'textfield',
-    '#default_value' => (isset($values['mob_phone'])) ? $values['mob_phone'] : $user->field_os2intra_mobile['und'][0]['value'],
-    '#required' => TRUE,
-  );
+  
   $form['physical_location'] = array(
     '#title' => t('Fysisk lokation'),
     '#type' => 'textfield',
@@ -272,7 +267,7 @@ function faxe_basic_cart_checkout_form($form, &$form_state) {
     '#required' => TRUE,
   );
   $form['message'] = array(
-    '#title' => t('Message'),
+    '#title' => t('Besked'),
     '#type' => 'textarea',
     '#default_value' => (isset($values['message'])) ? $values['message'] : ''
   );
@@ -300,13 +295,12 @@ function faxe_basic_cart_checkout_form_submit($form, &$form_state){
   $order->type = "faxe_furniture_order";
   $order->language = LANGUAGE_NONE;
   node_object_prepare($order);
-  $order_title = 'Furniture_order - ' . $values['firstname'] . ' ' . $values['lastname'] . ' - ' . format_date(time(), 'short');
+  $order_title = t('Bestilling') . ' - ' . $values['firstname'] . ' ' . $values['lastname'] . ' - ' . format_date(time(), 'short');
   $order->title = $order_title;
   $order->field_order_person_first_name['und'][0]['value'] = $values['firstname'];
   $order->field_order_person_last_name['und'][0]['value'] = $values['lastname'];
   $order->field_order_person_email['und'][0]['value'] = $values['email'];
   $order->field_order_person_phone['und'][0]['value'] = $values['phone'];
-  $order->field_order_person_mobile_phone['und'][0]['value'] = $values['mob_phone'];
   $order->field_order_person_lokation['und'][0]['value'] = $values['physical_location'];
   $order->field_order_message['und'][0]['value'] = $values['message'];
   node_save($order);

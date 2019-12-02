@@ -36,7 +36,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_ordered_product_quantity',
-    'label' => 'Quantity',
+    'label' => 'Mængde',
     'readmore_behaviour' => 'default',
     'required' => 0,
     'settings' => array(
@@ -81,7 +81,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_ordered_product_ref',
-    'label' => 'Product',
+    'label' => 'Produkt',
     'readmore_behaviour' => 'default',
     'required' => 0,
     'settings' => array(
@@ -156,7 +156,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_order_message',
-    'label' => 'Message',
+    'label' => 'Besked',
     'readmore_behaviour' => 'default',
     'required' => 0,
     'settings' => array(
@@ -262,7 +262,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_order_ordered_products',
-    'label' => 'Ordered products',
+    'label' => 'Produkt',
     'readmore_behaviour' => 'default',
     'required' => 0,
     'settings' => array(
@@ -422,7 +422,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_order_person_first_name',
-    'label' => 'Firstname',
+    'label' => 'Fornavn',
     'readmore_behaviour' => 'default',
     'required' => 0,
     'settings' => array(
@@ -521,7 +521,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_order_person_last_name',
-    'label' => 'Lastname',
+    'label' => 'Efternavn',
     'readmore_behaviour' => 'default',
     'required' => 0,
     'settings' => array(
@@ -818,7 +818,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_order_person_phone',
-    'label' => 'Phone',
+    'label' => 'Telefon',
     'readmore_behaviour' => 'default',
     'required' => 0,
     'settings' => array(
@@ -1384,21 +1384,20 @@ function faxe_furniture_stock_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Besked');
   t('Billeder');
   t('Category');
   t('Description');
   t('E-mail');
-  t('Firstname');
+  t('Efternavn');
+  t('Fornavn');
   t('Fysisk lokation');
-  t('Lastname');
-  t('Message');
   t('Mobile phone');
-  t('Ordered products');
-  t('Phone');
+  t('Mængde');
   t('Placering');
-  t('Product');
-  t('Quantity');
+  t('Produkt');
   t('Størrelse');
+  t('Telefon');
   t('Tilgængelig mængde');
 
   return $field_instances;
