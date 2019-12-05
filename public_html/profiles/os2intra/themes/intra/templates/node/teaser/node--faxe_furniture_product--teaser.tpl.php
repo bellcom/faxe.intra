@@ -13,12 +13,10 @@ if (isset($content['field_os2intra_images'])) {
   <!-- node--teaser.tpl.php -->
   <!-- Begin - teaser -->
   <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> os2-node-teaser os2-box os2-box-small-spacing"<?php print $attributes; ?>>
-    <div class="table">
-      <div class="table-row">
-
+    <div class="row">
 
         <?php if (isset($content['field_os2intra_images'])): ?>
-          <div class="table-cell os2-node-teaser-image-container">
+          <div class="col-sm-3">
 
             <!-- Begin - images -->
             <div class="os2-node-teaser-image">
@@ -29,7 +27,7 @@ if (isset($content['field_os2intra_images'])) {
           </div>
         <?php endif; ?>
 
-        <div class="table-cell">
+        <div class="col-sm-9">
 
                <!-- End - entity info -->
           <?php endif ?>
@@ -60,7 +58,6 @@ if (isset($content['field_os2intra_images'])) {
           <!-- End - body -->
 
         </div>
-      </div>
 
     </div>
 
