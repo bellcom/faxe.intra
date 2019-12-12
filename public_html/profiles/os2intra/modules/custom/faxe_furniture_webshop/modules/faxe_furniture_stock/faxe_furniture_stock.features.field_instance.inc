@@ -932,7 +932,7 @@ function faxe_furniture_stock_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 2,
+      'weight' => 12,
     ),
   );
 
@@ -1036,7 +1036,7 @@ function faxe_furniture_stock_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 13,
     ),
   );
 
@@ -1086,7 +1086,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     'field_name' => 'field_furniture_product_id',
     'label' => 'Product ID',
     'readmore_behaviour' => 'default',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -1135,7 +1135,7 @@ function faxe_furniture_stock_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -1477,7 +1477,7 @@ function faxe_furniture_stock_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 

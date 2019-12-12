@@ -239,7 +239,7 @@ function faxe_furniture_stock_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '1',
+          'weight' => '10',
         ),
         'path' => array(
           'weight' => '2',

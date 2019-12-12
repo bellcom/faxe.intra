@@ -137,7 +137,8 @@ function faxe_furniture_stock_field_group_info() {
     'children' => array(
       0 => 'field_furniture_category',
       1 => 'field_furniture_description',
-      2 => 'title',
+      2 => 'field_furniture_product_id',
+      3 => 'title',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
