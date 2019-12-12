@@ -291,6 +291,7 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
   );
+  $handler->display->display_options['pane_title'] = 'Møbeldatabasen';
   $translatables['faxe_intra_furniture_stock'] = array(
     t('Master'),
     t('Furniture stock'),
@@ -317,6 +318,7 @@ function faxe_furniture_stock_views_default_views() {
     t('Page'),
     t('Content pane'),
     t('Møbeldatabase'),
+    t('Møbeldatabasen'),
     t('View panes'),
   );
   $export['faxe_intra_furniture_stock'] = $view;
@@ -333,7 +335,7 @@ function faxe_furniture_stock_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'FAXE webshop orders';
+  $handler->display->display_options['title'] = 'Møbeldatabasen orders';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'role';
@@ -433,12 +435,6 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['fields']['field_order_person_phone']['id'] = 'field_order_person_phone';
   $handler->display->display_options['fields']['field_order_person_phone']['table'] = 'field_data_field_order_person_phone';
   $handler->display->display_options['fields']['field_order_person_phone']['field'] = 'field_order_person_phone';
-  $handler->display->display_options['fields']['field_order_person_phone']['label'] = 'Fastnet tlf.';
-  /* Felt: Indhold: Mobile phone */
-  $handler->display->display_options['fields']['field_order_person_mobile_phone']['id'] = 'field_order_person_mobile_phone';
-  $handler->display->display_options['fields']['field_order_person_mobile_phone']['table'] = 'field_data_field_order_person_mobile_phone';
-  $handler->display->display_options['fields']['field_order_person_mobile_phone']['field'] = 'field_order_person_mobile_phone';
-  $handler->display->display_options['fields']['field_order_person_mobile_phone']['label'] = 'Mobil tlf.';
   /* Felt: Indhold: Fysisk lokation */
   $handler->display->display_options['fields']['field_order_person_lokation']['id'] = 'field_order_person_lokation';
   $handler->display->display_options['fields']['field_order_person_lokation']['table'] = 'field_data_field_order_person_lokation';
@@ -536,7 +532,7 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['faxe_webshop_orders'] = array(
     t('Master'),
-    t('FAXE webshop orders'),
+    t('Møbeldatabasen orders'),
     t('mere'),
     t('Udfør'),
     t('Gendan'),
@@ -552,8 +548,7 @@ function faxe_furniture_stock_views_default_views() {
     t('sidste »'),
     t('Ordre'),
     t('E-mail'),
-    t('Fastnet tlf.'),
-    t('Mobil tlf.'),
+    t('Telefon'),
     t('Fysisk lokation'),
     t('Bestilte produkter'),
     t('Opdateringsdato'),

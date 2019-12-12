@@ -329,7 +329,7 @@ function faxe_furniture_stock_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_faxe_furniture_product';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_faxe_furniture_product'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -343,14 +343,14 @@ function faxe_furniture_stock_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_faxe_furniture_product';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_faxe_furniture_product'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_faxe_furniture_order_pattern';
-  $strongarm->value = 'webshop/order/[node:title]';
+  $strongarm->value = 'webshop/[node:title]';
   $export['pathauto_node_faxe_furniture_order_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

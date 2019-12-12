@@ -136,7 +136,7 @@ function faxe_furniture_stock_default_page_manager_pages() {
   );
   $page->menu = array(
     'type' => 'normal',
-    'title' => 'Faxe webshop',
+    'title' => 'Møbeldatabasen',
     'name' => 'navigation',
     'weight' => '0',
     'parent' => array(

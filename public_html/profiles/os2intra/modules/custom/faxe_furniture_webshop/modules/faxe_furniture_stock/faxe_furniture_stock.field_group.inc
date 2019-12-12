@@ -24,10 +24,10 @@ function faxe_furniture_stock_field_group_info() {
     'label' => 'Furniture',
     'weight' => '0',
     'children' => array(
-      0 => 'group_tekst',
-      1 => 'group_images',
+      0 => 'group_images',
+      1 => 'group_size',
       2 => 'group_stock',
-      3 => 'group_size',
+      3 => 'group_tekst',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(
@@ -135,8 +135,8 @@ function faxe_furniture_stock_field_group_info() {
     'label' => 'Tekst',
     'weight' => '9',
     'children' => array(
-      0 => 'field_furniture_description',
-      1 => 'field_furniture_category',
+      0 => 'field_furniture_category',
+      1 => 'field_furniture_description',
       2 => 'title',
     ),
     'format_type' => 'htab',

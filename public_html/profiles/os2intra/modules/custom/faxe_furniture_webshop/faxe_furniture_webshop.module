@@ -178,9 +178,16 @@ function faxe_furniture_webshop_tokens($type, $tokens, array $data = array(), ar
           $i = 0;
           $products = '';
           foreach ($cart as $nid => $line_item) {
+            $placering = '';
             $node = node_load($nid);
-            $new .= ++$i . '. - ' . $node->title . "\t" .
-                              $node->basic_cart_quantity . "\n";
+            $placering_tid = field_get_items('node', $node, 'field_furniture_stock_place');
+            if ($placering_tid) {
+              $placering_tid = reset($placering_tid);
+              $term = taxonomy_term_load($placering_tid['tid']);
+              $placering = '(' . t('Placering') . ': '. $term->name . ')';
+            }
+            $new .= ++$i . '. - ' . $node->title . $placering . "\t" .
+            $node->basic_cart_quantity . "\n";
           }
 
           // Add the new value into the replacements array.
