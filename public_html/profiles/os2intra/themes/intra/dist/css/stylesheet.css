@@ -16034,6 +16034,9 @@ fieldset[disabled] a.os2-category-links .links li a {
 .os2-entity-info a {
   font-weight: bold;
 }
+.dimension-simple span.label {
+  color: #43698f;
+}
 .os2-box .os2-entity-info,
 .os2-box-primary .os2-entity-info,
 .os2-box > .os2-box .os2-entity-info,
