@@ -916,7 +916,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_furniture_category',
-    'label' => 'Category',
+    'label' => 'Kategori',
     'readmore_behaviour' => 'default',
     'required' => 1,
     'settings' => array(
@@ -983,7 +983,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_furniture_description',
-    'label' => 'Description',
+    'label' => 'Beskrivelse',
     'readmore_behaviour' => 'default',
     'required' => 0,
     'settings' => array(
@@ -1051,7 +1051,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1084,7 +1084,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_furniture_product_id',
-    'label' => 'Product ID',
+    'label' => 'Varenummer',
     'readmore_behaviour' => 'default',
     'required' => 1,
     'settings' => array(
@@ -1290,7 +1290,7 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_furniture_stock_amount',
-    'label' => 'Tilgængelig mængde',
+    'label' => 'Antal',
     'readmore_behaviour' => 'default',
     'required' => 0,
     'settings' => array(
@@ -1483,22 +1483,22 @@ function faxe_furniture_stock_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Antal');
   t('Besked');
+  t('Beskrivelse');
   t('Billeder');
-  t('Category');
-  t('Description');
   t('E-mail');
   t('Efternavn');
   t('Fornavn');
   t('Fysisk lokation');
+  t('Kategori');
   t('Mobile phone');
   t('Mængde');
   t('Placering');
-  t('Product ID');
   t('Produkt');
   t('Størrelse');
   t('Telefon');
-  t('Tilgængelig mængde');
+  t('Varenummer');
 
   return $field_instances;
 }
