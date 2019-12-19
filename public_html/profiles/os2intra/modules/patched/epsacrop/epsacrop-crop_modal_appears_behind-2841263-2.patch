@@ -1,0 +1,24 @@
+From 45b5873dce9c825e4d281a5c50e046694b8fdf93 Mon Sep 17 00:00:00 2001
+From: Ide Braakman <idebr@1879760.no-reply.drupal.org>
+Date: Thu, 5 Jan 2017 12:19:05 +0100
+Subject: [PATCH] Issue #2841263 by idebr: EPSA crop appears behind file edit
+ modal
+
+---
+ css/epsacrop.css | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/css/epsacrop.css b/css/epsacrop.css
+index bbf2717..e6038d4 100644
+--- a/css/epsacrop.css
++++ b/css/epsacrop.css
+@@ -1,3 +1,6 @@
++.ui-front {
++  z-index: 1002;
++}
+ .epsacrop-edit-crop-link {
+   display:inline;
+   margin-left:200px;
+-- 
+2.10.1 (Apple Git-78)
+
