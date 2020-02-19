@@ -1,0 +1,191 @@
+<?php
+
+/**
+ * @file
+ * Basic cart module file.
+ */
+
+//require_once dirname(__FILE__) . '/faxe_basic_cart.theme.inc';
+
+/**
+ * Implements button_field_views_api().
+ */
+function faxe_basic_cart_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'faxe_basic_cart') . '/views',
+  );
+}
+
+
+/**
+ * Implements hook_menu().
+ */
+function faxe_basic_cart_menu() {
+  $items = array();
+
+  $items['webshop/cart'] = array(
+    'title' => t('Your shopping cart'),
+    'description' => 'The shopping cart page',
+    'access callback' => 'user_is_logged_in',
+    'page callback' => 'faxe_basic_cart_cart',
+    'type' => MENU_CALLBACK,
+    'file' => 'faxe_basic_cart.cart.inc',
+  );
+
+  $items['webshop/cart/remove/%'] = array(
+    'title' => 'Remove from cart',
+    'description' => 'Remove from cart url.',
+    'access callback' => 'user_is_logged_in',
+    'page callback' => 'faxe_basic_cart_remove_from_cart',
+    'page arguments' => array(3),
+    'type' => MENU_CALLBACK,
+    'file' => 'faxe_basic_cart.cart.inc',
+  );
+  $items['webshop/cart/add/%'] = array(
+    'title' => 'Add to cart',
+    'description' => 'Add to cart url.',
+    'access callback' => 'user_is_logged_in',
+    'page callback' => 'faxe_basic_cart_add_to_cart',
+    'page arguments' => array(3),
+    'type' => MENU_CALLBACK,
+    'file' => 'faxe_basic_cart.cart.inc',
+  );
+  $items['webshop/cart/checkout'] = array(
+    'title' => 'Checkout',
+    'description' => 'Checkout.',
+    'page callback' => 'faxe_basic_cart_order_checkout',
+    'access callback' => 'user_is_logged_in',
+    'type' => MENU_CALLBACK,
+    'file' => 'faxe_basic_cart.cart.inc',
+  );
+  $items['webshop/checkout/thank-you'] = array(
+    'title' => 'Thank you',
+    'description' => 'Checkout thank you page.',
+    'page callback' => 'faxe_basic_cart_order_checkout_thank_you',
+    'access callback' => 'user_is_logged_in',
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function faxe_basic_cart_theme() {
+  return array(
+    'faxe_basic_cart_add_to_cart' => array(
+      'function' => 'faxe_basic_cart_add_to_cart_button',
+      'variables' => array('path' => NULL, 'css_class' => NULL),
+    ),
+    'faxe_basic_cart_cart_flat' => array(
+      'template' => 'faxe_basic_cart_cart_flat',
+      'variables' => array('cart' => NULL),
+    ),
+    'faxe_basic_cart_add_to_cart' => array(
+      'function' => 'faxe_basic_cart_add_to_cart_button',
+      'variables' => array('path' => NULL, 'css_class' => NULL),
+    ),
+    'faxe_basic_cart_cart_render_block' => array(
+      'template' => 'faxe_basic_cart_cart_render_block',
+      'variables' => array('cart' => NULL),
+    ),
+    'faxe_basic_cart_render_cart_element' => array(
+      'render element' => 'form',
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function faxe_basic_cart_block_info() {
+  $blocks['faxe_webshop_shopping_cart'] = array(
+    'info' => t('Faxe webshop shopping cart'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function faxe_basic_cart_block_view($delta = '') {
+  // Check if the current user has access.
+  switch ($delta) {
+    case 'faxe_webshop_shopping_cart':
+        module_load_include('inc', 'faxe_basic_cart', 'faxe_basic_cart.cart');
+
+        $options = array(
+          'cart' => faxe_basic_cart_get_cart(),
+        );
+        $block['subject'] = t('Your shopping cart');
+        $block['content'] = theme('faxe_basic_cart_cart_render_block', $options);
+        return $block;
+
+      break;
+  }
+}
+
+/**
+ * Add to cart with quantity form.
+ */
+function faxe_basic_cart_add_to_cart_form($form, $form_state, $nid = NULL) {
+  $product = node_load($nid);
+  $form['nid'] = array(
+    '#type' => 'hidden',
+    '#value' => $nid,
+  );
+  $form['stock'] = array(
+    '#type' => 'hidden',
+    '#value' => $product->field_furniture_stock_amount['und'][0]['value'],
+  );
+  $form['quantity'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Quantity'),
+    '#default_value' => 1,
+    '#size' => 1,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#attributes' => array('class' => array('btn btn-primary form-submit')),
+    '#value' => t('Add to cart'),
+  );
+
+  return $form;
+}
+
+/**
+* Submit callback for Add to cart with quantity form.
+*/
+function faxe_basic_cart_add_to_cart_form_submit($form, $form_state) {
+  $nid = $form_state['values']['nid'];
+   $quantity = (int) $form_state['values']['quantity'];
+  if ($quantity > 0) {
+    if (isset($_SESSION['faxe_shopping_cart']['cart'][$nid])) {
+      $_SESSION['faxe_shopping_cart']['cart'][$nid]['faxe_basic_cart_quantity'] += $quantity;
+    }
+    else {
+      $_SESSION['faxe_shopping_cart']['cart'][$nid]['faxe_basic_cart_quantity'] = $quantity;
+    }
+  }
+   // If the quantity is zero, we just remove the node from the cart.
+  elseif ($quantity == 0) {
+    unset($_SESSION['faxe_shopping_cart']['cart'][$nid]);
+  }
+
+  drupal_set_message(t('Shopping cart updated.'));
+
+
+}
+/**
+ * Callback for thank you page.
+ */
+function faxe_basic_cart_order_checkout_thank_you() {
+  $title = t(variable_get('faxe_furniture_webshop_thank_you_title', t("Thank you.")));
+  drupal_set_title($title);
+  $message = t(variable_get('faxe_furniture_webshop_thank_you_message', t("Thank you for placing an order on our website.\nWe will contact you as soon as possible.")));
+  return $message;
+}

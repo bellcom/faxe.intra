@@ -425,6 +425,16 @@ function intra_preprocess_field(&$variables, $hook) {
 
   // Make "field--FIELDNAME--BUNDLE--VIEWMODE.tpl.php" templates available.
   $variables['theme_hook_suggestions'][] = 'field__' . $variables['element']['#field_name'] . '__' . $variables['element']['#bundle'] . '__' . $variables['element']['#view_mode'];
+
+    $element = $variables['element'];
+  // Field type image
+  if ($element['#field_type'] == 'image' && $element['#bundle'] == 'faxe_furniture_product') {
+    // Reduce number of images in teaser view mode to single image
+    if ($element['#view_mode'] == 'teaser') {
+      $item = reset($variables['items']);
+      $variables['items'] = array($item);
+    }
+  }
 }
 
 /**
