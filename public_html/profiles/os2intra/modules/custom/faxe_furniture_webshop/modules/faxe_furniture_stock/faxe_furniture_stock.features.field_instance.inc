@@ -926,12 +926,12 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'taxonomy',
+      'module' => 'options',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
-      'type' => 'taxonomy_autocomplete',
+      'type' => 'options_select',
       'weight' => 12,
     ),
   );
@@ -1354,22 +1354,19 @@ function faxe_furniture_stock_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_furniture_stock_place',
-    'label' => 'Placering',
+    'label' => 'Lagerplacering',
     'readmore_behaviour' => 'default',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
       'weight' => 6,
     ),
   );
@@ -1492,9 +1489,9 @@ function faxe_furniture_stock_field_default_field_instances() {
   t('Fornavn');
   t('Fysisk lokation');
   t('Kategori');
+  t('Lagerplacering');
   t('Mobile phone');
   t('Mængde');
-  t('Placering');
   t('Produkt');
   t('Størrelse');
   t('Telefon');

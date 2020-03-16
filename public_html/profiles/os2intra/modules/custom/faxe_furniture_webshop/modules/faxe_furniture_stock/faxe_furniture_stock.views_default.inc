@@ -142,7 +142,7 @@ function faxe_furniture_stock_views_default_views() {
     'thousand_separator' => '.',
     'prefix_suffix' => 1,
   );
-  /* Felt: Indhold: Placering */
+  /* Felt: Indhold: Lagerplacering */
   $handler->display->display_options['fields']['field_furniture_stock_place']['id'] = 'field_furniture_stock_place';
   $handler->display->display_options['fields']['field_furniture_stock_place']['table'] = 'field_data_field_furniture_stock_place';
   $handler->display->display_options['fields']['field_furniture_stock_place']['field'] = 'field_furniture_stock_place';
@@ -311,7 +311,7 @@ function faxe_furniture_stock_views_default_views() {
     t('Titel'),
     t('Kategori'),
     t('Antal'),
-    t('Placering'),
+    t('Lagerplacering'),
     t('Redigér'),
     t('Slet'),
     t('Page'),
@@ -426,6 +426,11 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = 'Ordre';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Felt: Indhold: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = 'Ordrenr.';
   /* Felt: Indhold: E-mail */
   $handler->display->display_options['fields']['field_order_person_email']['id'] = 'field_order_person_email';
   $handler->display->display_options['fields']['field_order_person_email']['table'] = 'field_data_field_order_person_email';
@@ -438,6 +443,7 @@ function faxe_furniture_stock_views_default_views() {
   $handler->display->display_options['fields']['field_order_person_lokation']['id'] = 'field_order_person_lokation';
   $handler->display->display_options['fields']['field_order_person_lokation']['table'] = 'field_data_field_order_person_lokation';
   $handler->display->display_options['fields']['field_order_person_lokation']['field'] = 'field_order_person_lokation';
+  $handler->display->display_options['fields']['field_order_person_lokation']['label'] = 'Leveringssted';
   /* Felt: Indhold: Produkt */
   $handler->display->display_options['fields']['field_order_ordered_products']['id'] = 'field_order_ordered_products';
   $handler->display->display_options['fields']['field_order_ordered_products']['table'] = 'field_data_field_order_ordered_products';
@@ -546,9 +552,10 @@ function faxe_furniture_stock_views_default_views() {
     t('næste ›'),
     t('sidste »'),
     t('Ordre'),
+    t('Ordrenr.'),
     t('E-mail'),
     t('Telefon'),
-    t('Fysisk lokation'),
+    t('Leveringssted'),
     t('Bestilte produkter'),
     t('Opdateringsdato'),
     t('Fornavn'),

@@ -154,6 +154,63 @@ function faxe_furniture_stock_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'faxe_furniture_webshop_admin_emails';
+  $strongarm->value = 'intra@faxekom.dk
+niweb@faxekommune.dk';
+  $export['faxe_furniture_webshop_admin_emails'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'faxe_furniture_webshop_admin_message';
+  $strongarm->value = 'Hej
+      Bestilling: "[node:title]" blev bestilt af [node:field-order-person-first-name] [node:field-order-person-last-name] ([node:field-order-person-email])
+      Produkt:
+      [faxe_furniture_webshop_order:products]';
+  $export['faxe_furniture_webshop_admin_message'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'faxe_furniture_webshop_admin_subject';
+  $strongarm->value = 'Møbeldatabasen: Ny bestilling';
+  $export['faxe_furniture_webshop_admin_subject'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'faxe_furniture_webshop_thank_you_message';
+  $strongarm->value = 'Tak for din bestilling på intranettet.
+Vi vil kontakte dig hurtigst muligt.';
+  $export['faxe_furniture_webshop_thank_you_message'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'faxe_furniture_webshop_thank_you_title';
+  $strongarm->value = 'Tak for din bestilling.';
+  $export['faxe_furniture_webshop_thank_you_title'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'faxe_furniture_webshop_user_message';
+  $strongarm->value = 'Hi,
+      You just placed an order on the website Intranet Faxe. Here are the order details:
+      [faxe_furniture_webshop_order:products]
+      We will contact you as soon as possible.';
+  $export['faxe_furniture_webshop_user_message'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'faxe_furniture_webshop_user_subject';
+  $strongarm->value = 'Møbeldatabasen: Kvittering for bestilling - [node:nid]';
+  $export['faxe_furniture_webshop_user_subject'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__faxe_furniture_order';
   $strongarm->value = array(
     'view_modes' => array(

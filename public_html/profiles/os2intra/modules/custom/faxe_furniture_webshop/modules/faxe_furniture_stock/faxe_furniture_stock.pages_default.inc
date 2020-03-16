@@ -133,6 +133,19 @@ function faxe_furniture_stock_default_page_manager_pages() {
   $page->path = 'webshop';
   $page->access = array(
     'logic' => 'and',
+    'plugins' => array(
+      0 => array(
+        'name' => 'role',
+        'settings' => array(
+          'rids' => array(
+            0 => 3,
+            1 => 8,
+          ),
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
   );
   $page->menu = array(
     'type' => 'normal',
@@ -172,6 +185,19 @@ function faxe_furniture_stock_default_page_manager_pages() {
     'name' => 'panel',
     'access' => array(
       'logic' => 'and',
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 3,
+              1 => 8,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
     ),
   );
   $display = new panels_display();
