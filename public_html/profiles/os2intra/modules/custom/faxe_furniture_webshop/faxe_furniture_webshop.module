@@ -107,7 +107,7 @@ function faxe_webshop_order_notification_settings_form() {
     '#type' => 'textarea',
     '#description' => t('This email will be sent to the user just after an order is placed.
       Please see all available tokens below. For listing the products, please use: [faxe_furniture_webshop_order:products]'),
-    '#default_value' => variable_get('faxe_furniture_webshop_ser_message', $default_user_message),
+    '#default_value' => variable_get('faxe_furniture_webshop_user_message', $default_user_message),
   );
 
 /*  $form['messages']['tokens'] = array(
