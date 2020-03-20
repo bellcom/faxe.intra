@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Code for the OS2Intra organisation Business Cards feature.
+ */
+
+include_once 'os2intra_organisation_business_cards.features.inc';
+
+
+function os2intra_organisation_business_cards_form_alter(&$form, &$form_state, $form_id) {
+  if($form_id == "views_exposed_form") {
+    if (isset($form['combine'])) {
+      $form['combine']['#attributes'] = array('placeholder' => array(t('Skriv nøgleord')));
+    }
+  }
+ }
