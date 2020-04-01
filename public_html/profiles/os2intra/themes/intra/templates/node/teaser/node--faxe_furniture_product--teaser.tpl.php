@@ -46,6 +46,10 @@ if (isset($content['field_os2intra_images'])) {
               <div class="os2-node-teaser-body-content">
                 <?php print render($content['field_furniture_description']); ?>
                 <?php print render($content['field_furniture_size']); ?>
+                <div class="field field-label-inline clearfix">
+                  <div class="field-label"> <?php print t('Varenummer') ?>:&nbsp;</div>
+                  <div class="field-items"><?php print $node->nid ?> </div>
+                </div>
               </div>
               <!-- End - body -->
             <?php //endif; ?>

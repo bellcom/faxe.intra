@@ -110,13 +110,13 @@ function faxe_webshop_order_notification_settings_form() {
     '#default_value' => variable_get('faxe_furniture_webshop_user_message', $default_user_message),
   );
 
-/*  $form['messages']['tokens'] = array(
+  $form['messages']['tokens'] = array(
     '#theme' => 'token_tree',
     '#token_types' => array('node', 'products'),
     '#global_types' => FALSE,
     '#click_insert' => TRUE,
   );
-*/
+
   $form['thank_you'] = array(
     '#title' => t('Thank you page'),
     '#type' => 'fieldset',
@@ -186,8 +186,8 @@ function faxe_furniture_webshop_tokens($type, $tokens, array $data = array(), ar
               $term = taxonomy_term_load($placering_tid['tid']);
               $placering = '(' . t('Placering') . ': '. $term->name . ')';
             }
-            $new .= ++$i . '. - ' . $node->title . $placering . "\t" .
-            $node->basic_cart_quantity . "\n";
+            $new .= ++$i . '. - ' . t('Varenummer') . $node->nid. ': '. $node->title . $placering . "\t" .
+            $line_item['faxe_basic_cart_quantity'] . "\n";
           }
 
           // Add the new value into the replacements array.
@@ -246,6 +246,9 @@ function faxe_furniture_webshop_send_order_notifications($order) {
   $data = array('node' => $order);
   $message_html = token_replace($message_html, $data);
   $params['user_message'] = $message_html;
+  $subject = check_plain(variable_get('faxe_furniture_webshop_user_subject'));
+  $subject = token_replace($subject, $data);
+  $params['user_message_subject'] = $subject;
       // Sending mail.
   $email = field_get_items('node', $order, 'field_order_person_email');
   $email = $email[0]['value'];
@@ -265,7 +268,7 @@ function faxe_furniture_webshop_mail($key, &$message, $params) {
       break;
 
     case 'user_mail':
-      $message['subject'] = t(check_plain(variable_get('faxe_furniture_webshop_user_subject')));
+      $message['subject'] = $params['user_message_subject'];//t(check_plain(variable_get('faxe_furniture_webshop_user_subject')));
       $message['body'][] = filter_xss($params['user_message']);
       break;
   }

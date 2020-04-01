@@ -36,6 +36,7 @@ function faxe_furniture_stock_default_page_manager_handlers() {
           'name' => 'node_type',
           'settings' => array(
             'type' => array(
+              'faxe_furniture_order' => 'faxe_furniture_order',
               'faxe_furniture_product' => 'faxe_furniture_product',
             ),
           ),
@@ -94,7 +95,20 @@ function faxe_furniture_stock_default_page_manager_handlers() {
   $pane->type = 'block';
   $pane->subtype = 'faxe_basic_cart-faxe_webshop_shopping_cart';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'node_type',
+        'settings' => array(
+          'type' => array(
+            'faxe_furniture_order' => 'faxe_furniture_order',
+          ),
+        ),
+        'context' => 'argument_entity_id:node_1',
+        'not' => TRUE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_title' => 0,
     'override_title_text' => '',

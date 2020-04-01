@@ -44,7 +44,10 @@ if (isset($content['field_os2intra_images'])) {
     <!-- Begin - body -->
     <div class="os2-node-full-body">
       <?php print render($content); ?>
-
+      <div class="field field-label-inline clearfix">
+         <div class="field-label"> <?php print t('Varenummer') ?>:&nbsp;</div>
+         <div class="field-items"><?php print $node->nid ?> </div>
+      </div>
     </div>
     <!-- End - body -->
   <?php endif; ?>

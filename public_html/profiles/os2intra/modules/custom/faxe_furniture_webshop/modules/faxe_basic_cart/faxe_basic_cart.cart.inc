@@ -228,8 +228,14 @@ function faxe_basic_cart_order_checkout() {
 
 function faxe_basic_cart_checkout_form($form, &$form_state) {
   global $user;
+  $phone = '';
   $user = user_load($user->uid);
-  $values = $form_state['values'];
+  if (isset($form_state['values'])) {
+    $values = $form_state['values'];
+  }
+  if (isset($user->field_os2intra_phone['und']) && !empty($user->field_os2intra_phone['und'])) {
+    $phone = $user->field_os2intra_phone['und'][0]['value'];
+  }
   $physical_location = '';
   if (!empty($user->field_os2intra_physical_location['und'][0]['target_id'])) {
     $physical_location = taxonomy_term_load($user->field_os2intra_physical_location['und'][0]['target_id'])->name;
@@ -256,7 +262,7 @@ function faxe_basic_cart_checkout_form($form, &$form_state) {
   $form['phone'] = array(
     '#title' => t('Telefon'),
     '#type' => 'textfield',
-    '#default_value' => (isset($values['phone'])) ? $values['phone'] : $user->field_os2intra_phone['und'][0]['value'],
+    '#default_value' => (isset($values['phone'])) ? $values['phone'] : $phone,
     '#required' => TRUE,
   );
   
@@ -309,6 +315,7 @@ function faxe_basic_cart_checkout_form_submit($form, &$form_state){
     $field_collection_item = entity_create('field_collection_item', array('field_name' => 'field_order_ordered_products'));
     $field_collection_item->setHostEntity('node', $order);
     $field_collection_item->field_ordered_product_ref['und'][]['target_id'] = $nid;
+    $field_collection_item->field_ordered_product_code['und'][]['value'] = $nid;
     $field_collection_item->field_ordered_product_quantity['und'][]['value'] = $line_item['faxe_basic_cart_quantity'];
     $field_collection_item->save();
     $product = node_load($nid);
