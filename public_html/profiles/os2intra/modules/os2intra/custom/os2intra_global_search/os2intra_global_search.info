@@ -1,0 +1,12 @@
+name = OS2Intra global search
+core = 7.x
+package = OS2Intra
+dependencies[] = entity
+dependencies[] = search_api
+dependencies[] = views
+stylesheets[all][] = css/os2intra_global_search.css
+features[features_api][] = api:2
+features[search_api_index][] = os2intra_multiindex
+features[views_view][] = os2intra_search
+features_exclude[dependencies][ctools] = ctools
+project path = profiles/os2intra/modules/os2intra/custom

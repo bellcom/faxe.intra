@@ -1,0 +1,76 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 25, 2020, 6:56:57 PM
+    Author     : Juulia
+*/
+
+.row-equal {
+  display: flex;
+  flex-wrap: wrap;
+}
+.search-page-header-box,
+.view-os2intra-search .view-empty.os2-box {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.search-page-header-box .search-form {
+  padding-top: 20px;
+}
+
+.search-page-header-box .views-exposed-form .form-control {
+  background-color: transparent;
+  border: 1px solid #008DAA;
+  padding-left: 35px;
+}
+.search-page-header-box .views-exposed-form .form-item-search-api-views-fulltext::before {
+  font-family: "FontAwesome";
+  content: "\f040";
+  position: absolute;
+  top: 8px;
+  left: 20px;
+}
+.search-page-header-box .views-exposed-form .form-item-search-api-views-fulltext {
+  position: relative;
+  display: initial
+}
+.search-page-header-box .views-exposed-form .views-widget-filter-search_api_views_fulltext {
+  width: 100%;
+}
+.search-page-header-box .input-group {
+  display: block;
+}
+.search-page-header-box .input-group-btn {
+  display: none;
+}
+
+div.type-user {
+  background: url('../img/person.png') no-repeat center;
+}
+div.type-user,
+div.type-node,
+div.type-term {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+div.type-term.bundle-os2intra_organisation {
+  background-image: url('../img/briefcase.png');
+}
+div.type-node.bundle-afdeling {
+  background-image: url('../img/briefcase.png');
+}
+div.type-node:not(.bundle-afdeling) {
+  background-image: url('../img/notebook.png');
+}  
+div.type-term.bundle-overordnet_placering_og_sitestruktur {
+  background-image: url('../img/section.png');
+}
+
+.view-os2intra-search .os2-box {
+  padding-bottom: 20px;
+}
