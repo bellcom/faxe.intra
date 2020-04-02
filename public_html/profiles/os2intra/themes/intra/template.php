@@ -283,7 +283,8 @@ function intra_preprocess_node__wiki(&$variables) {
  * Implements hook_preprocess_node().
  */
 function intra_preprocess_node__os2intra_org_group_unit(&$variables) {
-  if ($variables['view_mode'] == 'includeable') {
+   $users = array();
+   if ($variables['view_mode'] == 'includeable') {
     $variables['users'] = array();
 
     $node = $variables['node'];
