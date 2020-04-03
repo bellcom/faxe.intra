@@ -55,8 +55,9 @@ div.type-node,
 div.type-term {
   width: 100%;
   height: 100%;
-  background-size: cover;
   background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 div.type-term.bundle-os2intra_organisation {
   background-image: url('../img/briefcase.png');
@@ -73,4 +74,50 @@ div.type-term.bundle-overordnet_placering_og_sitestruktur {
 
 .view-os2intra-search .os2-box {
   padding-bottom: 20px;
+}
+
+/** FACET API BLOCK ***/
+.block-facetapi h2.block-title {
+  font-size: 16px;
+}
+
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-section,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-item-type {
+  padding: 0;
+  list-style: none;
+}
+
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-section li,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-item-type li {
+  display: inline-block;
+}
+
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-section li,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-item-type li {
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-section li a,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-item-type li a,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li a {
+  background-color: #eeeff4;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li {
+  display: list-item;
+}
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li.active {
+  width: max-content;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background-color: #008DAA;
+  color: #fff;
+}
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li.active a{
+  padding: 0;
+  background-color: transparent;
+  color: #fff;
 }

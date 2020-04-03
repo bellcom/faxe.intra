@@ -142,19 +142,6 @@
         <?php if (!empty($action_links)): ?>
           <ul class="action-links"><?php print render($action_links); ?></ul>
         <?php endif; ?>
-
-        <?php if (!empty($breadcrumb)): ?>
-          <!-- Begin - breadcrumb -->
-          <section class="os2-breadcrumb-container">
-            <div class="row">
-              <div class="col-xs-12">
-                <?php print $breadcrumb; ?>
-              </div>
-            </div>
-          </section>
-          <!-- End - breadcrumb -->
-        <?php endif; ?>
-
         <?php if (!empty($tabs_primary)): ?>
           <!-- Begin - tabs primary -->
           <div class="os2-tabs-container os2-tabs-variant-default">
@@ -173,8 +160,23 @@
 
         <a id="main-content"></a>
 
-   
-          <?php print render($page['content']); ?>
+        <div class="row">
+          <div class="col-sm-4 col-sm-push-8 hidden-print">
+            <div class="os2-box">
+              <div class="os2-box-heading">
+                <h2 class="os2-box-heading-title"><?php print t('Filterer') ?></h2>
+              </div>
+  
+            <div class="os2-box-body">
+             <?php  print render($page['sidebar_second']);
+             ?>
+            </div>
+          </div>
+         </div>   
+          <div class="col-sm-8 col-sm-pull-4">
+            <?php print render($page['content']); ?>
+          </div>  
+        </div>  
      
 
       </div>

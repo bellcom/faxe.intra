@@ -6,6 +6,15 @@
  */
 
 /**
+ * Implements hook_ctools_plugin_api().
+ */
+function os2intra_global_search_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "facetapi" && $api == "facetapi_defaults") {
+    return array("version" => "1");
+  }
+}
+
+/**
  * Implements hook_default_search_api_index().
  */
 function os2intra_global_search_default_search_api_index() {
@@ -43,6 +52,9 @@ function os2intra_global_search_default_search_api_index() {
         "node:og_group_ref" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "node:title" : { "type" : "text" },
         "node:type" : { "type" : "string" },
+        "os2intra_global_search_index_department" : { "type" : "text" },
+        "os2intra_global_search_index_item_type" : { "type" : "text" },
+        "os2intra_global_search_index_section" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
         "taxonomy_term" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "taxonomy_term:description" : { "type" : "text", "boost" : "3.0" },
@@ -93,6 +105,13 @@ function os2intra_global_search_default_search_api_index() {
           "weight" : "0",
           "settings" : { "exclude_nodes" : 1, "exclude_field_collection_item" : 0 }
         },
+        "os2intra_global_search_index_department_alter_settings" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "os2intra_organisation_taxonomy_top_term_tid" : "13943" }
+        },
+        "os2intra_global_search_index_item_type_alter_settings" : { "status" : 1, "weight" : "0", "settings" : [] },
+        "os2intra_global_search_index_section_alter_settings" : { "status" : 1, "weight" : "0", "settings" : [] },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
@@ -107,16 +126,16 @@ function os2intra_global_search_default_search_api_index() {
           "status" : 0,
           "weight" : "0",
           "settings" : { "fields" : {
+              "user:name" : true,
+              "user:field_name_first" : true,
+              "user:field_name_last" : true,
               "node:title" : true,
               "node:field_os2web_base_field_intro" : true,
               "taxonomy_term:name" : true,
               "taxonomy_term:description" : true,
-              "user:name" : true,
-              "user:field_name_first" : true,
-              "user:field_name_last" : true,
               "node:body:value" : true,
-              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_title" : true,
+              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_text:value" : true
             }
           }
@@ -126,16 +145,16 @@ function os2intra_global_search_default_search_api_index() {
           "weight" : "10",
           "settings" : {
             "fields" : {
+              "user:name" : true,
+              "user:field_name_first" : true,
+              "user:field_name_last" : true,
               "node:title" : true,
               "node:field_os2web_base_field_intro" : true,
               "taxonomy_term:name" : true,
               "taxonomy_term:description" : true,
-              "user:name" : true,
-              "user:field_name_first" : true,
-              "user:field_name_last" : true,
               "node:body:value" : true,
-              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_title" : true,
+              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_text:value" : true
             },
             "title" : 0,
@@ -147,16 +166,16 @@ function os2intra_global_search_default_search_api_index() {
           "status" : 0,
           "weight" : "15",
           "settings" : { "fields" : {
+              "user:name" : true,
+              "user:field_name_first" : true,
+              "user:field_name_last" : true,
               "node:title" : true,
               "node:field_os2web_base_field_intro" : true,
               "taxonomy_term:name" : true,
               "taxonomy_term:description" : true,
-              "user:name" : true,
-              "user:field_name_first" : true,
-              "user:field_name_last" : true,
               "node:body:value" : true,
-              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_title" : true,
+              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_text:value" : true
             }
           }
@@ -166,16 +185,16 @@ function os2intra_global_search_default_search_api_index() {
           "weight" : "20",
           "settings" : {
             "fields" : {
+              "user:name" : true,
+              "user:field_name_first" : true,
+              "user:field_name_last" : true,
               "node:title" : true,
               "node:field_os2web_base_field_intro" : true,
               "taxonomy_term:name" : true,
               "taxonomy_term:description" : true,
-              "user:name" : true,
-              "user:field_name_first" : true,
-              "user:field_name_last" : true,
               "node:body:value" : true,
-              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_title" : true,
+              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_text:value" : true
             },
             "spaces" : "[^[:alnum:]]",
@@ -187,16 +206,16 @@ function os2intra_global_search_default_search_api_index() {
           "weight" : "30",
           "settings" : {
             "fields" : {
+              "user:name" : true,
+              "user:field_name_first" : true,
+              "user:field_name_last" : true,
               "node:title" : true,
               "node:field_os2web_base_field_intro" : true,
               "taxonomy_term:name" : true,
               "taxonomy_term:description" : true,
-              "user:name" : true,
-              "user:field_name_first" : true,
-              "user:field_name_last" : true,
               "node:body:value" : true,
-              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_title" : true,
+              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_text:value" : true
             },
             "file" : "",
@@ -210,7 +229,7 @@ function os2intra_global_search_default_search_api_index() {
             "prefix" : "\\u003Cstrong\\u003E",
             "suffix" : "\\u003C\\/strong\\u003E",
             "excerpt" : 1,
-            "excerpt_length" : "256",
+            "excerpt_length" : "125",
             "excerpt_fragments" : "3",
             "concatenator" : "...",
             "highlight" : "never"
@@ -220,16 +239,16 @@ function os2intra_global_search_default_search_api_index() {
           "status" : 0,
           "weight" : "35",
           "settings" : { "fields" : {
+              "user:name" : true,
+              "user:field_name_first" : true,
+              "user:field_name_last" : true,
               "node:title" : true,
               "node:field_os2web_base_field_intro" : true,
               "taxonomy_term:name" : true,
               "taxonomy_term:description" : true,
-              "user:name" : true,
-              "user:field_name_first" : true,
-              "user:field_name_last" : true,
               "node:body:value" : true,
-              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_title" : true,
+              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_text:value" : true
             }
           }
@@ -239,16 +258,16 @@ function os2intra_global_search_default_search_api_index() {
           "weight" : "35",
           "settings" : {
             "fields" : {
+              "user:name" : true,
+              "user:field_name_first" : true,
+              "user:field_name_last" : true,
               "node:title" : true,
               "node:field_os2web_base_field_intro" : true,
               "taxonomy_term:name" : true,
               "taxonomy_term:description" : true,
-              "user:name" : true,
-              "user:field_name_first" : true,
-              "user:field_name_last" : true,
               "node:body:value" : true,
-              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_title" : true,
+              "node:field_os2intra_base_structure:name" : true,
               "node:field_os2intra_paragraph:field_os2intra_paragraph_text:value" : true
             },
             "exceptions" : "texan=texa"

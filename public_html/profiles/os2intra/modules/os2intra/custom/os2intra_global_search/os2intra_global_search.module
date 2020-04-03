@@ -14,24 +14,24 @@ function os2intra_global_search_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0",
     'path' => drupal_get_path('module', 'os2intra_global_search'),
     'template path' => drupal_get_path('module', 'os2intra_global_search') . '/templates',
-  
+
 );
 }
 
 /**
  * Implements hook_views_api_alter().
  *
- * Views api is specified by features but we want to add the views-template directory to it. 
+ * Views api is specified by features but we want to add the views-template directory to it.
  */
 function os2intra_global_search_views_api_alter(&$apis) {
-  if (!empty($apis['os2intra_global_search']) && $apis['os2intra_global_search']['version'] == '3.0') { 
+  if (!empty($apis['os2intra_global_search']) && $apis['os2intra_global_search']['version'] == '3.0') {
     $apis['os2intra_global_search']['path'] = drupal_get_path('module', 'os2intra_global_search');
-    $apis['os2intra_global_search']['template path'] = drupal_get_path('module', 'os2intra_global_search') . '/templates'; 
+    $apis['os2intra_global_search']['template path'] = drupal_get_path('module', 'os2intra_global_search') . '/templates';
   }
 }
 function os2intra_global_search_features_export_alter(&$export, $module_name) {
-  if ($module_name == 'os2intra_global_search' && !empty($export['features']['ctools']['views:views_default:3.0'])) { 
-    unset($export['features']['ctools']['views:views_default:3.0']); 
+  if ($module_name == 'os2intra_global_search' && !empty($export['features']['ctools']['views:views_default:3.0'])) {
+    unset($export['features']['ctools']['views:views_default:3.0']);
     }
 }
 function _os2intra_global_search_get_type($type) {
@@ -55,5 +55,28 @@ function os2intra_global_search_preprocess_views_view_fields(&$vars) {
     $vars['fields']['item_type']->content = _os2intra_global_search_get_type($type);
     $vars['fields']['item_bundle']->content = strtolower($bundle);
   }
-  
+
+}
+function os2intra_global_search_facet_items_alter(&$build, &$settings) {
+  if ($settings->facet == "os2intra_global_search_index_section") {
+    foreach($build as $key => $item) {
+      $term = taxonomy_term_load($item["#markup"]);
+      $build[$key]["#markup"] = $term->name;
+    }
+
+  }
+
+  if ($settings->facet == "os2intra_global_search_index_item_type") {
+    foreach($build as $key => $item) {
+      $build[$key]["#markup"] = ucfirst($item["#markup"]);
+    }
+
+  }
+  if ($settings->facet == "os2intra_global_search_index_department") {
+    foreach($build as $key => $item) {
+      $term = taxonomy_term_load($item["#markup"]);
+      $build[$key]["#markup"] = $term->name;
+    }
+
+  }
 }

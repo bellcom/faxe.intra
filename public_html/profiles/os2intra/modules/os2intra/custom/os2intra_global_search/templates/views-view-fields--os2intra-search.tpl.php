@@ -24,13 +24,13 @@
  * @ingroup views_templates
  */
 ?>
-<div class="col-sm-1">
+<div class="col-sm-2">
   <div class="type-<?php print $fields['item_type']->content ?> bundle-<?php print $fields['item_bundle']->content?> "></div>
 
-</div> 
+</div>
 <?php unset($fields['item_type']);
 unset($fields['item_bundle'])?>
-<div class="col-sm-11">  
+<div class="col-sm-10">
  <?php foreach ($fields as $id => $field): ?>
   <?php if (!empty($field->separator)): ?>
     <?php print $field->separator; ?>

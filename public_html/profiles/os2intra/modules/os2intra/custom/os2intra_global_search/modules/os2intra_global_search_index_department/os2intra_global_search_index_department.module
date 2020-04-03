@@ -1,0 +1,24 @@
+<?php
+/**
+ * Implements hook_search_api_alter_callback_info().
+ */
+function os2intra_global_search_index_department_search_api_alter_callback_info() {
+  $callbacks['os2intra_global_search_index_department_alter_settings'] = array(
+    'name' => t('Os2Intra global search index department'),
+    'description' => t('Os2Intra global search index department'),
+    'class' => 'SearchApiAlterAddDepartmentAlterSettings',
+  );
+  return $callbacks;
+}
+
+function _os2intra_global_search_index_department_get_parent_tid($tid, $default_parent_tid) {
+  $parent_terms = taxonomy_get_parents_all($tid);
+  foreach($parent_terms as $parent) {
+    if ($parent->tid == $default_parent_tid) {
+      //this is top parent term
+      break;
+    }
+    $top_parent_term_tid = $parent->tid;
+  }
+  return $top_parent_term_tid;    
+}
