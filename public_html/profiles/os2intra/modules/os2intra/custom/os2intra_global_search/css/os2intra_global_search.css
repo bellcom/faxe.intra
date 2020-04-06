@@ -109,14 +109,18 @@ ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-departmen
 ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li {
   display: list-item;
 }
-ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li.active {
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li.active,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-section li.active,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-item-type li.active {
   width: max-content;
   padding: 2px 5px;
   border-radius: 4px;
   background-color: #008DAA;
   color: #fff;
 }
-ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li.active a{
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li.active a,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-section li.active a,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-item-type li.active a {
   padding: 0;
   background-color: transparent;
   color: #fff;
