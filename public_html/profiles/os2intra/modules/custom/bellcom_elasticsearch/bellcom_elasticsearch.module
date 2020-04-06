@@ -60,14 +60,26 @@ function bellcom_elasticsearch_menu(){
 
 
 function bellcom_elasticsearch_elasticsearch_connector_search_api_query_alter($query, &$params){
-  $query_str = $params['body']['query']['bool']['must'][0]['multi_match']['query'];
-  $params['body']['query'] = array(
-    'function_score' => array(
-      'functions' => _bellcom_elasticsearch_get_boosting($query_str),
-      'query'=> _bellcom_elasticsearch_get_query($query_str)
-    )
-  );
-  $params['body']['size'] = _bellcom_elasticsearch_get_size($query_str);
+ if (isset($params['body']['query'])) {
+    $query_str = $query->getOriginalKeys();
+   if (isset($params['body']['query']['bool'])) {
+    $params['body']['query'] = array(
+      'function_score' => array(
+        'functions' => _bellcom_elasticsearch_get_boosting($query_str),
+        'query' => _bellcom_elasticsearch_get_query($params['body']['query'], $query_str)
+      )
+    );
+ }
+   elseif (isset($params['body']['query']['filtered'])) {
+        $params['body']['query']['filtered']['query'] = array(
+          'function_score' => array(
+            'functions' => _bellcom_elasticsearch_get_boosting($query_str),
+            'query' => _bellcom_elasticsearch_get_query($params['body']['query']['filtered']['query'], $query_str),
+          )
+        );
+   }     
+    $params['body']['size'] = _bellcom_elasticsearch_get_size($query_str);
+ }
 }
 
 function _bellcom_elasticsearch_get_boosting($query_string = null){
@@ -116,22 +128,23 @@ function _bellcom_elasticsearch_get_boosting($query_string = null){
   return $boosting;
 }
 
-function _bellcom_elasticsearch_get_query($query_string) {
+function _bellcom_elasticsearch_get_query($query, $query_string) {
   $synonym_active = variable_get('bellcom_elasticsearch_synonyms_active', FALSE);
-  $query = array(
-    'bool' => array(
-      'should' => array(
-        array(
-          'query_string' => array(
-            'query' => ($synonym_active)? $query_string : '*' . $query_string . '*',
-            'fields' => array('_all'),
-            'analyzer' => ($synonym_active)? 'synonym' : null
-          )
-        ),
-      ),
-    )
-  );
-
+  
+  if (isset($query['bool'])) {
+    foreach ($query['bool'] as $bool_key => $bool) {
+      $elastic_query_params = $query['bool'][$bool_key];
+      foreach ($elastic_query_params as $elastic_query_param_key => $elastic_query_param) {
+        if (isset($elastic_query_param['multi_match'])) {
+          $query['bool'][$bool_key][$elastic_query_param_key]['multi_match']['analyzer'] = ($synonym_active)? 'synonym' : null;
+        }
+        if (isset($elastic_query_param['query_string'])) {
+          $query['bool'][$bool_key][$elastic_query_param_key]['query_string']['analyzer'] = ($synonym_active)? 'synonym' : null;
+        }
+      }
+    }    
+  } 
+    
   // making sure the all found phrase NID are included into the search result
   $results = db_query('SELECT * FROM {bellcom_elasticsearch_phrase_catcher} i WHERE :phrase LIKE i.phrase
 			AND nid IS NOT NULL AND (i.from_date IS NULL or i.from_date <= :now)

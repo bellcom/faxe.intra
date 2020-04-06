@@ -1,0 +1,12 @@
+<?php
+/**
+ * Implements hook_search_api_alter_callback_info().
+ */
+function os2intra_global_search_index_section_search_api_alter_callback_info() {
+  $callbacks['os2intra_global_search_index_section_alter_settings'] = array(
+    'name' => t('Os2Intra global search index section'),
+    'description' => t('Os2Intra global search index section'),
+    'class' => 'SearchApiAlterAddSectionAlterSettings',
+  );
+  return $callbacks;
+}

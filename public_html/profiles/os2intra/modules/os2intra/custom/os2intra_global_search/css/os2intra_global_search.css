@@ -1,0 +1,127 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 25, 2020, 6:56:57 PM
+    Author     : Juulia
+*/
+
+.row-equal {
+  display: flex;
+  flex-wrap: wrap;
+}
+.search-page-header-box,
+.view-os2intra-search .view-empty.os2-box {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.search-page-header-box .search-form {
+  padding-top: 20px;
+}
+
+.search-page-header-box .views-exposed-form .form-control {
+  background-color: transparent;
+  border: 1px solid #008DAA;
+  padding-left: 35px;
+}
+.search-page-header-box .views-exposed-form .form-item-search-api-views-fulltext::before {
+  font-family: "FontAwesome";
+  content: "\f040";
+  position: absolute;
+  top: 8px;
+  left: 20px;
+}
+.search-page-header-box .views-exposed-form .form-item-search-api-views-fulltext {
+  position: relative;
+  display: initial
+}
+.search-page-header-box .views-exposed-form .views-widget-filter-search_api_views_fulltext {
+  width: 100%;
+}
+.search-page-header-box .input-group {
+  display: block;
+}
+.search-page-header-box .input-group-btn {
+  display: none;
+}
+
+div.type-user {
+  background: url('../img/person.png') no-repeat center;
+}
+div.type-user,
+div.type-node,
+div.type-term {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+div.type-term.bundle-os2intra_organisation {
+  background-image: url('../img/briefcase.png');
+}
+div.type-node.bundle-afdeling {
+  background-image: url('../img/briefcase.png');
+}
+div.type-node:not(.bundle-afdeling) {
+  background-image: url('../img/notebook.png');
+}  
+div.type-term.bundle-overordnet_placering_og_sitestruktur {
+  background-image: url('../img/section.png');
+}
+
+.view-os2intra-search .os2-box {
+  padding-bottom: 20px;
+}
+
+/** FACET API BLOCK ***/
+.block-facetapi h2.block-title {
+  font-size: 16px;
+}
+
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-section,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-item-type {
+  padding: 0;
+  list-style: none;
+}
+
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-section li,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-item-type li {
+  display: inline-block;
+}
+
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-section li,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-item-type li {
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-section li a,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-item-type li a,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li a {
+  background-color: #eeeff4;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li {
+  display: list-item;
+}
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li.active,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-section li.active,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-item-type li.active {
+  width: max-content;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background-color: #008DAA;
+  color: #fff;
+}
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-department li.active a,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-section li.active a,
+ul.facetapi-facetapi-links.facetapi-facet-os2intra-global-search-index-item-type li.active a {
+  padding: 0;
+  background-color: transparent;
+  color: #fff;
+}

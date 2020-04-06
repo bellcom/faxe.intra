@@ -49,7 +49,8 @@ function intra_preprocess_html(&$variables) {
 function intra_preprocess_page(&$variables) {
 
   // Search form
-  $variables['main_navigation_search'] = module_invoke('views', 'block_view', '-exp-Search-page');
+  
+  $variables['main_navigation_search'] = module_invoke('views', 'block_view', '-exp-os2intra_search-page');
 
   // Find colleague
   $variables['find_colleague_block'] = module_invoke('views', 'block_view', '-exp-telefonbogen-page');
@@ -283,7 +284,8 @@ function intra_preprocess_node__wiki(&$variables) {
  * Implements hook_preprocess_node().
  */
 function intra_preprocess_node__os2intra_org_group_unit(&$variables) {
-  if ($variables['view_mode'] == 'includeable') {
+   $users = array();
+   if ($variables['view_mode'] == 'includeable') {
     $variables['users'] = array();
 
     $node = $variables['node'];

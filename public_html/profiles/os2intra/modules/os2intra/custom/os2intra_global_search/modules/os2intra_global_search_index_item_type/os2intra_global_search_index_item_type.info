@@ -1,0 +1,9 @@
+name = OS2Intra global search index item type
+description = "Index content type"
+core = 7.x
+package = Features
+
+files[] = includes/callback_os2intra_global_search_index_item_type_settings.inc
+
+version = "7.x-1.1"
+core = "7.x"
