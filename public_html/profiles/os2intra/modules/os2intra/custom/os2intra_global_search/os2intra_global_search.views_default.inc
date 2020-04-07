@@ -110,13 +110,22 @@ function os2intra_global_search_views_default_views() {
   $handler->display->display_options['fields']['user_name']['element_class'] = 'os2-node-teaser-heading-title';
   $handler->display->display_options['fields']['user_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['user_name']['link_to_entity'] = 0;
+  /* Felt: Bruger: Bruger ID (indexed) */
+  $handler->display->display_options['fields']['user_uid']['id'] = 'user_uid';
+  $handler->display->display_options['fields']['user_uid']['table'] = 'search_api_index_os2intra_multiindex';
+  $handler->display->display_options['fields']['user_uid']['field'] = 'user_uid';
+  $handler->display->display_options['fields']['user_uid']['label'] = '';
+  $handler->display->display_options['fields']['user_uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['user_uid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['user_uid']['separator'] = '';
+  $handler->display->display_options['fields']['user_uid']['link_to_entity'] = 0;
   /* Felt: Username */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['ui_name'] = 'Username';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href = "/users/[user_field_name_first]-[user_field_name_last]">[user_field_name_last]  [user_field_name_first] </a>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href = "/user/[user_uid]">[user_field_name_last]  [user_field_name_first] </a>';
   $handler->display->display_options['fields']['nothing']['element_type'] = 'h3';
   $handler->display->display_options['fields']['nothing']['element_class'] = 'os2-node-teaser-heading-title';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -207,7 +216,8 @@ function os2intra_global_search_views_default_views() {
     t('Søgresultater (@total)'),
     t('Ingen resultater'),
     t('Ingen resultater matchede din søgning.'),
-    t('<a href = "/users/[user_field_name_first]-[user_field_name_last]">[user_field_name_last]  [user_field_name_first] </a>'),
+    t('.'),
+    t('<a href = "/user/[user_uid]">[user_field_name_last]  [user_field_name_first] </a>'),
     t('Alle'),
     t('Page'),
   );
