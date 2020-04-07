@@ -49,13 +49,13 @@ function os2intra_users_field_default_field_instances() {
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'emails' => 'emails',
-          'fuld_html' => 'fuld_html',
+          'emails' => 0,
+          'fuld_html' => 0,
           'indhold' => 'indhold',
-          'kommentar' => 'kommentar',
-          'plain_text' => 'plain_text',
+          'kommentar' => 0,
+          'plain_text' => 0,
         ),
-        'allowed_formats_toggle' => 0,
+        'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
@@ -84,7 +84,7 @@ function os2intra_users_field_default_field_instances() {
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1605,7 +1605,7 @@ function os2intra_users_field_default_field_instances() {
       'active' => 1,
       'module' => 'date',
       'settings' => array(
-        'increment' => 1,
+        'increment' => 15,
         'input_format' => 'd.m.Y - H:i:s',
         'input_format_custom' => '',
         'label_position' => 'above',
