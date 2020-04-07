@@ -83,7 +83,6 @@ function os2intra_global_search_default_search_api_index() {
               "node:os2intra_canteen_menu" : "node:os2intra_canteen_menu",
               "node:os2intra_group" : "node:os2intra_group",
               "node:it_vejledning" : "node:it_vejledning",
-              "node:node_basket" : "node:node_basket",
               "node:post" : "node:post",
               "node:os2intra_base_page" : "node:os2intra_base_page",
               "node:wiki" : "node:wiki",

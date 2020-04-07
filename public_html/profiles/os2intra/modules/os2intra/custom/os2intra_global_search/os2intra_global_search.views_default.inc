@@ -116,7 +116,7 @@ function os2intra_global_search_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['ui_name'] = 'Username';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[user_field_name_last]  [user_field_name_first] ';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href = "/users/[user_field_name_first]-[user_field_name_last]">[user_field_name_last]  [user_field_name_first] </a>';
   $handler->display->display_options['fields']['nothing']['element_type'] = 'h3';
   $handler->display->display_options['fields']['nothing']['element_class'] = 'os2-node-teaser-heading-title';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -207,7 +207,7 @@ function os2intra_global_search_views_default_views() {
     t('Søgresultater (@total)'),
     t('Ingen resultater'),
     t('Ingen resultater matchede din søgning.'),
-    t('[user_field_name_last]  [user_field_name_first] '),
+    t('<a href = "/users/[user_field_name_first]-[user_field_name_last]">[user_field_name_last]  [user_field_name_first] </a>'),
     t('Alle'),
     t('Page'),
   );
