@@ -164,7 +164,7 @@
           <div class="col-sm-4 col-sm-push-8 hidden-print">
             <div class="os2-box">
               <div class="os2-box-heading">
-                <h2 class="os2-box-heading-title"><?php print t('Filterer') ?></h2>
+                <h2 class="os2-box-heading-title"><?php print t('Søgefiltre') ?></h2>
               </div>
   
             <div class="os2-box-body">
