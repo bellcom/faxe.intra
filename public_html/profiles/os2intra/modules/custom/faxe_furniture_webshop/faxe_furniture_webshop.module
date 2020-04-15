@@ -112,6 +112,7 @@ function faxe_webshop_order_notification_settings_form() {
 
   $form['messages']['tokens'] = array(
     '#theme' => 'token_tree',
+    '#dialog' => true,
     '#token_types' => array('node', 'products'),
     '#global_types' => FALSE,
     '#click_insert' => TRUE,
