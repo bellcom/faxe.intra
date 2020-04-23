@@ -29,7 +29,11 @@ jQuery(function($) {
       textboxToFocus.name = $(this).attr('name');
 
       if(e.type == 'keypress') {
-        if(e.keyCode != 8) { // everything except return
+        if (event.keyCode === 13) {
+          // Cancel the default action, if needed
+          event.preventDefault();
+        }
+        else if(e.keyCode != 8) { // everything except return
           textboxToFocus.value = $(this).val() + String.fromCharCode(e.charCode);
         } else {
           textboxToFocus.value = $(this).val().substr(0, $(this).val().length-1)
