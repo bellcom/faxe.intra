@@ -15,3 +15,36 @@ function os2intra_organisation_business_cards_form_alter(&$form, &$form_state, $
     }
   }
  }
+/*
+ * Implements hook_views_pre_build.
+ */
+ function os2intra_organisation_business_cards_views_pre_build(&$view) {
+  // Set the first contextual filter value.
+  if ($view->name == 'os2intra_organisation_business_cards_block') {
+    $exposed_filters = $view->get_exposed_input();
+    $current_term = $view->args[0];
+
+    if (isset($exposed_filters['combine'])){
+     if ($exposed_filters['combine'] != "") {
+        $tids = _os2intra_organisation_business_cards_get_all_children_terms($current_term);
+        $tids[] = $current_term;
+        $view->args[0] = implode('+', $tids);
+      }
+      else {
+        unset($view->args);
+        $path = current_path();
+        $path_array = explode('/', $path);
+        $view->args[] = array_pop($path_array);
+      }
+    }
+  }
+}
+
+function _os2intra_organisation_business_cards_get_all_children_terms($tid, &$result = array()){
+  $tree = taxonomy_get_children($tid);
+  foreach ($tree as $tid => $term){
+    $result[] = $tid;
+    _os2intra_organisation_business_cards_get_all_children_terms($tid, $result);
+  }
+  return $result;
+}
