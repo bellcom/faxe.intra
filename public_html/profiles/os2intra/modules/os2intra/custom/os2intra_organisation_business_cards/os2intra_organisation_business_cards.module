@@ -22,8 +22,10 @@ function os2intra_organisation_business_cards_form_alter(&$form, &$form_state, $
   // Set the first contextual filter value.
   if ($view->name == 'os2intra_organisation_business_cards_block') {
     $exposed_filters = $view->get_exposed_input();
-    $current_term = $view->args[0];
-
+    
+    $path = current_path();
+    $path_array = explode('/', $path);
+    $current_term = array_pop($path_array);
     if (isset($exposed_filters['combine'])){
      if ($exposed_filters['combine'] != "") {
         $tids = _os2intra_organisation_business_cards_get_all_children_terms($current_term);
@@ -31,10 +33,8 @@ function os2intra_organisation_business_cards_form_alter(&$form, &$form_state, $
         $view->args[0] = implode('+', $tids);
       }
       else {
-        unset($view->args);
-        $path = current_path();
-        $path_array = explode('/', $path);
-        $view->args[] = array_pop($path_array);
+        unset($view->args);        
+        $view->args[] = $current_term;
       }
     }
   }
