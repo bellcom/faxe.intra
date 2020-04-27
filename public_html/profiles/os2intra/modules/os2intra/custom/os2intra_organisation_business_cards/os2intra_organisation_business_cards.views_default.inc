@@ -81,6 +81,7 @@ function os2intra_organisation_business_cards_views_default_views() {
   $handler->display->display_options['arguments']['parent']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['parent']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['parent']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['parent']['break_phrase'] = TRUE;
   /* Filterkriterie: Ordforråd: Internt navn */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';

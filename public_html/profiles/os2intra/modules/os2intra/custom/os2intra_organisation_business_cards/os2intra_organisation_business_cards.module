@@ -2,11 +2,25 @@
 
 /**
  * @file
- * Code for the OS2Intra organisation Business Cards feature.
+ * Drupal needs this blank file.
  */
 
-include_once 'os2intra_organisation_business_cards.features.inc';
+/**
+ * Implements hook_views_api().
+ */
+function os2intra_organisation_business_cards_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0",
+    'path' => drupal_get_path('module', 'os2intra_organisation_business_cards'),
+    'template path' => drupal_get_path('module', 'os2intra_organisation_business_cards') . '/templates',
 
+);
+}
+
+function os2intra_organisation_business_cards_features_export_alter(&$export, $module_name) {
+  if ($module_name == 'os2intra_organisation_business_cards' && !empty($export['features']['ctools']['views:views_default:3.0'])) {
+    unset($export['features']['ctools']['views:views_default:3.0']);
+    }
+}
 
 function os2intra_organisation_business_cards_form_alter(&$form, &$form_state, $form_id) {
   if($form_id == "views_exposed_form") {

@@ -5,7 +5,6 @@ dependencies[] = ctools
 dependencies[] = views
 scripts[] = js/os2intra_organisation_business_cards.js
 stylesheets[all][] = css/os2intra_organisation_business_cards.css
-features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[views_view][] = os2intra_organisation_business_cards_block
 project path = profiles/os2intra/modules/os2intra/custom
