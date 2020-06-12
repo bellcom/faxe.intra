@@ -56,6 +56,7 @@ function os2intra_global_search_default_search_api_index() {
         "os2intra_global_search_index_department" : { "type" : "text" },
         "os2intra_global_search_index_item_type" : { "type" : "text" },
         "os2intra_global_search_index_section" : { "type" : "text" },
+        "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_language" : { "type" : "string" },
         "taxonomy_term" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "taxonomy_term:description" : { "type" : "text", "boost" : "3.0" },
@@ -117,11 +118,8 @@ function os2intra_global_search_default_search_api_index() {
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
-        "search_api_alter_language_control" : {
-          "status" : 0,
-          "weight" : "0",
-          "settings" : { "lang_field" : "", "languages" : [] }
-        }
+        "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
+        "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
         "search_api_case_ignore" : {
