@@ -78,12 +78,12 @@ function os2intra_global_search_facetapi_default_facet_settings() {
       'indexed' => '4',
       'natural' => '4',
     ),
-    'empty_behavior' => 'none',
+    'empty_behavior' => 'text',
     'display_count' => 0,
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
     'title_override' => 1,
-    'title' => 'test',
+    'title' => '',
     'soft_limit' => '20',
     'nofollow' => '1',
     'show_expanded' => 0,
@@ -159,7 +159,8 @@ function os2intra_global_search_facetapi_default_facet_settings() {
       'add_range' => 'Add a new date range',
     ),
     'empty_text' => array(
-      'value' => '',
+      'value' => '<p>No available filters</p>
+',
       'format' => 'indhold',
     ),
   );
@@ -232,7 +233,7 @@ function os2intra_global_search_facetapi_default_facet_settings() {
       'indexed' => '4',
       'natural' => '4',
     ),
-    'empty_behavior' => 'none',
+    'empty_behavior' => 'text',
     'display_count' => 0,
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
@@ -307,7 +308,8 @@ function os2intra_global_search_facetapi_default_facet_settings() {
       'add_range' => 'Add a new date range',
     ),
     'empty_text' => array(
-      'value' => '',
+      'value' => '<p>No available filters</p>
+',
       'format' => 'indhold',
     ),
     'exclude' => '',
@@ -467,7 +469,8 @@ function os2intra_global_search_facetapi_default_facet_settings() {
       'add_range' => 'Add a new date range',
     ),
     'empty_text' => array(
-      'value' => 'No available filtres ',
+      'value' => '<p>No available filters</p>
+',
       'format' => 'indhold',
     ),
   );
