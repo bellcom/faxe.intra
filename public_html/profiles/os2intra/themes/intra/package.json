@@ -10,7 +10,6 @@
     "author": "Morten Nissen <mn@bellcom.dk>",
     "license": "MIT",
     "dependencies": {
-        "customizr": "^1.4.0",
         "grunt": "^1.0.1",
         "grunt-autoprefixer": "~3.0.3",
         "grunt-contrib-clean": "~1.0.0",
