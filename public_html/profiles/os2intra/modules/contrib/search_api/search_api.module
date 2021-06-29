@@ -2380,7 +2380,7 @@ function _search_api_query_add_node_access($account, SearchApiQueryInterface $qu
   $grants = node_access_grants('view', $account);
   foreach ($grants as $realm => $gids) {
     foreach ($gids as $gid) {
-      $grants_conditions->condition('search_api_access_node', "node_access_$realm" . "_" . $gid");
+      $grants_conditions->condition('search_api_access_node', "node_access_$realm" . "_" . $gid);
     }
   }
   $access_conditions->filter($grants_conditions);
