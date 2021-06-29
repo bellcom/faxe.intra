@@ -19,6 +19,7 @@ dependencies[] = og
 dependencies[] = options
 dependencies[] = os2intra_content_types
 dependencies[] = owlcarousel_fields
+dependencies[] = single_image
 dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = text
