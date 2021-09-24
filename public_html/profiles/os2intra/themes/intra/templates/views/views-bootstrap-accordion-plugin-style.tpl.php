@@ -4,7 +4,7 @@
 
 <div id="views-bootstrap-accordion-<?php print $id ?>" class="<?php print $classes ?>">
   <?php foreach ($rows as $key => $row): ?>
-    <?php if (isset($titles[$key])): ?>
+    <?php if (isset($titles[$key]) && !empty($titles[$key])): ?>
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
