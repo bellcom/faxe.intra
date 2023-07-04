@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * os2intra_content_types.features.ckeditor_profile.inc
@@ -21,7 +22,7 @@ function os2intra_content_types_ckeditor_profile_defaults() {
     [\'Link\',\'Unlink\',\'linkit\',\'Anchor\'],
     [\'Scayt\'],
     [\'Media\'],
-    [\'Table\',\'Undo\',\'Redo\']
+    [\'Table\',\'Undo\',\'Redo\',\'Source\']
 ]',
         'expand' => 't',
         'default' => 't',
@@ -79,12 +80,12 @@ config.scayt_sLang = \'da_DK\';',
           ),
           'media' => array(
             'name' => 'media',
-            'desc' => 'Plugin for inserting images from Drupal media module',
-            'path' => '%plugin_dir%media/',
+            'desc' => 'Plugin for embedding files using Media CKEditor',
+            'path' => '%base_path%profiles/os2intra/modules/contrib/media_ckeditor/js/plugins/media/',
             'buttons' => array(
               'Media' => array(
-                'label' => 'Media',
-                'icon' => 'images/icon.gif',
+                'icon' => 'icons/media.png',
+                'label' => 'Add media',
               ),
             ),
             'default' => 'f',
@@ -98,7 +99,7 @@ config.scayt_sLang = \'da_DK\';',
     'CKEditor Global Profile' => array(
       'name' => 'CKEditor Global Profile',
       'settings' => array(
-        'skin' => 'moono',
+        'skin' => 'moono-lisa',
         'ckeditor_path' => '%l/ckeditor',
         'ckeditor_local_path' => '',
         'ckeditor_plugins_path' => '%m/plugins',
@@ -168,7 +169,9 @@ config.scayt_sLang = \'da_DK\';',
         'forcePasteAsPlainText' => 'f',
         'html_entities' => 'f',
         'scayt_autoStartup' => 'f',
-        'theme_config_js' => 'f',
+        'disableNativeSpellChecker' => 'f',
+        'config_js' => 'none',
+        'config_js_path' => '',
         'js_conf' => 'config.wsc_lang = \'da_DK\';
 config.scayt_defLan = \'da_DK\';
 config.language = \'da_DK\';
@@ -199,15 +202,20 @@ config.scayt_sLang = \'da_DK\';',
           ),
           'media' => array(
             'name' => 'media',
-            'desc' => 'Plugin for inserting images from Drupal media module',
-            'path' => '%plugin_dir%media/',
+            'desc' => 'Plugin for embedding files using Media CKEditor',
+            'path' => '%base_path%profiles/os2intra/modules/contrib/media_ckeditor/js/plugins/media/',
             'buttons' => array(
               'Media' => array(
-                'label' => 'Media',
-                'icon' => 'images/icon.gif',
+                'icon' => 'icons/media.png',
+                'label' => 'Add media',
               ),
             ),
             'default' => 'f',
+          ),
+          'mediaBrowser' => array(
+            'name' => 'mediaBrowser',
+            'desc' => 'Media Browser for File Upload/Browsing',
+            'path' => '/profiles/os2intra/modules/patched/ckeditor_media/plugins/mediaBrowser/',
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * os2intra_content_types.features.filter.inc
@@ -55,7 +56,13 @@ function os2intra_content_types_filter_default_formats() {
     'cache' => 1,
     'status' => 1,
     'weight' => -9,
-    'filters' => array(),
+    'filters' => array(
+      'media_filter' => array(
+        'weight' => 2,
+        'status' => 1,
+        'settings' => array(),
+      ),
+    ),
   );
 
   // Exported format: indhold.
@@ -105,6 +112,11 @@ function os2intra_content_types_filter_default_formats() {
       ),
       'wordfilter' => array(
         'weight' => 0,
+        'status' => 1,
+        'settings' => array(),
+      ),
+      'media_filter' => array(
+        'weight' => 2,
         'status' => 1,
         'settings' => array(),
       ),

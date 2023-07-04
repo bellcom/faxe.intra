@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * os2intra_content_types.features.field_base.inc
@@ -128,11 +129,15 @@ function os2intra_content_types_field_default_field_bases() {
       'revision_id' => array(
         0 => 'revision_id',
       ),
+      'value' => array(
+        0 => 'value',
+      ),
     ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
       'hide_blank_items' => 1,
+      'hide_initial_item' => FALSE,
       'path' => '',
     ),
     'translatable' => 0,
@@ -181,7 +186,11 @@ function os2intra_content_types_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2intra_canteen_menu_date',
-    'indexes' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
     'locked' => 0,
     'module' => 'date',
     'settings' => array(
@@ -210,7 +219,15 @@ function os2intra_content_types_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2intra_date',
-    'indexes' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+        1 => 'value2',
+      ),
+      'value2' => array(
+        0 => 'value2',
+      ),
+    ),
     'locked' => 0,
     'module' => 'date',
     'settings' => array(
@@ -230,6 +247,50 @@ function os2intra_content_types_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'datetime',
+  );
+
+  // Exported field_base: 'field_os2intra_department'.
+  $field_bases['field_os2intra_department'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_os2intra_department',
+    'indexes' => array(
+      'nid' => array(
+        0 => 'nid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'node_reference',
+    'settings' => array(
+      'referenceable_types' => array(
+        'event' => 0,
+        'faxe_furniture_order' => 0,
+        'faxe_furniture_product' => 0,
+        'it_vejledning' => 0,
+        'node_basket' => 0,
+        'os2intra_base_page' => 0,
+        'os2intra_canteen_menu' => 0,
+        'os2intra_group' => 0,
+        'os2intra_message_notification' => 0,
+        'os2intra_org_group_unit' => 'os2intra_org_group_unit',
+        'os2intra_referat' => 0,
+        'os2web_base_selfservice_link' => 0,
+        'post' => 0,
+        'spotbox' => 0,
+        'systemgenveje' => 0,
+        'webform' => 0,
+        'wiki' => 0,
+      ),
+      'view' => array(
+        'args' => array(),
+        'display_name' => '',
+        'view_name' => '',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'node_reference',
   );
 
   // Exported field_base: 'field_os2intra_event_type'.
@@ -420,11 +481,15 @@ function os2intra_content_types_field_default_field_bases() {
       'revision_id' => array(
         0 => 'revision_id',
       ),
+      'value' => array(
+        0 => 'value',
+      ),
     ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
       'hide_blank_items' => 1,
+      'hide_initial_item' => FALSE,
       'path' => '',
     ),
     'translatable' => 0,
@@ -911,6 +976,8 @@ function os2intra_content_types_field_default_field_bases() {
     'settings' => array(
       'bundle' => NULL,
       'icon' => NULL,
+      'wrapper' => NULL,
+      'wrapper_class' => NULL,
     ),
     'translatable' => 0,
     'type' => 'icon_field',

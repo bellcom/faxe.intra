@@ -76,11 +76,17 @@
     <?php if (isset($content)): ?>
       <!-- Begin - body -->
       <div class="os2-node-full-body">
+        <?php if (isset($content['field_os2intra_department'])): ?>
+          <?php hide($content['field_os2intra_department']); ?>
+        <?php endif; ?>
         <?php print render($content); ?>
 
         <?php if (isset($sections)): ?>
           <?php print $sections; ?>
         <?php endif ?>
+        <?php if (isset($content['field_os2intra_department'])): ?>
+          <?php print render($content['field_os2intra_department']); ?>
+        <?php endif; ?>
       </div>
       <!-- End - body -->
     <?php endif; ?>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * os2intra_content_types.strongarm.inc
@@ -433,25 +434,172 @@ function os2intra_content_types_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'diff_enable_revisions_page_node_event';
+  $strongarm->value = 1;
+  $export['diff_enable_revisions_page_node_event'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_enable_revisions_page_node_it_vejledning';
+  $strongarm->value = 1;
+  $export['diff_enable_revisions_page_node_it_vejledning'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_enable_revisions_page_node_os2intra_base_page';
+  $strongarm->value = 1;
+  $export['diff_enable_revisions_page_node_os2intra_base_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_enable_revisions_page_node_os2intra_message_notification';
+  $strongarm->value = 1;
+  $export['diff_enable_revisions_page_node_os2intra_message_notification'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_enable_revisions_page_node_os2web_base_selfservice_link';
+  $strongarm->value = 1;
+  $export['diff_enable_revisions_page_node_os2web_base_selfservice_link'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_enable_revisions_page_node_spotbox';
+  $strongarm->value = 1;
+  $export['diff_enable_revisions_page_node_spotbox'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_enable_revisions_page_node_wiki';
+  $strongarm->value = 1;
+  $export['diff_enable_revisions_page_node_wiki'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_show_preview_changes_node_event';
+  $strongarm->value = 1;
+  $export['diff_show_preview_changes_node_event'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_show_preview_changes_node_it_vejledning';
+  $strongarm->value = 1;
+  $export['diff_show_preview_changes_node_it_vejledning'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_show_preview_changes_node_os2intra_base_page';
+  $strongarm->value = 1;
+  $export['diff_show_preview_changes_node_os2intra_base_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_show_preview_changes_node_os2intra_message_notification';
+  $strongarm->value = 1;
+  $export['diff_show_preview_changes_node_os2intra_message_notification'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_show_preview_changes_node_os2web_base_selfservice_link';
+  $strongarm->value = 1;
+  $export['diff_show_preview_changes_node_os2web_base_selfservice_link'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_show_preview_changes_node_spotbox';
+  $strongarm->value = 1;
+  $export['diff_show_preview_changes_node_spotbox'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_show_preview_changes_node_wiki';
+  $strongarm->value = 1;
+  $export['diff_show_preview_changes_node_wiki'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_view_mode_preview_node_event';
+  $strongarm->value = 'full';
+  $export['diff_view_mode_preview_node_event'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_view_mode_preview_node_it_vejledning';
+  $strongarm->value = 'full';
+  $export['diff_view_mode_preview_node_it_vejledning'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_view_mode_preview_node_os2intra_base_page';
+  $strongarm->value = 'full';
+  $export['diff_view_mode_preview_node_os2intra_base_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_view_mode_preview_node_os2intra_message_notification';
+  $strongarm->value = 'full';
+  $export['diff_view_mode_preview_node_os2intra_message_notification'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_view_mode_preview_node_os2web_base_selfservice_link';
+  $strongarm->value = 'full';
+  $export['diff_view_mode_preview_node_os2web_base_selfservice_link'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_view_mode_preview_node_spotbox';
+  $strongarm->value = 'full';
+  $export['diff_view_mode_preview_node_spotbox'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_view_mode_preview_node_wiki';
+  $strongarm->value = 'full';
+  $export['diff_view_mode_preview_node_wiki'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_field_collection_item__field_os2intra_paragraph';
   $strongarm->value = array(
+    'extra_fields' => array(
+      'display' => array(),
+      'form' => array(),
+    ),
     'view_modes' => array(
-      'full' => array(
-        'custom_settings' => FALSE,
-      ),
       'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
-      'token' => array(
+      'full' => array(
         'custom_settings' => FALSE,
       ),
       'print' => array(
         'custom_settings' => FALSE,
       ),
-    ),
-    'extra_fields' => array(
-      'form' => array(),
-      'display' => array(),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
   );
   $export['field_bundle_settings_field_collection_item__field_os2intra_paragraph'] = $strongarm;
@@ -461,11 +609,54 @@ function os2intra_content_types_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__event';
   $strongarm->value = array(
+    'extra_fields' => array(
+      'display' => array(
+        'flag_os2intra_flag_info_til_alle' => array(
+          'default' => array(
+            'visible' => TRUE,
+            'weight' => '7',
+          ),
+          'teaser' => array(
+            'visible' => FALSE,
+            'weight' => '6',
+          ),
+        ),
+      ),
+      'form' => array(
+        'flag' => array(
+          'weight' => '10',
+        ),
+        'metatags' => array(
+          'weight' => '6',
+        ),
+        'path' => array(
+          'weight' => '3',
+        ),
+        'redirect' => array(
+          'weight' => '4',
+        ),
+        'scheduler_settings' => array(
+          'weight' => '0',
+        ),
+        'title' => array(
+          'weight' => '4',
+        ),
+      ),
+    ),
     'view_modes' => array(
-      'teaser' => array(
-        'custom_settings' => TRUE,
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
       ),
       'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'includeable' => array(
+        'custom_settings' => TRUE,
+      ),
+      'list' => array(
+        'custom_settings' => TRUE,
+      ),
+      'print' => array(
         'custom_settings' => FALSE,
       ),
       'rss' => array(
@@ -477,54 +668,11 @@ function os2intra_content_types_strongarm() {
       'search_result' => array(
         'custom_settings' => FALSE,
       ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
+      'teaser' => array(
+        'custom_settings' => TRUE,
       ),
       'token' => array(
         'custom_settings' => FALSE,
-      ),
-      'list' => array(
-        'custom_settings' => TRUE,
-      ),
-      'includeable' => array(
-        'custom_settings' => TRUE,
-      ),
-      'print' => array(
-        'custom_settings' => FALSE,
-      ),
-    ),
-    'extra_fields' => array(
-      'form' => array(
-        'metatags' => array(
-          'weight' => '6',
-        ),
-        'title' => array(
-          'weight' => '4',
-        ),
-        'path' => array(
-          'weight' => '3',
-        ),
-        'redirect' => array(
-          'weight' => '4',
-        ),
-        'scheduler_settings' => array(
-          'weight' => '0',
-        ),
-        'flag' => array(
-          'weight' => '10',
-        ),
-      ),
-      'display' => array(
-        'flag_os2intra_flag_info_til_alle' => array(
-          'teaser' => array(
-            'weight' => '6',
-            'visible' => FALSE,
-          ),
-          'default' => array(
-            'weight' => '7',
-            'visible' => TRUE,
-          ),
-        ),
       ),
     ),
   );
@@ -535,45 +683,11 @@ function os2intra_content_types_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__it_vejledning';
   $strongarm->value = array(
-    'view_modes' => array(
-      'teaser' => array(
-        'custom_settings' => TRUE,
-      ),
-      'full' => array(
-        'custom_settings' => FALSE,
-      ),
-      'rss' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_index' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_result' => array(
-        'custom_settings' => FALSE,
-      ),
-      'print' => array(
-        'custom_settings' => FALSE,
-      ),
-      'token' => array(
-        'custom_settings' => FALSE,
-      ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
-      ),
-      'list' => array(
-        'custom_settings' => TRUE,
-      ),
-      'includeable' => array(
-        'custom_settings' => TRUE,
-      ),
-    ),
     'extra_fields' => array(
+      'display' => array(),
       'form' => array(
         'metatags' => array(
           'weight' => '12',
-        ),
-        'title' => array(
-          'weight' => '1',
         ),
         'path' => array(
           'weight' => '3',
@@ -584,22 +698,25 @@ function os2intra_content_types_strongarm() {
         'scheduler_settings' => array(
           'weight' => '0',
         ),
+        'title' => array(
+          'weight' => '1',
+        ),
       ),
-      'display' => array(),
     ),
-  );
-  $export['field_bundle_settings_node__it_vejledning'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__os2intra_base_page';
-  $strongarm->value = array(
     'view_modes' => array(
-      'teaser' => array(
-        'custom_settings' => TRUE,
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
       ),
       'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'includeable' => array(
+        'custom_settings' => TRUE,
+      ),
+      'list' => array(
+        'custom_settings' => TRUE,
+      ),
+      'print' => array(
         'custom_settings' => FALSE,
       ),
       'rss' => array(
@@ -611,29 +728,26 @@ function os2intra_content_types_strongarm() {
       'search_result' => array(
         'custom_settings' => FALSE,
       ),
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
       'token' => array(
         'custom_settings' => FALSE,
       ),
-      'list' => array(
-        'custom_settings' => TRUE,
-      ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
-      ),
-      'includeable' => array(
-        'custom_settings' => TRUE,
-      ),
-      'print' => array(
-        'custom_settings' => FALSE,
-      ),
     ),
+  );
+  $export['field_bundle_settings_node__it_vejledning'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__os2intra_base_page';
+  $strongarm->value = array(
     'extra_fields' => array(
+      'display' => array(),
       'form' => array(
         'metatags' => array(
           'weight' => '8',
-        ),
-        'title' => array(
-          'weight' => '1',
         ),
         'path' => array(
           'weight' => '7',
@@ -644,8 +758,45 @@ function os2intra_content_types_strongarm() {
         'scheduler_settings' => array(
           'weight' => '25',
         ),
+        'title' => array(
+          'weight' => '1',
+        ),
       ),
-      'display' => array(),
+    ),
+    'view_modes' => array(
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'drupalgap' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'includeable' => array(
+        'custom_settings' => TRUE,
+      ),
+      'list' => array(
+        'custom_settings' => TRUE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
   );
   $export['field_bundle_settings_node__os2intra_base_page'] = $strongarm;
@@ -655,9 +806,26 @@ function os2intra_content_types_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__os2intra_canteen_menu';
   $strongarm->value = array(
+    'extra_fields' => array(
+      'display' => array(),
+      'form' => array(
+        'metatags' => array(
+          'weight' => '6',
+        ),
+        'path' => array(
+          'weight' => '5',
+        ),
+        'redirect' => array(
+          'weight' => '4',
+        ),
+        'title' => array(
+          'weight' => '0',
+        ),
+      ),
+    ),
     'view_modes' => array(
-      'teaser' => array(
-        'custom_settings' => TRUE,
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
       ),
       'full' => array(
         'custom_settings' => FALSE,
@@ -671,29 +839,12 @@ function os2intra_content_types_strongarm() {
       'search_result' => array(
         'custom_settings' => FALSE,
       ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
+      'teaser' => array(
+        'custom_settings' => TRUE,
       ),
       'token' => array(
         'custom_settings' => FALSE,
       ),
-    ),
-    'extra_fields' => array(
-      'form' => array(
-        'metatags' => array(
-          'weight' => '6',
-        ),
-        'title' => array(
-          'weight' => '0',
-        ),
-        'path' => array(
-          'weight' => '5',
-        ),
-        'redirect' => array(
-          'weight' => '4',
-        ),
-      ),
-      'display' => array(),
     ),
   );
   $export['field_bundle_settings_node__os2intra_canteen_menu'] = $strongarm;
@@ -703,36 +854,11 @@ function os2intra_content_types_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__os2intra_message_notification';
   $strongarm->value = array(
-    'view_modes' => array(
-      'teaser' => array(
-        'custom_settings' => TRUE,
-      ),
-      'full' => array(
-        'custom_settings' => FALSE,
-      ),
-      'rss' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_index' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_result' => array(
-        'custom_settings' => FALSE,
-      ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
-      ),
-      'token' => array(
-        'custom_settings' => FALSE,
-      ),
-    ),
     'extra_fields' => array(
+      'display' => array(),
       'form' => array(
         'metatags' => array(
           'weight' => '5',
-        ),
-        'title' => array(
-          'weight' => '1',
         ),
         'path' => array(
           'weight' => '5',
@@ -743,8 +869,33 @@ function os2intra_content_types_strongarm() {
         'scheduler_settings' => array(
           'weight' => '0',
         ),
+        'title' => array(
+          'weight' => '1',
+        ),
       ),
-      'display' => array(),
+    ),
+    'view_modes' => array(
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
   );
   $export['field_bundle_settings_node__os2intra_message_notification'] = $strongarm;
@@ -754,12 +905,9 @@ function os2intra_content_types_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__os2web_base_selfservice_link';
   $strongarm->value = array(
-    'view_modes' => array(),
     'extra_fields' => array(
+      'display' => array(),
       'form' => array(
-        'title' => array(
-          'weight' => '2',
-        ),
         'path' => array(
           'weight' => '9',
         ),
@@ -769,9 +917,12 @@ function os2intra_content_types_strongarm() {
         'scheduler_settings' => array(
           'weight' => '1',
         ),
+        'title' => array(
+          'weight' => '2',
+        ),
       ),
-      'display' => array(),
     ),
+    'view_modes' => array(),
   );
   $export['field_bundle_settings_node__os2web_base_selfservice_link'] = $strongarm;
 
@@ -780,10 +931,21 @@ function os2intra_content_types_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__spotbox';
   $strongarm->value = array(
-    'view_modes' => array(
-      'teaser' => array(
-        'custom_settings' => TRUE,
+    'extra_fields' => array(
+      'display' => array(),
+      'form' => array(
+        'path' => array(
+          'weight' => '30',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
+        'title' => array(
+          'weight' => '-5',
+        ),
       ),
+    ),
+    'view_modes' => array(
       'full' => array(
         'custom_settings' => FALSE,
       ),
@@ -796,23 +958,12 @@ function os2intra_content_types_strongarm() {
       'search_result' => array(
         'custom_settings' => FALSE,
       ),
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
       'token' => array(
         'custom_settings' => FALSE,
       ),
-    ),
-    'extra_fields' => array(
-      'form' => array(
-        'title' => array(
-          'weight' => '-5',
-        ),
-        'path' => array(
-          'weight' => '30',
-        ),
-        'redirect' => array(
-          'weight' => '30',
-        ),
-      ),
-      'display' => array(),
     ),
   );
   $export['field_bundle_settings_node__spotbox'] = $strongarm;
@@ -822,45 +973,21 @@ function os2intra_content_types_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__wiki';
   $strongarm->value = array(
-    'view_modes' => array(
-      'teaser' => array(
-        'custom_settings' => TRUE,
-      ),
-      'full' => array(
-        'custom_settings' => FALSE,
-      ),
-      'rss' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_index' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_result' => array(
-        'custom_settings' => FALSE,
-      ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
-      ),
-      'token' => array(
-        'custom_settings' => FALSE,
-      ),
-      'list' => array(
-        'custom_settings' => TRUE,
-      ),
-      'includeable' => array(
-        'custom_settings' => TRUE,
-      ),
-      'print' => array(
-        'custom_settings' => FALSE,
-      ),
-    ),
     'extra_fields' => array(
+      'display' => array(
+        'flag_os2intra_flag_info_til_alle' => array(
+          'default' => array(
+            'visible' => FALSE,
+            'weight' => '12',
+          ),
+        ),
+      ),
       'form' => array(
-        'metatags' => array(
+        'flag' => array(
           'weight' => '3',
         ),
-        'title' => array(
-          'weight' => '44',
+        'metatags' => array(
+          'weight' => '3',
         ),
         'path' => array(
           'weight' => '2',
@@ -871,17 +998,41 @@ function os2intra_content_types_strongarm() {
         'scheduler_settings' => array(
           'weight' => '39',
         ),
-        'flag' => array(
-          'weight' => '3',
+        'title' => array(
+          'weight' => '44',
         ),
       ),
-      'display' => array(
-        'flag_os2intra_flag_info_til_alle' => array(
-          'default' => array(
-            'weight' => '12',
-            'visible' => FALSE,
-          ),
-        ),
+    ),
+    'view_modes' => array(
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'includeable' => array(
+        'custom_settings' => TRUE,
+      ),
+      'list' => array(
+        'custom_settings' => TRUE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
       ),
     ),
   );
@@ -2220,15 +2371,15 @@ function os2intra_content_types_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'taxonomy_menu_trails_node_it_vejledning';
   $strongarm->value = array(
-    'selection_method' => 'first',
-    'only_without_menu' => 1,
-    'set_breadcrumb' => 'if_empty',
-    'term_path' => 'tm',
-    'term_path_patterns' => array(),
     'instances' => array(
       'field_os2intra_base_structure' => 'field_os2intra_base_structure',
     ),
+    'only_without_menu' => 1,
     'paths_ui' => '',
+    'selection_method' => 'first',
+    'set_breadcrumb' => 'if_empty',
+    'term_path' => 'tm',
+    'term_path_patterns' => array(),
     'trail_per_menu' => 1,
   );
   $export['taxonomy_menu_trails_node_it_vejledning'] = $strongarm;

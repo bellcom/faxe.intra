@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * os2intra_content_types.field_group.inc
@@ -20,26 +21,26 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_vejledning';
   $field_group->data = array(
-    'label' => '1',
-    'weight' => '7',
     'children' => array(
       0 => 'field_os2intra_itvejledning_hand',
     ),
-    'format_type' => 'div',
     'format_settings' => array(
-      'label' => '1',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'id' => '',
         'classes' => 'group-1 field-group-div col-md-4',
         'description' => '',
-        'show_label' => '0',
-        'label_element' => 'h3',
         'effect' => 'none',
+        'id' => '',
+        'label_element' => 'h3',
+        'required_fields' => 1,
+        'show_label' => '0',
         'speed' => 'fast',
       ),
-      'formatter' => 'open',
+      'label' => '1',
     ),
+    'format_type' => 'div',
+    'label' => '1',
+    'weight' => '7',
   );
   $field_groups['group_1|field_collection_item|field_os2intra_base_vejledning|form'] = $field_group;
 
@@ -53,26 +54,26 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_vejledning';
   $field_group->data = array(
-    'label' => '2',
-    'weight' => '8',
     'children' => array(
       0 => 'field_os2intra_itvejledninger_4',
     ),
-    'format_type' => 'div',
     'format_settings' => array(
-      'label' => '2',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'id' => '',
         'classes' => 'group-2 field-group-div col-md-4',
         'description' => '',
-        'show_label' => '0',
-        'label_element' => 'h3',
         'effect' => 'none',
+        'id' => '',
+        'label_element' => 'h3',
+        'required_fields' => 1,
+        'show_label' => '0',
         'speed' => 'fast',
       ),
-      'formatter' => 'open',
+      'label' => '2',
     ),
+    'format_type' => 'div',
+    'label' => '2',
+    'weight' => '8',
   );
   $field_groups['group_2|field_collection_item|field_os2intra_base_vejledning|form'] = $field_group;
 
@@ -86,26 +87,26 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_vejledning';
   $field_group->data = array(
-    'label' => '3',
-    'weight' => '9',
     'children' => array(
       0 => 'field_os2intra_itvejledning_img',
     ),
-    'format_type' => 'div',
     'format_settings' => array(
-      'label' => '3',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'id' => '',
         'classes' => 'group-3 field-group-div col-md-4',
         'description' => '',
-        'show_label' => '0',
-        'label_element' => 'h3',
         'effect' => 'none',
+        'id' => '',
+        'label_element' => 'h3',
+        'required_fields' => 1,
+        'show_label' => '0',
         'speed' => 'fast',
       ),
-      'formatter' => 'open',
+      'label' => '3',
     ),
+    'format_type' => 'div',
+    'label' => '3',
+    'weight' => '9',
   );
   $field_groups['group_3|field_collection_item|field_os2intra_base_vejledning|form'] = $field_group;
 
@@ -119,21 +120,21 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_itvejledning';
   $field_group->data = array(
-    'label' => 'Afsnit',
-    'weight' => '14',
     'children' => array(
       0 => 'field_os2intra_paragraph',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-afsnit field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Afsnit',
+    'weight' => '14',
   );
   $field_groups['group_afsnit|node|it_vejledning|form'] = $field_group;
 
@@ -147,21 +148,21 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_form';
   $field_group->data = array(
-    'label' => 'Afsnit',
-    'weight' => '3',
     'children' => array(
       0 => 'field_os2intra_paragraph',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-afsnit field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Afsnit',
+    'weight' => '3',
   );
   $field_groups['group_afsnit|node|os2intra_base_page|form'] = $field_group;
 
@@ -175,20 +176,20 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_wiki';
   $field_group->data = array(
-    'label' => 'Afsnit',
-    'weight' => '19',
     'children' => array(
       0 => 'field_os2intra_paragraph',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-afsnit field-group-htab',
+        'description' => '',
         'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Afsnit',
+    'weight' => '19',
   );
   $field_groups['group_afsnit|node|wiki|form'] = $field_group;
 
@@ -202,22 +203,22 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_vigtigt';
   $field_group->data = array(
-    'label' => 'Vigtig besked',
-    'weight' => '1',
     'children' => array(
       0 => 'body',
       1 => 'title',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-besked field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Vigtig besked',
+    'weight' => '1',
   );
   $field_groups['group_besked|node|os2intra_message_notification|form'] = $field_group;
 
@@ -231,24 +232,25 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_post';
   $field_group->data = array(
-    'label' => 'Indhold',
-    'weight' => '13',
     'children' => array(
       0 => 'body',
       1 => 'field_os2web_base_field_kle_ref',
       2 => 'field_os2web_base_field_edi_tags',
-      3 => 'title',
+      3 => 'field_os2intra_send_notification',
+      4 => 'title',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-content field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Indhold',
+    'weight' => '13',
   );
   $field_groups['group_content|node|post|form'] = $field_group;
 
@@ -262,8 +264,6 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Begivenhed',
-    'weight' => '0',
     'children' => array(
       0 => 'group_indstillinger',
       1 => 'group_media',
@@ -272,13 +272,15 @@ function os2intra_content_types_field_group_info() {
       4 => 'group_tekst',
       5 => 'group_tilmelding',
     ),
-    'format_type' => 'htabs',
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
         'classes' => 'group-event field-group-htabs',
       ),
     ),
+    'format_type' => 'htabs',
+    'label' => 'Begivenhed',
+    'weight' => '0',
   );
   $field_groups['group_event|node|event|form'] = $field_group;
 
@@ -292,23 +294,23 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Formular',
-    'weight' => '0',
     'children' => array(
-      0 => 'group_spotsnforms',
-      1 => 'group_afsnit',
-      2 => 'group_media',
-      3 => 'group_meta2',
-      4 => 'group_meta',
+      0 => 'group_afsnit',
+      1 => 'group_media',
+      2 => 'group_meta2',
+      3 => 'group_meta',
+      4 => 'group_spotsnforms',
       5 => 'group_tekst',
     ),
-    'format_type' => 'htabs',
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
         'classes' => 'group-form field-group-htabs',
       ),
     ),
+    'format_type' => 'htabs',
+    'label' => 'Formular',
+    'weight' => '0',
   );
   $field_groups['group_form|node|os2intra_base_page|form'] = $field_group;
 
@@ -322,21 +324,21 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_link';
   $field_group->data = array(
-    'label' => 'Indstillinger',
-    'weight' => '12',
     'children' => array(
       0 => 'scheduler_settings',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-indstilliger field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Indstillinger',
+    'weight' => '12',
   );
   $field_groups['group_indstilliger|node|os2web_base_selfservice_link|form'] = $field_group;
 
@@ -350,23 +352,23 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_event';
   $field_group->data = array(
-    'label' => 'Indstillinger',
-    'weight' => '54',
     'children' => array(
       0 => 'field_os2web_base_field_promote',
       1 => 'group_content_access',
       2 => 'scheduler_settings',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-indstillinger field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Indstillinger',
+    'weight' => '54',
   );
   $field_groups['group_indstillinger|node|event|form'] = $field_group;
 
@@ -380,21 +382,21 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_itvejledning';
   $field_group->data = array(
-    'label' => 'Indstillinger',
-    'weight' => '18',
     'children' => array(
       0 => 'scheduler_settings',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-indstillinger field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Indstillinger',
+    'weight' => '18',
   );
   $field_groups['group_indstillinger|node|it_vejledning|form'] = $field_group;
 
@@ -408,8 +410,6 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_post';
   $field_group->data = array(
-    'label' => 'Indstillinger',
-    'weight' => '18',
     'children' => array(
       0 => 'field_os2web_base_field_promote',
       1 => 'group_content_access',
@@ -417,16 +417,18 @@ function os2intra_content_types_field_group_info() {
       3 => 'flag',
       4 => 'scheduler_settings',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-indstillinger field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Indstillinger',
+    'weight' => '18',
   );
   $field_groups['group_indstillinger|node|post|form'] = $field_group;
 
@@ -440,22 +442,22 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_wiki';
   $field_group->data = array(
-    'label' => 'Indstillinger',
-    'weight' => '20',
     'children' => array(
       0 => 'group_content_access',
       1 => 'field_os2web_base_field_promote',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-indstillinger field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Indstillinger',
+    'weight' => '20',
   );
   $field_groups['group_indstillinger|node|wiki|form'] = $field_group;
 
@@ -469,8 +471,6 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'ITVejledning',
-    'weight' => '0',
     'children' => array(
       0 => 'group_indstillinger',
       1 => 'group_meta',
@@ -480,13 +480,15 @@ function os2intra_content_types_field_group_info() {
       5 => 'group_media',
       6 => 'group_afsnit',
     ),
-    'format_type' => 'htabs',
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
         'classes' => 'group-itvejledning field-group-htabs',
       ),
     ),
+    'format_type' => 'htabs',
+    'label' => 'ITVejledning',
+    'weight' => '0',
   );
   $field_groups['group_itvejledning|node|it_vejledning|form'] = $field_group;
 
@@ -500,22 +502,22 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'default';
   $field_group->parent_name = 'group_row';
   $field_group->data = array(
-    'label' => 'Kolonne 1',
-    'weight' => '6',
     'children' => array(
       0 => 'field_os2intra_itvejledning_hand',
     ),
-    'format_type' => 'html-element',
     'format_settings' => array(
-      'label' => 'Kolonne 1',
       'instance_settings' => array(
+        'attributes' => '',
         'classes' => 'col-sm-3',
         'element' => 'div',
-        'show_label' => '0',
         'label_element' => 'div',
-        'attributes' => '',
+        'show_label' => '0',
       ),
+      'label' => 'Kolonne 1',
     ),
+    'format_type' => 'html-element',
+    'label' => 'Kolonne 1',
+    'weight' => '6',
   );
   $field_groups['group_kolonne1|field_collection_item|field_os2intra_base_vejledning|default'] = $field_group;
 
@@ -529,22 +531,22 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'default';
   $field_group->parent_name = 'group_row';
   $field_group->data = array(
-    'label' => 'Kolonne 2',
-    'weight' => '8',
     'children' => array(
       0 => 'field_os2intra_itvejledning_img',
     ),
-    'format_type' => 'html-element',
     'format_settings' => array(
-      'label' => 'Kolonne 2',
       'instance_settings' => array(
+        'attributes' => '',
         'classes' => 'col-sm-3',
         'element' => 'div',
-        'show_label' => '0',
         'label_element' => 'div',
-        'attributes' => '',
+        'show_label' => '0',
       ),
+      'label' => 'Kolonne 2',
     ),
+    'format_type' => 'html-element',
+    'label' => 'Kolonne 2',
+    'weight' => '8',
   );
   $field_groups['group_kolonne2|field_collection_item|field_os2intra_base_vejledning|default'] = $field_group;
 
@@ -558,22 +560,22 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'default';
   $field_group->parent_name = 'group_row';
   $field_group->data = array(
-    'label' => 'Kolonne 3',
-    'weight' => '7',
     'children' => array(
       0 => 'field_os2intra_itvejledninger_4',
     ),
-    'format_type' => 'html-element',
     'format_settings' => array(
-      'label' => 'Kolonne 3',
       'instance_settings' => array(
+        'attributes' => '',
         'classes' => 'col-sm-6',
         'element' => 'div',
-        'show_label' => '0',
         'label_element' => 'div',
-        'attributes' => '',
+        'show_label' => '0',
       ),
+      'label' => 'Kolonne 3',
     ),
+    'format_type' => 'html-element',
+    'label' => 'Kolonne 3',
+    'weight' => '7',
   );
   $field_groups['group_kolonne3|field_collection_item|field_os2intra_base_vejledning|default'] = $field_group;
 
@@ -587,8 +589,6 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_link';
   $field_group->data = array(
-    'label' => 'Selvbetjeningslink',
-    'weight' => '10',
     'children' => array(
       0 => 'field_os2web_base_field_kle_ref',
       1 => 'field_os2web_base_field_source',
@@ -597,16 +597,18 @@ function os2intra_content_types_field_group_info() {
       4 => 'field_urlos2intra_selvbetje_int',
       5 => 'title',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-linkset field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Selvbetjeningslink',
+    'weight' => '10',
   );
   $field_groups['group_linkset|node|os2web_base_selfservice_link|form'] = $field_group;
 
@@ -620,19 +622,19 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Selvbetjeningslink',
-    'weight' => '0',
     'children' => array(
       0 => 'group_indstilliger',
       1 => 'group_linkset',
     ),
-    'format_type' => 'htabs',
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
         'classes' => 'group-link field-group-htabs',
       ),
     ),
+    'format_type' => 'htabs',
+    'label' => 'Selvbetjeningslink',
+    'weight' => '0',
   );
   $field_groups['group_link|node|os2web_base_selfservice_link|form'] = $field_group;
 
@@ -646,21 +648,21 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_event';
   $field_group->data = array(
-    'label' => 'Media',
-    'weight' => '51',
     'children' => array(
       0 => 'field_os2intra_image',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-media field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Media',
+    'weight' => '51',
   );
   $field_groups['group_media|node|event|form'] = $field_group;
 
@@ -674,22 +676,22 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_itvejledning';
   $field_group->data = array(
-    'label' => 'Media',
-    'weight' => '15',
     'children' => array(
       0 => 'field_os2intra_images',
       1 => 'field_os2web_base_field_media',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-media field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Media',
+    'weight' => '15',
   );
   $field_groups['group_media|node|it_vejledning|form'] = $field_group;
 
@@ -703,22 +705,22 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_form';
   $field_group->data = array(
-    'label' => 'Media',
-    'weight' => '2',
     'children' => array(
       0 => 'field_os2intra_images',
       1 => 'field_os2web_base_field_media',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-media field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Media',
+    'weight' => '2',
   );
   $field_groups['group_media|node|os2intra_base_page|form'] = $field_group;
 
@@ -732,22 +734,22 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_wiki';
   $field_group->data = array(
-    'label' => 'Media',
-    'weight' => '16',
     'children' => array(
       0 => 'field_os2intra_images',
       1 => 'field_os2web_base_field_media',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-media field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Media',
+    'weight' => '16',
   );
   $field_groups['group_media|node|wiki|form'] = $field_group;
 
@@ -761,28 +763,27 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_form';
   $field_group->data = array(
-    'label' => 'Indstillinger',
-    'weight' => '7',
     'children' => array(
-      0 => 'field_synlighed',
-      1 => 'scheduler_settings',
+      0 => 'scheduler_settings',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
-      'label' => 'Indstillinger',
+      'formatter' => 'closed',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'id' => '',
         'classes' => 'group-meta2 field-group-htab',
         'description' => '',
+        'id' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'closed',
+      'label' => 'Indstillinger',
     ),
+    'format_type' => 'htab',
+    'label' => 'Indstillinger',
+    'weight' => '7',
   );
   $field_groups['group_meta2|node|os2intra_base_page|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_meta|node|event|form';
   $field_group->group_name = 'group_meta';
@@ -791,19 +792,19 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Meta',
-    'weight' => '52',
     'children' => array(),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-meta field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Meta',
+    'weight' => '52',
   );
   $field_groups['group_meta|node|event|form'] = $field_group;
 
@@ -817,24 +818,24 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_itvejledning';
   $field_group->data = array(
-    'label' => 'Referencer',
-    'weight' => '17',
     'children' => array(
       0 => 'field_os2intra_related_ref',
       1 => 'field_os2intra_selvbetjening_ref',
       2 => 'field_os2web_base_field_hidlinks',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
-      'label' => 'Referencer',
+      'formatter' => 'closed',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'id' => '',
         'classes' => 'group-meta field-group-htab',
         'description' => '',
+        'id' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'closed',
+      'label' => 'Referencer',
     ),
+    'format_type' => 'htab',
+    'label' => 'Referencer',
+    'weight' => '17',
   );
   $field_groups['group_meta|node|it_vejledning|form'] = $field_group;
 
@@ -848,29 +849,30 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_form';
   $field_group->data = array(
-    'label' => 'Referencer',
-    'weight' => '5',
     'children' => array(
       0 => 'field_os2web_base_field_hidlinks',
       1 => 'field_os2web_base_field_ref',
       2 => 'field_os2intra_selvbetjening_ref',
+      3 => 'field_os2intra_department',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
-      'label' => 'Referencer',
+      'formatter' => 'closed',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'id' => '',
         'classes' => '',
         'description' => '',
+        'id' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'closed',
+      'label' => 'Referencer',
     ),
+    'format_type' => 'htab',
+    'label' => 'Referencer',
+    'weight' => '5',
   );
   $field_groups['group_meta|node|os2intra_base_page|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_meta|node|wiki|form';
   $field_group->group_name = 'group_meta';
@@ -879,8 +881,6 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_wiki';
   $field_group->data = array(
-    'label' => 'Meta',
-    'weight' => '17',
     'children' => array(
       0 => 'field_os2intra_outdated_date',
       1 => 'field_radioactivity',
@@ -888,16 +888,18 @@ function os2intra_content_types_field_group_info() {
       3 => 'group_content_access',
       4 => 'og_group_ref',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-meta field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Meta',
+    'weight' => '17',
   );
   $field_groups['group_meta|node|wiki|form'] = $field_group;
 
@@ -911,23 +913,23 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_vigtigt';
   $field_group->data = array(
-    'label' => 'Modtagere',
-    'weight' => '2',
     'children' => array(
       0 => 'field_os2intra_physical_location',
       1 => 'field_os2intra_organisation_tref',
       2 => 'field_os2intra_organisation_ref',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-modtagere field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Modtagere',
+    'weight' => '2',
   );
   $field_groups['group_modtagere|node|os2intra_message_notification|form'] = $field_group;
 
@@ -941,21 +943,21 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_vigtigt';
   $field_group->data = array(
-    'label' => 'Planlæg',
-    'weight' => '3',
     'children' => array(
       0 => 'scheduler_settings',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-planlaeg field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Planlæg',
+    'weight' => '3',
   );
   $field_groups['group_planlaeg|node|os2intra_message_notification|form'] = $field_group;
 
@@ -969,22 +971,22 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Post',
-    'weight' => '0',
     'children' => array(
-      0 => 'group_content',
-      1 => 'group_indstillinger',
-      2 => 'group_spotsnforms',
-      3 => 'group_media',
-      4 => 'group_meta',
+      0 => 'group_media',
+      1 => 'group_meta',
+      2 => 'group_content',
+      3 => 'group_indstillinger',
+      4 => 'group_spotsnforms',
     ),
-    'format_type' => 'htabs',
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
         'classes' => 'group-post field-group-htabs',
       ),
     ),
+    'format_type' => 'htabs',
+    'label' => 'Post',
+    'weight' => '0',
   );
   $field_groups['group_post|node|post|form'] = $field_group;
 
@@ -998,24 +1000,24 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_event';
   $field_group->data = array(
-    'label' => 'Relationer',
-    'weight' => '53',
     'children' => array(
       0 => 'field_os2intra_related_ref',
       1 => 'field_os2intra_selvbetjening_ref',
       2 => 'og_group_ref',
       3 => 'field_os2web_base_field_hidlinks',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-relationer field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Relationer',
+    'weight' => '53',
   );
   $field_groups['group_relationer|node|event|form'] = $field_group;
 
@@ -1029,8 +1031,6 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_wiki';
   $field_group->data = array(
-    'label' => 'Relationer',
-    'weight' => '18',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'field_os2intra_physical_location',
@@ -1038,16 +1038,18 @@ function os2intra_content_types_field_group_info() {
       3 => 'field_os2web_base_field_ref',
       4 => 'field_os2web_base_field_hidlinks',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-relationer field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Relationer',
+    'weight' => '18',
   );
   $field_groups['group_relationer|node|wiki|form'] = $field_group;
 
@@ -1061,27 +1063,27 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'default';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Row',
-    'weight' => '0',
     'children' => array(
       0 => 'group_kolonne1',
       1 => 'group_kolonne2',
       2 => 'group_kolonne3',
     ),
-    'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Row',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'id' => '',
         'classes' => 'group-row field-group-div row',
         'description' => '',
-        'show_label' => '0',
-        'label_element' => 'h3',
         'effect' => 'none',
+        'id' => '',
+        'label_element' => 'h3',
+        'show_label' => '0',
         'speed' => 'fast',
       ),
-      'formatter' => 'open',
+      'label' => 'Row',
     ),
+    'format_type' => 'div',
+    'label' => 'Row',
+    'weight' => '0',
   );
   $field_groups['group_row|field_collection_item|field_os2intra_base_vejledning|default'] = $field_group;
 
@@ -1095,22 +1097,22 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_itvejledning';
   $field_group->data = array(
-    'label' => 'Spotbokse / webform',
-    'weight' => '16',
     'children' => array(
       0 => 'field_os2intra_base_spotboxes',
       1 => 'field_os2web_webform_ref',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-spotsnforms field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Spotbokse / webform',
+    'weight' => '16',
   );
   $field_groups['group_spotsnforms|node|it_vejledning|form'] = $field_group;
 
@@ -1124,22 +1126,22 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_form';
   $field_group->data = array(
-    'label' => 'Spotbokse / webform',
-    'weight' => '4',
     'children' => array(
       0 => 'field_os2intra_base_spotboxes',
       1 => 'field_os2web_webform_ref',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-spotsnforms field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Spotbokse / webform',
+    'weight' => '4',
   );
   $field_groups['group_spotsnforms|node|os2intra_base_page|form'] = $field_group;
 
@@ -1153,22 +1155,22 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_post';
   $field_group->data = array(
-    'label' => 'Spotbokse / webform',
-    'weight' => '14',
     'children' => array(
       0 => 'field_os2intra_base_spotboxes',
       1 => 'field_os2web_webform_ref',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-spotsnforms field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Spotbokse / webform',
+    'weight' => '14',
   );
   $field_groups['group_spotsnforms|node|post|form'] = $field_group;
 
@@ -1182,21 +1184,21 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_wiki';
   $field_group->data = array(
-    'label' => 'Spotbokse / webform',
-    'weight' => '17',
     'children' => array(
       0 => 'field_os2intra_base_spotboxes',
       1 => 'field_os2web_webform_ref',
     ),
-    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-spotsnforms field-group-tab',
+        'description' => '',
         'required_fields' => 1,
       ),
     ),
+    'format_type' => 'tab',
+    'label' => 'Spotbokse / webform',
+    'weight' => '17',
   );
   $field_groups['group_spotsnforms|node|wiki|form'] = $field_group;
 
@@ -1210,21 +1212,21 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_event';
   $field_group->data = array(
-    'label' => 'Spotbokse',
-    'weight' => '52',
     'children' => array(
       0 => 'field_os2intra_base_spotboxes',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-spots field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Spotbokse',
+    'weight' => '52',
   );
   $field_groups['group_spots|node|event|form'] = $field_group;
 
@@ -1238,8 +1240,6 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_event';
   $field_group->data = array(
-    'label' => 'Tekst',
-    'weight' => '49',
     'children' => array(
       0 => 'body',
       1 => 'field_os2intra_date',
@@ -1250,16 +1250,18 @@ function os2intra_content_types_field_group_info() {
       6 => 'field_os2intra_send_notification',
       7 => 'title',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-tekst field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Tekst',
+    'weight' => '49',
   );
   $field_groups['group_tekst|node|event|form'] = $field_group;
 
@@ -1273,8 +1275,6 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_itvejledning';
   $field_group->data = array(
-    'label' => 'Tekst',
-    'weight' => '12',
     'children' => array(
       0 => 'body',
       1 => 'field_os2intra_base_structure',
@@ -1283,16 +1283,18 @@ function os2intra_content_types_field_group_info() {
       4 => 'field_os2web_base_field_intro',
       5 => 'title',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-tekst field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Tekst',
+    'weight' => '12',
   );
   $field_groups['group_tekst|node|it_vejledning|form'] = $field_group;
 
@@ -1306,8 +1308,6 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_form';
   $field_group->data = array(
-    'label' => 'Tekst',
-    'weight' => '1',
     'children' => array(
       0 => 'body',
       1 => 'field_os2intra_base_structure',
@@ -1316,16 +1316,18 @@ function os2intra_content_types_field_group_info() {
       4 => 'field_os2web_base_field_kle_ref',
       5 => 'title',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => '',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Tekst',
+    'weight' => '1',
   );
   $field_groups['group_tekst|node|os2intra_base_page|form'] = $field_group;
 
@@ -1339,8 +1341,6 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_wiki';
   $field_group->data = array(
-    'label' => 'Tekst',
-    'weight' => '15',
     'children' => array(
       0 => 'body',
       1 => 'field_os2web_base_field_kle_ref',
@@ -1348,16 +1348,18 @@ function os2intra_content_types_field_group_info() {
       3 => 'field_os2intra_send_notification',
       4 => 'title',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-tekst field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Tekst',
+    'weight' => '15',
   );
   $field_groups['group_tekst|node|wiki|form'] = $field_group;
 
@@ -1371,21 +1373,21 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_event';
   $field_group->data = array(
-    'label' => 'Tilmelding',
-    'weight' => '50',
     'children' => array(
       0 => 'field_os2web_webform_ref',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-tilmelding field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Tilmelding',
+    'weight' => '50',
   );
   $field_groups['group_tilmelding|node|event|form'] = $field_group;
 
@@ -1399,28 +1401,28 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Vejledning',
-    'weight' => '0',
     'children' => array(
       0 => 'group_1',
       1 => 'group_2',
       2 => 'group_3',
     ),
-    'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Vejledning',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'id' => '',
         'classes' => 'group-vejledning field-group-div row',
         'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h3',
         'effect' => 'none',
+        'id' => '',
+        'label_element' => 'h3',
+        'required_fields' => 1,
+        'show_label' => '1',
         'speed' => 'fast',
       ),
-      'formatter' => 'open',
+      'label' => 'Vejledning',
     ),
+    'format_type' => 'div',
+    'label' => 'Vejledning',
+    'weight' => '0',
   );
   $field_groups['group_vejledning|field_collection_item|field_os2intra_base_vejledning|form'] = $field_group;
 
@@ -1434,21 +1436,21 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_itvejledning';
   $field_group->data = array(
-    'label' => 'Vejledning',
-    'weight' => '13',
     'children' => array(
       0 => 'field_os2intra_base_vejledning',
     ),
-    'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-vejledning field-group-htab',
-        'required_fields' => 1,
+        'description' => '',
         'id' => '',
+        'required_fields' => 1,
       ),
     ),
+    'format_type' => 'htab',
+    'label' => 'Vejledning',
+    'weight' => '13',
   );
   $field_groups['group_vejledning|node|it_vejledning|form'] = $field_group;
 
@@ -1462,20 +1464,20 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'vigtigt',
-    'weight' => '0',
     'children' => array(
       0 => 'group_besked',
       1 => 'group_planlaeg',
       2 => 'group_modtagere',
     ),
-    'format_type' => 'htabs',
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
         'classes' => 'group-vigtigt field-group-htabs',
       ),
     ),
+    'format_type' => 'htabs',
+    'label' => 'vigtigt',
+    'weight' => '0',
   );
   $field_groups['group_vigtigt|node|os2intra_message_notification|form'] = $field_group;
 
@@ -1489,8 +1491,6 @@ function os2intra_content_types_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'wiki',
-    'weight' => '0',
     'children' => array(
       0 => 'group_afsnit',
       1 => 'group_indstillinger',
@@ -1499,13 +1499,15 @@ function os2intra_content_types_field_group_info() {
       4 => 'group_spotsnforms',
       5 => 'group_tekst',
     ),
-    'format_type' => 'htabs',
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
         'classes' => 'group-wiki field-group-htabs',
       ),
     ),
+    'format_type' => 'htabs',
+    'label' => 'wiki',
+    'weight' => '0',
   );
   $field_groups['group_wiki|node|wiki|form'] = $field_group;
 
