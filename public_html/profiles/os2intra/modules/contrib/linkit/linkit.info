@@ -22,8 +22,8 @@ files[] = test/linkit_search_plugin_node.test
 files[] = test/linkit_search_plugin_user.test
 files[] = test/linkit_search_plugin_taxonomy_term.test
 
-; Information added by Drupal.org packaging script on 2020-12-26
-version = "7.x-3.6"
+; Information added by Drupal.org packaging script on 2024-08-16
+version = "7.x-3.8"
 core = "7.x"
 project = "linkit"
-datestamp = "1608948317"
+datestamp = "1723819572"

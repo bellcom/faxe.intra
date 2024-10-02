@@ -247,7 +247,12 @@ function linkit_search_plugin_load_all() {
  * Function used by uasort to sort plugins by weight.
  */
 function linkit_sort_plugins_by_weight($a, $b) {
-  return $a["weight"] >= $b["weight"];
+  $a_weight = (is_array($a) && isset($a['weight'])) ? $a['weight'] : 0;
+  $b_weight = (is_array($b) && isset($b['weight'])) ? $b['weight'] : 0;
+  if ($a_weight == $b_weight) {
+    return 0;
+  }
+  return ($a_weight < $b_weight) ? -1 : 1;
 }
 
 /**

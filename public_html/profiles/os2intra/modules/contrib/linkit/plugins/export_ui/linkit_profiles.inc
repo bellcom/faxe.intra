@@ -500,7 +500,12 @@ function _linkit_build_autocomplete_form_fields(&$form, LinkitProfile $profile) 
  * Function used by uasort to sort plugin arrays by the weight default value.
  */
 function _linkit_sort_plugins_by_weight_default_value($a, $b) {
-  return $a["weight"]['#default_value'] >= $b["weight"]['#default_value'];
+  $a_weight = (is_array($a) && isset(["weight"]['#default_value'])) ? ["weight"]['#default_value'] : 0;
+  $b_weight = (is_array($b) && isset($b["weight"]['#default_value'])) ? $b["weight"]['#default_value'] : 0;
+  if ($a_weight == $b_weight) {
+    return 0;
+  }
+  return ($a_weight < $b_weight) ? -1 : 1;
 }
 
 /**

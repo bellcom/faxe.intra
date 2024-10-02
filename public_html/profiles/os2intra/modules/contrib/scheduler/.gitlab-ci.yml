@@ -1,0 +1,35 @@
+include:
+  ################
+  # DrupalCI includes:
+  # As long as you include this, any future includes added by the Drupal Association will be accessible to your pipelines automatically.
+  # View these include files at https://git.drupalcode.org/project/gitlab_templates/
+  ################
+  - project: $_GITLAB_TEMPLATES_REPO
+    ref: $_GITLAB_TEMPLATES_REF
+    file:
+      - '/includes/include.drupalci.main-d7.yml'
+      - '/includes/include.drupalci.variables.yml'
+      - '/includes/include.drupalci.workflows.yml'
+
+variables:
+  _SHOW_ENVIRONMENT_VARIABLES: 0
+  _D7_DRUPAL_COMPOSER_NEEDED: 1
+  _PHPUNIT_PARAMETERS:
+    value: ''
+    description: 'Additional parameters for use in PHPUNIT parallel job matrix.'
+
+phpcs:
+  allow_failure: false
+
+phpunit:
+  parallel:
+    matrix:
+      # Run test classes in parallel.
+      - _MATRIX_VALUE:
+        - SchedulerFunctionalTest
+        - SchedulerDateModuleTest
+        - SchedulerRulesTest
+        - SchedulerApiTestCase
+  variables:
+    # Specify the required parameters passed to RUN-TESTS.SH
+    _PHPUNIT_EXTRA: --class $_MATRIX_VALUE $_PHPUNIT_PARAMETERS
