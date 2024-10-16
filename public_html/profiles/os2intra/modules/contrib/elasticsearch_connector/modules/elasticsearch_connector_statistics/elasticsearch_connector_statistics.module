@@ -192,7 +192,6 @@ function elasticsearch_connector_statistics_node_delete($node) {
  * @param int $nid
  */
 function elasticsearch_connector_statistics_delete_node_logs($nid) {
-  // TODO: Instead of deleting, update the logs and mark them deleted.
   $client_id = elasticsearch_connector_statistics_get_cluster_vars();
   if (!empty($client_id)) {
     $client = elasticsearch_connector_get_client_by_id($client_id);
@@ -201,21 +200,23 @@ function elasticsearch_connector_statistics_delete_node_logs($nid) {
       $params['index'] = $index_name;
       $params['type']  = variable_get('elasticsearch_connector_statistics_type',  ELASTICSEARCH_CONNECTOR_STATS_DEFAULT_TYPE);
       $params['body']['query'] = array(
-          'bool' => array(
-            'must' => array(
+          'filtered' => array(
+            'query' => array(
               'match_all' => array()
             ),
             'filter' => array(
-              array(
-                'term' => array(
-                  'entity.entity_nid' => $nid
-                )
-              ),
-              array(
-                'term' => array(
-                  'entity.entity_type' => 'node'
-                )
-              ),
+              'and' => array(
+                array(
+                  'term' => array(
+                    'entity.entity_nid' => $nid
+                  )
+                ),
+                array(
+                  'term' => array(
+                    'entity.entity_type' => 'node'
+                  )
+                ),
+              )
             ),
           )
         );
@@ -287,10 +288,10 @@ function _elasticsearch_connector_statistics_match_entity(&$path, $account) {
 
 /**
  *
- * @param \nodespark\DESConnector\ClientInterface $client
+ * @param \Elasticsearch\Client $client
  * @param array $access_log
  */
-function elasticsearch_connector_statistics_log_data(\nodespark\DESConnector\ClientInterface $client) {
+function elasticsearch_connector_statistics_log_data(\Elasticsearch\Client $client) {
   global $user;
 
   $cluster_settings = variable_get('elasticsearch_connector_statistics_cluster', array());
@@ -317,9 +318,8 @@ function elasticsearch_connector_statistics_log_data(\nodespark\DESConnector\Cli
     'entity'          => $entity,
     'referer'         => $_GET['referer'],
     'timestamp'      => time(),
+    '_ttl'            => $ttl,
   );
-
-  $doc['ttl'] = $ttl;
 
   // Alter the document, or add more fields.
   drupal_alter('elasticsearch_connector_statistics_log_data', $doc, $client);
@@ -337,11 +337,16 @@ function elasticsearch_connector_statistics_log_data(\nodespark\DESConnector\Cli
 
 /**
  * Default index mapping for the elasticsearch watchdog index.
+ * @param  integer $ttl
+ *   Time To Live setting.
  *
  * @return array
  *   The mapping index array.
  */
-function elasticsearch_connector_statistics_get_mapping() {
+function elasticsearch_connector_statistics_get_mapping($ttl = NULL) {
+  if (!isset($ttl)) {
+    $ttl = variable_get('elasticsearch_connector_statistics_ttl', ELASTICSEARCH_CONNECTOR_STATS_DEFAULT_INTERVAL);
+  }
 
   // Index Mapping
   $my_type_mapping = array(
@@ -351,48 +356,46 @@ function elasticsearch_connector_statistics_get_mapping() {
     '_all' => array(
       'enabled' => TRUE
     ),
+    '_ttl' => array(
+      'enabled' => TRUE,
+      'default' => $ttl,
+    ),
     'properties' => array(
       'title' => array(
-        'type' => 'text',
+        'type' => 'string',
       ),
       'path' => array(
-        'type' => 'keyword',
+        'type' => 'string',
+        'index' => 'not_analyzed'
       ),
       'domain' => array(
-        'type' => 'keyword',
+        'type' => 'string',
+        'index' => 'not_analyzed'
       ),
       'ip' => array(
-        'type' => 'ip',
+        'type' => 'string',
+        'index' => 'not_analyzed'
       ),
       'uid' => array(
         'type' => 'long',
       ),
       'timestamp' => array(
         'type' => 'date',
-        'format' => 'epoch_second',
       ),
       'username' => array(
-        'type' => 'keyword',
+        'type' => 'string',
+        'index' => 'not_analyzed'
       ),
       'page_language' => array(
-        'type' => 'keyword',
+        'type' => 'string',
+        'index' => 'not_analyzed'
       ),
-      'referrer' => array(
-        'type' => 'keyword',
+      'referer' => array(
+        'type' => 'string',
+        'index' => 'not_analyzed'
       ),
       'entity' => array(
         'type' => 'object',
-        'properties' => array(
-          'entity_id' => array(
-            'type' => 'keyword',
-          ),
-          'entity_type' => array(
-            'type' => 'keyword',
-          ),
-          'page' => array(
-            'type' => 'keyword',
-          ),
-        )
       ),
     )
   );
@@ -405,15 +408,15 @@ function elasticsearch_connector_statistics_get_mapping() {
 
 /**
  * Create Elasticsearch connector statistics type.
- * @param \nodespark\DESConnector\ClientInterface $client
+ * @param Elasticsearch\Client $client
  * @param string
  * @patam string
  * @return array
  */
-function elasticsearch_connector_statistics_create_type(\nodespark\DESConnector\ClientInterface $client, $index, $type) {
+function elasticsearch_connector_statistics_create_type(Elasticsearch\Client $client, $index, $type, $ttl = NULL) {
   $mapping_params['index'] = $index;
   $mapping_params['type'] = $type;
-  $my_type_mapping = elasticsearch_connector_statistics_get_mapping();
+  $my_type_mapping = elasticsearch_connector_statistics_get_mapping($ttl);
   $mapping_params['body'][$type] = $my_type_mapping;
   return $client->indices()->putMapping(
       $mapping_params
@@ -422,10 +425,6 @@ function elasticsearch_connector_statistics_create_type(\nodespark\DESConnector\
 
 /**
  * Get the cluster_id from settings.
- *
- * @param string $key
- *   The key you want to get from cluster and index config.
- *
  * @return string
  */
 function elasticsearch_connector_statistics_get_cluster_vars($key = 'cluster_id') {
@@ -524,25 +523,27 @@ function elasticsearch_connector_statistics_title_list_today($rows) {
         $to_date = $date->getTimestamp();
         $params['body']['query'] = array(
           'filtered' => array(
-            'must' => array(
+            'query' => array(
               'match_all' => array()
             ),
             'filter' => array(
-              array(
-                'term' => array(
-                  'entity.entity_type' => 'node'
-                )
-              ),
-              array(
-                'term' => array(
-                  'entity.page' => ELASTICSEARCH_CONNECTOR_STATS_PAGE_VIEW
-                )
-              ),
-              array(
-                'range' => array(
-                  'timestamp' => array(
-                    'from' => $from_date,
-                    'to' => $to_date,
+              'and' => array(
+                array(
+                  'term' => array(
+                    'entity.entity_type' => 'node'
+                  )
+                ),
+                array(
+                  'term' => array(
+                    'entity.page' => ELASTICSEARCH_CONNECTOR_STATS_PAGE_VIEW
+                  )
+                ),
+                array(
+                  'range' => array(
+                    'timestamp' => array(
+                      'from' => $from_date,
+                      'to' => $to_date,
+                    )
                   )
                 )
               )
@@ -552,15 +553,13 @@ function elasticsearch_connector_statistics_title_list_today($rows) {
 
         $field_faceting = 'entity.entity_id';
         $facet_name = 'facet_' . $field_faceting;
+        $params['body']['facets'][$facet_name]['terms']['field'] = $field_faceting;
+        $params['body']['facets'][$facet_name]['terms']['size'] = $rows;
 
-        $aggr = new \nodespark\DESConnector\Elasticsearch\Aggregations\Bucket\Terms($facet_name, $field_faceting);
-        $aggr->setSize($rows);
-        $client->aggregations()->setAggregation($aggr);
-
-        $search_result = $client->search($params)->getRawResponse();
-        if (!empty($search_result['aggregations'])) {
-          foreach ($search_result['aggregations'][$facet_name]['buckets'] as $bucket) {
-            $node = node_load($bucket['key']);
+        $search_result = $client->search($params);
+        if (!empty($search_result['facets'])) {
+          foreach ($search_result['facets'][$facet_name]['terms'] as $facet) {
+            $node = node_load($facet['term']);
             $result[] = $node;
           }
         }
@@ -593,38 +592,39 @@ function elasticsearch_connector_statistics_title_list_alltime($rows) {
         $index_name = elasticsearch_connector_statistics_get_cluster_vars('index');
         $params['index'] = $index_name;
         $params['type']  = variable_get('elasticsearch_connector_statistics_type',  ELASTICSEARCH_CONNECTOR_STATS_DEFAULT_TYPE);
+        $params['search_type'] = 'count';
 
         $params['body']['query'] = array(
-          'bool' => array(
-            'must' => array(
-              'match_all' => (object) array()
+          'filtered' => array(
+            'query' => array(
+              'match_all' => array()
             ),
             'filter' => array(
-              array(
-                'term' => array(
-                  'entity.entity_type' => 'node'
-                )
-              ),
-              array(
-                'term' => array(
-                  'entity.page' => ELASTICSEARCH_CONNECTOR_STATS_PAGE_VIEW
-                )
-              ),
+              'and' => array(
+                array(
+                  'term' => array(
+                    'entity.entity_type' => 'node'
+                  )
+                ),
+                array(
+                  'term' => array(
+                    'entity.page' => ELASTICSEARCH_CONNECTOR_STATS_PAGE_VIEW
+                  )
+                ),
+              )
             ),
           )
         );
 
         $field_faceting = 'entity.entity_id';
         $facet_name = 'facet_' . $field_faceting;
+        $params['body']['facets'][$facet_name]['terms']['field'] = $field_faceting;
+        $params['body']['facets'][$facet_name]['terms']['size'] = $rows;
 
-        $aggr = new \nodespark\DESConnector\Elasticsearch\Aggregations\Bucket\Terms($facet_name, $field_faceting);
-        $aggr->setSize($rows);
-        $client->aggregations()->setAggregation($aggr);
-
-        $search_result = $client->search($params)->getRawResponse();
-        if (!empty($search_result['aggregations'])) {
-          foreach ($search_result['aggregations'][$facet_name]['buckets'] as $bucket) {
-            $node = node_load($bucket['key']);
+        $search_result = $client->search($params);
+        if (!empty($search_result['facets'])) {
+          foreach ($search_result['facets'][$facet_name]['terms'] as $facet) {
+            $node = node_load($facet['term']);
             $result[] = $node;
           }
         }

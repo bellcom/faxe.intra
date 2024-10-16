@@ -65,7 +65,7 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
 
   /**
    * Get the Elasticsearch connector object.
-   * @return \nodespark\DESConnector\ClientInterface
+   * @return object <\Elasticsearch\Client, boolean, >
    */
   public function getConnectorObject() {
     return $this->elasticsearchClient;
@@ -273,8 +273,6 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
       try {
         $client = $this->elasticsearchClient;
         if (!$client->indices()->exists(array('index' => $index_name))) {
-          // TODO: This needs to be handled differently because the >2.0.0
-          // needs index recreation!
           if (!empty($index->force_create)) {
             $params = array(
               'index' => $index_name,
@@ -312,7 +310,7 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
     $params = $this->getIndexParam($index, TRUE);
 
     $properties = array(
-      'id' => array('type' => 'keyword', 'include_in_all' => FALSE),
+      'id' => array('type' => 'integer', 'include_in_all' => FALSE),
     );
 
     // Map index fields.
@@ -372,44 +370,31 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
    * Overrides removeIndex().
    */
   public function removeIndex($index) {
+    $params = $this->getIndexParam($index, TRUE);
+
     try {
-      if ($this->versionIs2x()) {
-        $params = $this->getIndexParam($index);
-        if ($this->elasticsearchClient->indices()->exists($params)) {
-          $this->elasticsearchClient->indices()->delete($params);
-        }
+      $this->elasticsearchClient->indices()->deleteMapping($params);
+
+      // Check if there are any other types in the index before deleting it.
+      $safe_delete = FALSE;
+      $result = $this->elasticsearchClient->indices()->getMapping(array(
+        'index' => $params['index'],
+      ));
+
+      // The 'get mapping' API response changed in version 1.4.0.beta1
+      // @see http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/indices-get-mapping.html
+      $version = $this->getClusterVersion();
+      if (version_compare($version, '1.4.0', '<')) {
+        $safe_delete = empty($result[$params['index']]);
       }
       else {
-        $params = $this->getIndexParam($index, TRUE);
+        $safe_delete = empty($result[$params['index']]['mappings']);
+      }
 
-        // If there is no connection there is nothing we can do.
-        if (!$this->elasticsearchClient) {
-          return;
-        }
-
-        $this->elasticsearchClient->indices()->deleteMapping($params);
-
-        // Check if there are any other types in the index before deleting it.
-        $safe_delete = FALSE;
-        $result = $this->elasticsearchClient->indices()->getMapping(array(
+      if ($safe_delete) {
+        $response = $this->elasticsearchClient->indices()->delete(array(
           'index' => $params['index'],
         ));
-
-        // The 'get mapping' API response changed in version 1.4.0.beta1
-        // @see http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/indices-get-mapping.html
-        $version = $this->getClusterVersion();
-        if (version_compare($version, '1.4.0', '<')) {
-          $safe_delete = empty($result[$params['index']]);
-        }
-        else {
-          $safe_delete = empty($result[$params['index']]['mappings']);
-        }
-
-        if ($safe_delete) {
-          $response = $this->elasticsearchClient->indices()->delete(array(
-            'index' => $params['index'],
-          ));
-        }
       }
     }
     catch (Exception $e) {
@@ -469,11 +454,12 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
       if (!empty($response['errors'])) {
         foreach($response['items'] as $item) {
           if (!empty($item['index']['status']) && $item['index']['status'] == '400') {
-            watchdog('Elasticsearch Search API', $item['index']['error'], array(), WATCHDOG_ERROR);
+            // TODO: This foreach maybe is better to return only the indexed items for return
+            // instead of throwing an error and stop the process cause we are in bulk
+            // and some of the items can be indexed successfully.
+            throw new SearchApiElasticsearchConnectorException($item['index']['error']);
           }
         }
-
-        throw new SearchApiElasticsearchConnectorException(t('An error occurred during indexing. Check your watchdog for more information.'));
       }
     }
     catch (Exception $e) {
@@ -481,33 +467,6 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
     }
 
     return array_keys($items);
-  }
-
-  public function versionIs2x() {
-    $version = $this->getClusterVersion();
-    if (version_compare($version, '2.0', '>=')) {
-      return TRUE;
-    }
-    else {
-      return FALSE;
-    }
-  }
-
-  /**
-   * Get the index settings of an Elasticsearch index.
-   * @param $index
-   * @return mixed
-   */
-  public function getElasticsearchIndexSettings($index) {
-    try {
-      $indexName = $this->getIndexName($index);
-      $params = $this->getIndexParam($index);
-      $settings = $this->elasticsearchClient->indices()->getSettings($params);
-      return $settings[$indexName]['settings'];
-    }
-    catch (Exception $e) {
-      drupal_set_message($e->getMessage(), 'error');
-    }
   }
 
   /**
@@ -520,32 +479,23 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
       }
     }
     elseif ($ids === 'all') {
-      if ($this->versionIs2x()) {
-        $settings = $this->getElasticsearchIndexSettings($index);
-        $index->force_create['number_of_shards'] = $settings['index']['number_of_shards'];
-        $index->force_create['number_of_replicas'] = $settings['index']['number_of_replicas'];
-        $this->removeIndex($index);
-        $this->addIndex($index);
+      $site_id = $this->getSiteHash();
+      $params = $this->getIndexParam($index, TRUE);
+      if ($site_id) {
+        $params['body'] = array('query' => array('match' => array('search_api_site_hash' => $site_id)));
       }
       else {
-        $version = $this->getClusterVersion();
-        $params = $this->getIndexParam($index, TRUE);
-        $site_id = $this->getSiteHash();
-        if ($site_id) {
-          $params['body'] = array('query' => array('match' => array('search_api_site_hash' => $site_id)));
-        }
-        else {
-          $params['body'] = array('query' => array('match_all' => array()));
-        }
-
-        // The 'delete by query' API request changed in version 1.0.0RC1.
-        // @see http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-delete-by-query.html
-        if (version_compare($version, '1.0.0', '<')) {
-          $params['body'] = $params['body']['query'];
-        }
-
-        $this->elasticsearchClient->deleteByQuery($params);
+        $params['body'] = array('query' => array('match_all' => array()));
       }
+
+      // The 'delete by query' API request changed in version 1.0.0RC1.
+      // @see http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-delete-by-query.html
+      $version = $this->getClusterVersion();
+      if (version_compare($version, '1.0.0', '<')) {
+        $params['body'] = $params['body']['query'];
+      }
+
+      $this->elasticsearchClient->deleteByQuery($params);
     }
     else {
       $this->deleteItemsIds($ids, $index);
@@ -605,7 +555,7 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
    *
    */
   protected function checkClient($throwError = FALSE) {
-    if (empty($this->elasticsearchClient) || !($this->elasticsearchClient instanceof \nodespark\DESConnector\ClientInterface)) {
+    if (empty($this->elasticsearchClient) || !($this->elasticsearchClient instanceof \Elasticsearch\Client)) {
       if ($throwError) {
         throw new SearchApiElasticsearchConnectorException(t('Elasticsearch library hasn\'t been initialized successfully.' ));
       }
@@ -650,8 +600,7 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
 
     try {
       // Do search.
-      $search_response = $this->elasticsearchClient->search($params);
-      $response = $search_response->getRawResponse();
+      $response = $this->elasticsearchClient->search($params);
 
       // TODO: Fix the logging to be accurate!
       if (!empty($index->options['collect_index_statistics']) && !$suggestions
@@ -766,7 +715,7 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
         }
 
         if (!empty($filters)) {
-          $filters = $this->normalizeFilters($filters,$conjunction);
+          $filters = $this->setFiltersConjunction($filters, $conjunction);
         }
       }
       catch (Exception $e) {
@@ -776,67 +725,6 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
 
       return array($queries, $filters);
     }
-  }
-
-  /**
-   * Normalizes complicated filters.
-   */
-  protected function normalizeFilters($filters, $conjunction) {
-    $result = array();
-
-    if (isset($filters['filter'])) {
-      $result['filter'] = $filters['filter'];
-      unset($filters['filter']);
-    }
-
-    if (isset($filters['should'])) {
-      $result['should'] = $filters['should'];
-      unset($filters['should']);
-    }
-
-    if (isset($filters['must_not'])) {
-      $result['must_not'] = $filters['must_not'];
-      unset($filters['must_not']);
-    }
-
-    if (count($filters)) {
-      foreach ($filters as $key => $value) {
-        if (is_int($key)) {
-          if (isset($value['must_not'])) {
-            if (isset($result['must_not'])) {
-              $result['must_not'] += array($value['must_not']);
-            }
-            else {
-              $result['must_not'] = array($value['must_not']);
-            }
-          }
-          else {
-            if ($conjunction === 'AND') {
-              if (!isset($result['filter'])) {
-                $result['filter'] = array();
-                $result['filter'] = array($value);
-              }
-              else {
-                $result['filter'][] = array($value);
-              }
-            }
-            else {
-              if (!isset($result['should'])) {
-                $result['should'] = array();
-                $result['should'] = array($value);
-              }
-              else {
-                $result['should'][] = array($value);
-              }
-            }
-          }
-        }
-        else {
-          $result['filter'][] = array($value);
-        }
-      }
-    }
-    return $result;
   }
 
   /**
@@ -895,8 +783,10 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
 
         case '<>':
           $filter = array(
-            'must_not' => array(
-              'term' => array($filter_assoc['field_id'] => $filter_assoc['filter_value']),
+            'not' => array(
+              'filter' => array(
+                'term' => array($filter_assoc['field_id'] => $filter_assoc['filter_value'])
+              )
             )
           );
           break;
@@ -1006,6 +896,27 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
   }
 
   /**
+   * Helper function that set filters conjunction
+   */
+  protected function setFiltersConjunction(&$filters, $conjunction) {
+    if (count($filters) > 1) {
+      if ($conjunction === 'OR') {
+        $filters = array(array('or' => $filters));
+      }
+      elseif ($conjunction === 'AND') {
+        $filters = array(array('and' => $filters));
+      }
+      else {
+        throw new Exception(t('Undefined conjunction :conjunction! Available values are :avail_conjunction! Incorrect filter criteria is using for searching!',
+            array(':conjunction!' => $conjunction, ':avail_conjunction' => $conjunction)));
+        return NULL;
+      }
+    }
+
+    return $filters;
+  }
+
+  /**
    * Helper function that check if filter is set correct.
    */
   protected function correctFilter($filter_assoc, $index_fields, $ignored_field_id = '') {
@@ -1100,46 +1011,38 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
     switch ($type) {
       case 'text':
         return array(
-          'type' => 'text',
-          'boost' => $field['boost'],
-          // Index also FIELD.raw in order to have also the field
-          // not analyzed if needed.
-          // TODO: This should be decided via settings.
-          'fields' => array(
-            'keyword' => array(
-              'type' => 'keyword',
-              'ignore_above' => 256,
-            )
-          )
+        'type' => 'string',
+        'boost' => $field['boost'],
         );
 
       case 'uri':
       case 'string':
       case 'token':
         return array(
-          'type' => 'keyword',
+        'type' => 'string',
+        'index' => 'not_analyzed',
         );
 
       case 'integer':
       case 'duration':
         return array(
-          'type' => 'integer',
+        'type' => 'integer',
         );
 
       case 'boolean':
         return array(
-          'type' => 'boolean',
+        'type' => 'boolean',
         );
 
       case 'decimal':
         return array(
-          'type' => 'float',
+        'type' => 'float',
         );
 
       case 'date':
         return array(
-          'type' => 'date',
-          'format' => 'epoch_second',
+        'type' => 'date',
+        'format' => 'date_time',
         );
 
       case 'location':
@@ -1329,13 +1232,11 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
             $spatial['field'] => $point,
           ),
         );
-
-        if (!empty($query_options['query_search_filter'])) {
-          $query_options['query_search_filter']['filter'][] = array(
-            $geo_distance_filter
-          );
-        } else {
+        if (empty($query_options['query_search_filter']['and'])) {
           $query_options['query_search_filter'] = $geo_distance_filter;
+        }
+        else {
+          $query_options['query_search_filter']['and'][] = $geo_distance_filter;
         }
 
         // // Geo distance range filter.
@@ -1381,18 +1282,17 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
 
     // Build the query.
     if (!empty($query_options['query_search']) && !empty($query_options['query_search_filter'])) {
-      $body['query']['bool']['must'] = $query_options['query_search'];
-      $body['query']['bool']['filter'] = $query_options['query_search_filter']['filter'];
+      $body['query']['filtered']['query'] = $query_options['query_search'];
+      $body['query']['filtered']['filter'] = $query_options['query_search_filter'];
     }
     elseif (!empty($query_options['query_search'])) {
       if (empty($body['query'])) {
         $body['query'] = array();
       }
-      $body['query']['bool']['must'] = $query_options['query_search'];
+      $body['query'] += $query_options['query_search'];
     }
     elseif (!empty($query_options['query_search_filter'])) {
-      $body['query']['bool']['must'] = array('match_all' => (object)array());
-      $body['query']['bool'] = array_merge($body['query']['bool'], $query_options['query_search_filter']);
+      $body['filter'] = $query_options['query_search_filter'];
     }
 
     // TODO: Handle fields on filter query.
@@ -1404,9 +1304,12 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
       unset($body['filter']);
     }
 
-    // Preserve the options for further manipulation if necessary.
-    $query->setOption('ElasticParams', $params);
+    if (empty($query_body)) {
+      $query_body['match_all'] = array();
+    }
 
+    // Preserve the options for futher manipulation if necessary.
+    $query->setOption('ElasticParams', $params);
     return $params;
   }
 
@@ -1693,7 +1596,7 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
     // Filters.
     list($parsed_queries, $parsed_query_filters) = $this->parseFilter($query->getFilter(), $index_fields);
     if (!empty($parsed_query_filters)) {
-      $query_search_filter = $parsed_query_filters;
+      $query_search_filter = $parsed_query_filters[0];
     }
 
     if (!empty($parsed_queries)) {
@@ -1718,10 +1621,6 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
       $spatial = $query_options['search_api_location'];
     }
 
-    if (isset($query_search_filter['should'])) {
-      $query_search_filter['minimum_should_match'] = 1;
-    }
-
     return array(
       'query_offset' => $query_offset,
       'query_limit' => $query_limit,
@@ -1738,7 +1637,6 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
   protected function getSortSearchQuery(SearchApiQueryInterface $query) {
 
     $index_fields = $this->getIndexFields($query);
-    $index = $query->getIndex();
     $sort = array();
 
     // Extract Search API Location fields.
@@ -1750,7 +1648,6 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
       }
     }
 
-    $query_full_text_fields = $index->getFulltextFields(TRUE);
     foreach ($query->getSort() as $field_id => $direction) {
       $direction = drupal_strtolower($direction);
 
@@ -1774,12 +1671,7 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
           }
         }
         else {
-          if (in_array($field_id, $query_full_text_fields)) {
-            $sort[$field_id . '.keyword'] = $direction;
-          }
-          else {
-            $sort[$field_id] = $direction;
-          }
+          $sort[$field_id] = $direction;
         }
       }
       else {
@@ -1800,7 +1692,7 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
 
     if (!empty($facets)) {
       // Loop trough facets.
-      $aggs = $this->elasticsearchClient->aggregations();
+      $elasticsearch_facets = array();
       foreach ($facets as $facet_id => $facet_info) {
         $field_id = $facet_info['field'];
         $facet = array($field_id => array());
@@ -1813,20 +1705,49 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
 
         // TODO: handle different types (GeoDistance and so on). See the supportedFeatures todo.
         if ($field_type === 'date') {
-          $interval = $this->getDateFacetInterval($facet_id);
-          $facet[$field_id] = new \nodespark\DESConnector\Elasticsearch\Aggregations\Bucket\DateHistogram($field_id, $field_id);
-          $facet[$field_id]->setInterval($interval);
-          $aggs->setAggregation($facet[$field_id]);
+          $facet_type = 'date_histogram';
+          $facet[$field_id] = $this->createDateFieldFacet($field_id, $facet);
         }
         else {
-          $facet[$field_id] = new \nodespark\DESConnector\Elasticsearch\Aggregations\Bucket\Terms($field_id, $field_id);
-          $facet[$field_id]->setSize($this->getFacetLimit($facet_info));
-          $aggs->setAggregation($facet[$field_id]);
+          $facet_type = 'terms';
+          $facet[$field_id][$facet_type]['all_terms'] = (bool)$facet_info['missing'];
         }
-      }
 
-      $aggs->applyAggregationsToParams($params);
+        // Add the facet.
+        if (!empty($facet[$field_id])) {
+          // Add facet options
+          $facet_info['facet_type'] = $facet_type;
+          $facet[$field_id] = $this->addFacetOptions($facet[$field_id], $query, $facet_info);
+        }
+        $params['body']['facets'][$field_id] = $facet[$field_id];
+      }
     }
+  }
+
+  /**
+   * Helper function that add options and return facet
+   */
+  protected function addFacetOptions(&$facet, SearchApiQueryInterface $query, $facet_info) {
+    $facet_limit = $this->getFacetLimit($facet_info);
+    $facet_search_filter = $this->getFacetSearchFilter($query, $facet_info);
+
+    // Set the field.
+    $facet[$facet_info['facet_type']]['field'] = $facet_info['field'];
+
+    // OR facet. We remove filters affecting the assiociated field.
+    // TODO: distinguish between normal filters and facet filters.
+    // See http://drupal.org/node/1390598.
+    // Filter the facet.
+    if (!empty($facet_search_filter)) {
+       $facet['facet_filter'] = $facet_search_filter;
+    }
+
+    // Limit the number of returned entries.
+    if ($facet_limit > 0 && $facet_info['facet_type'] == 'terms') {
+      $facet[$facet_info['facet_type']]['size'] = $facet_limit;
+    }
+
+    return $facet;
   }
 
   /**
@@ -1854,6 +1775,23 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
   }
 
   /**
+   * Helper function create Facet for date field type.
+   */
+  protected function createDateFieldFacet($facet_id, $facet) {
+    $result = $facet[$facet_id];
+
+    $date_interval = $this->getDateFacetInterval($facet_id);
+    $result['date_histogram']['interval'] = $date_interval;
+    // TODO: Check the timezone cause this way of hardcoding doesn't seems right.
+    $result['date_histogram']['time_zone'] = 'UTC';
+    // Use factor 1000 as we store dates as seconds from epoch
+    // not milliseconds.
+    $result['date_histogram']['factor'] = 1000;
+
+    return $result;
+  }
+
+  /**
    * Helper function that return facet limits
    */
   protected function getFacetLimit(array $facet_info) {
@@ -1871,33 +1809,69 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
   protected function getDateFacetInterval($facet_id) {
     // Active search corresponding to this index.
     $searcher = key(facetapi_get_active_searchers());
+
     // Get the FacetApiAdpater for this searcher.
     $adapter = isset($searcher) ? facetapi_adapter_load($searcher) : NULL;
-    $facet = $adapter->getFacet(array('name' => $facet_id));
-    $facet_settings = $facet->getSettings();
 
-    switch ($facet_settings->settings['date_granularity']) {
+    // Get the date granularity.
+    $date_gap = $this->getDateGranularity($adapter, $facet_id);
+
+    switch ($date_gap) {
       // Already a selected YEAR, we want the months.
       case 'YEAR':
         $date_interval = 'month';
         break;
 
-      // Already a selected MONTH, we want the days.
+        // Already a selected MONTH, we want the days.
       case 'MONTH':
         $date_interval = 'day';
         break;
 
-      // Already a selected DAY, we want the hours and so on.
+        // Already a selected DAY, we want the hours and so on.
       case 'DAY':
         $date_interval = 'hour';
         break;
 
-      // By default we return result counts by year.
+        // By default we return result counts by year.
       default:
         $date_interval = 'year';
     }
 
     return $date_interval;
+  }
+
+  /**
+   * Helper function to return date gap.
+   */
+  public function getDateGranularity($adapter, $facet_id) {
+    // Date gaps.
+    $gap_weight = array('YEAR' => 2, 'MONTH' => 1, 'DAY' => 0);
+    $gaps = array();
+    $date_gap = 'YEAR';
+
+    // Get the date granularity.
+    if (isset($adapter)) {
+      // Get the current date gap from the active date filters.
+      $active_items = $adapter->getActiveItems(array('name' => $facet_id));
+      if (!empty($active_items)) {
+        foreach ($active_items as $active_item) {
+          $value = $active_item['value'];
+          if (strpos($value, ' TO ') > 0) {
+            list($date_min, $date_max) = explode(' TO ', str_replace(array('[', ']'), '', $value), 2);
+            $gap = self::getDateGap($date_min, $date_max, FALSE);
+            if (isset($gap_weight[$gap])) {
+              $gaps[] = $gap_weight[$gap];
+            }
+          }
+        }
+        if (!empty($gaps)) {
+          // Minimum gap.
+          $date_gap = array_search(min($gaps), $gap_weight);
+        }
+      }
+    }
+
+    return $date_gap;
   }
 
   /**
@@ -1946,8 +1920,8 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
     $result = array();
     $index_fields = $this->getIndexFields($query);
     $facets = $query->getOption('search_api_facets');
-    if (!empty($facets) && isset($response['aggregations'])) {
-      foreach ($response['aggregations'] as $facet_id => $facet_data) {
+    if (!empty($facets) && isset($response['facets'])) {
+      foreach ($response['facets'] as $facet_id => $facet_data) {
         if (isset($facets[$facet_id])) {
           $facet_info = $facets[$facet_id];
           $facet_min_count = $facet_info['min_count'];
@@ -1957,29 +1931,29 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
 
           // TODO: handle different types (GeoDistance and so on).
           if ($field_type === 'date') {
-            foreach ($facet_data['buckets'] as $entry) {
-              if ($entry['doc_count'] >= $facet_min_count) {
+            foreach ($facet_data['entries'] as $entry) {
+              if ($entry['count'] >= $facet_min_count) {
                 // Divide time by 1000 as we want seconds from epoch
                 // not milliseconds.
                 $result[$facet_id][] = array(
-                  'count' => $entry['doc_count'],
-                  'filter' => '"' . ($entry['key']/1000) . '"',
+                  'count' => $entry['count'],
+                  'filter' => '"' . ($entry['time'] / 1000) . '"',
                 );
               }
             }
           }
           else {
-            foreach ($facet_data['buckets'] as $term) {
-              if ($term['doc_count'] >= $facet_min_count) {
+            foreach ($facet_data['terms'] as $term) {
+              if ($term['count'] >= $facet_min_count) {
                 if ($field_type == 'boolean') {
-                  $term_value = ($term['key'] == 'T' ? TRUE : FALSE);
+                  $term_value = ($term['term'] == 'T' ? TRUE : FALSE);
                 }
                 else {
-                  $term_value = '"' . $term['key'] . '"';
+                  $term_value = '"' . $term['term'] . '"';
                 }
 
                 $result[$facet_id][] = array(
-                  'count' => $term['doc_count'],
+                  'count' => $term['count'],
                   'filter' => $term_value,
                 );
               }
@@ -1993,7 +1967,12 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
   }
 
   /**
-   * Implements SearchApiAutocompleteInterface::getAutocompleteSuggestions().
+   * Helper function. Get Autocomplete suggestions.
+   *
+   * @param SearchApiQueryInterface $query
+   * @param SearchApiAutocompleteSearch $search
+   * @param string $incomplete_key
+   * @param string $user_input
    */
   public function getAutocompleteSuggestions(SearchApiQueryInterface $query, SearchApiAutocompleteSearch $search, $incomplete_key, $user_input) {
     $suggestions = array();
@@ -2027,8 +2006,7 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
           $matches[$item_title] = array(
             'key' => $index->datasource()->getItemLabel($item),
             'user_input' => '',
-            'suggestion_suffix' => $item_title,
-            'render' => l($item_title, $url_item['path'], array('html' => TRUE)),
+            'suggestion_suffix' => l($item_title, $url_item['path'], array('html' => TRUE)),
           );
         }
         else {
@@ -2036,7 +2014,6 @@ class SearchApiElasticsearchConnector extends SearchApiAbstractService {
             'key' => $index->datasource()->getItemLabel($item),
             'user_input' => '',
             'suggestion_suffix' => $item_title,
-            'render' => $item_title,
           );
         }
       }
